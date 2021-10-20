@@ -12,6 +12,10 @@ public class MainFrame extends JFrame {
     private MyMenuBar myMenuBar;
     private MyToolBar myToolBar;
 
+    private JSplitPane splitPane;
+    private JPanel stablo;
+    private JPanel radnaPovrsina;
+
     private MainFrame()
     {
         //podesavanje prozora
@@ -26,9 +30,16 @@ public class MainFrame extends JFrame {
         myMenuBar = new MyMenuBar();
         myToolBar = new MyToolBar();
 
+        stablo = new JPanel();
+        stablo.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
+        radnaPovrsina = new JPanel();
+        radnaPovrsina.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stablo, radnaPovrsina);
+
         //dodavanje na prozor
         setJMenuBar(myMenuBar);
         add(myToolBar, "North");
+        add(splitPane);
     }
 
     public static MainFrame getIntance()
