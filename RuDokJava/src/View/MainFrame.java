@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
     private MyToolBar myToolBar;
 
     private JSplitPane splitPane;
-    private JPanel stablo;
+    private JScrollPane stablo;
     private JPanel radnaPovrsina;
 
     private MainFrame()
@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
         myMenuBar = new MyMenuBar();
         myToolBar = new MyToolBar();
 
-        stablo = new JPanel();
+        stablo = new JScrollPane();
         stablo.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
         radnaPovrsina = new JPanel();
         radnaPovrsina.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
