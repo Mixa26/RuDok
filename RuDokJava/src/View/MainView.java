@@ -1,12 +1,14 @@
 package View;
 
-import Model.Main;
+import Controller.ActionManager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
-    private static MainFrame instance;
+public class MainView extends JFrame {
+    private static MainView instance;
+
+    private ActionManager actionManager;
 
     //komponente prozora
     private MyMenuBar myMenuBar;
@@ -16,7 +18,16 @@ public class MainFrame extends JFrame {
     private JScrollPane stablo;
     private JPanel radnaPovrsina;
 
-    private MainFrame()
+    private MainView()
+    {
+    }
+
+    private void initialise()
+    {
+        actionManager = new ActionManager();
+    }
+
+    private void initialiseGUI()
     {
         //podesavanje prozora
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -42,13 +53,18 @@ public class MainFrame extends JFrame {
         add(splitPane);
     }
 
-    public static MainFrame getIntance()
+    public static MainView getIntance()
     {
         if (instance == null)
         {
-            instance = new MainFrame();
+            instance = new MainView();
+            instance.initialise();
+            instance.initialiseGUI();
         }
         return instance;
     }
 
+    public ActionManager getActionManager() {
+        return actionManager;
+    }
 }

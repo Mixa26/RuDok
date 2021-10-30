@@ -1,7 +1,5 @@
 package View;
 
-import Controller.InfoActionListener;
-
 import javax.swing.*;
 
 public class MyToolBar extends JToolBar {
@@ -13,11 +11,8 @@ public class MyToolBar extends JToolBar {
     public MyToolBar()
     {
         //init komponenti
-        New = new JButton("New");
-        info = new JButton("Info");
-
-        //podesavanje komponenti
-        info.addActionListener(new InfoActionListener());
+        New = new JButton(MainView.getIntance().getActionManager().getNewAction());
+        info = new JButton(MainView.getIntance().getActionManager().getInfoAction());
 
         //dodavanje na toolbar
         add(New);

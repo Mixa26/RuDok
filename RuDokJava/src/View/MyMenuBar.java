@@ -1,5 +1,7 @@
 package View;
 
+import Model.Main;
+
 import javax.swing.*;
 import javax.swing.JMenuBar;
 
@@ -7,9 +9,6 @@ public class MyMenuBar extends JMenuBar {
 
     private JMenu fileMenu;
     private JMenu helpMenu;
-
-    //padajuci meni File
-    private JMenuItem New;
 
     //padajuci meni Help
     private JMenuItem Edit;
@@ -20,15 +19,12 @@ public class MyMenuBar extends JMenuBar {
         fileMenu = new JMenu("File");
         helpMenu = new JMenu("Help");
 
-        //init padajuceg menija File
-        New = new JMenuItem("New");
-
         //init padajuceg menija Help
         Edit = new JMenuItem("Edit");
 
         //dodavanje
             //sadrzaj padajuceg menija File
-            fileMenu.add(New);
+            fileMenu.add(MainView.getIntance().getActionManager().getNewAction());
         add(fileMenu);
             //sadrzaj padajuceg menija Help
             helpMenu.add(Edit);

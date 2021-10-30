@@ -1,11 +1,11 @@
 package Model;
 
-import View.MainFrame;
+import View.MainView;
 
 public class Main {
 
     public static void main(String[] args) {
-        MainFrame mainFrame = MainFrame.getIntance();
+        MainView mainFrame = MainView.getIntance();
         mainFrame.setVisible(true);
     }
 }
