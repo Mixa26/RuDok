@@ -4,6 +4,7 @@ public class ActionManager {
 
     private InfoAction infoAction;
     private NewAction newAction;
+    private EditPresentationAction editPresentationAction;
 
     public ActionManager()
     {
@@ -14,6 +15,7 @@ public class ActionManager {
     {
         infoAction = new InfoAction();
         newAction = new NewAction();
+        editPresentationAction = new EditPresentationAction();
     }
 
     //Getters and Setters
@@ -31,5 +33,13 @@ public class ActionManager {
 
     public void setNewAction(NewAction newAction) {
         this.newAction = newAction;
+    }
+
+    public EditPresentationAction getEditPresentationAction() {
+        return editPresentationAction;
+    }
+
+    public void setEditPresentationAction(EditPresentationAction editPresentationAction) {
+        this.editPresentationAction = editPresentationAction;
     }
 }

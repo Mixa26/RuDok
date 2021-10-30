@@ -1,6 +1,12 @@
 package Model;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Presentation extends RuNodeComposite{
+
+    private String author;
+    private Image backgroundImage;
 
     public Presentation(String name, Project parent)
     {

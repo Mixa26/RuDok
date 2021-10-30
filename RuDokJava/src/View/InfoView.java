@@ -12,7 +12,8 @@ public class InfoView extends JDialog {
     public InfoView(Frame parent, String title, boolean modal)
     {
         super(parent, title, modal);
-        setSize(new Dimension(500,500));
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        setSize(new Dimension((int)kit.getScreenSize().getWidth() / 3,(int)kit.getScreenSize().getHeight() / 2));
         setLocationRelativeTo(parent);
 
         studentPicture = new ImageIcon("images/mixa.jpg");
