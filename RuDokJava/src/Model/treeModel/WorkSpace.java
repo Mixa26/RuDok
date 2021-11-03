@@ -1,10 +1,15 @@
-package Model;
+package Model.treeModel;
 
-public class WorkSpace extends RuNodeComposite{
+public class WorkSpace extends RuNodeComposite {
 
     public WorkSpace(String name)
     {
         super(name, null);
+    }
+
+    public WorkSpace()
+    {
+        super("WorkSpace", null);
     }
 
     @Override

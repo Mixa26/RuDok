@@ -1,6 +1,6 @@
-package Model;
+package Model.treeModel;
 
-public class Slide extends RuNode{
+public class Slide extends RuNode {
 
     private int ordinalNumber;
 

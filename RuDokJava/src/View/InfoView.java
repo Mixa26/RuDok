@@ -16,7 +16,7 @@ public class InfoView extends JDialog {
         setSize(new Dimension((int)kit.getScreenSize().getWidth() / 3,(int)kit.getScreenSize().getHeight() / 2));
         setLocationRelativeTo(parent);
 
-        studentPicture = new ImageIcon("images/mixa.jpg");
+        studentPicture = new ImageIcon("RuDokJava/src/View/images/mixa.jpg");
         student = new JLabel("Mihajlo Madzarevic RN 55/20 ", studentPicture, JLabel.CENTER);
 
         add(student);

@@ -1,9 +1,8 @@
-package Model;
+package Model.treeModel;
 
-import javax.swing.*;
 import java.awt.*;
 
-public class Presentation extends RuNodeComposite{
+public class Presentation extends RuNodeComposite {
 
     private String author;
     private Image backgroundImage;

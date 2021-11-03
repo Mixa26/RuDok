@@ -5,6 +5,7 @@ public class ActionManager {
     private InfoAction infoAction;
     private NewAction newAction;
     private EditPresentationAction editPresentationAction;
+    private RenameInTreeAction renameInTreeAction;
 
     public ActionManager()
     {
@@ -41,5 +42,13 @@ public class ActionManager {
 
     public void setEditPresentationAction(EditPresentationAction editPresentationAction) {
         this.editPresentationAction = editPresentationAction;
+    }
+
+    public RenameInTreeAction getRenameInTreeAction() {
+        return renameInTreeAction;
+    }
+
+    public void setRenameInTreeAction(RenameInTreeAction renameInTreeAction) {
+        this.renameInTreeAction = renameInTreeAction;
     }
 }

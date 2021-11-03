@@ -1,6 +1,10 @@
 package View;
 
 import Controller.ActionManager;
+import Model.treeModel.WorkSpace;
+import View.treeSwingGUI.model.MyTreeModel;
+import View.treeSwingGUI.model.MyTreeNode;
+import View.treeSwingGUI.view.MyTree;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +17,8 @@ public class MainView extends JFrame {
     //komponente prozora
     private MyMenuBar myMenuBar;
     private MyToolBar myToolBar;
+    private MyTree myTree;
+    private MyTreeModel myTreeModel;
 
     private JSplitPane splitPane;
     private JScrollPane stablo;
@@ -25,6 +31,14 @@ public class MainView extends JFrame {
     private void initialise()
     {
         actionManager = new ActionManager();
+    }
+
+    private void initialiseTree()
+    {
+        myTree = new MyTree();
+        myTreeModel = new MyTreeModel();
+
+        myTree.setModel(myTreeModel);
     }
 
     private void initialiseGUI()
@@ -41,8 +55,9 @@ public class MainView extends JFrame {
         myMenuBar = new MyMenuBar();
         myToolBar = new MyToolBar();
 
-        stablo = new JScrollPane();
+        stablo = new JScrollPane(myTree);
         stablo.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
+        stablo.setPreferredSize(new Dimension((int)screenSize.getWidth() / 10, 50));
         radnaPovrsina = new JPanel();
         radnaPovrsina.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stablo, radnaPovrsina);
@@ -59,6 +74,7 @@ public class MainView extends JFrame {
         {
             instance = new MainView();
             instance.initialise();
+            instance.initialiseTree();
             instance.initialiseGUI();
         }
         return instance;
