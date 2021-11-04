@@ -83,4 +83,5 @@ public class MainView extends JFrame {
     public ActionManager getActionManager() {
         return actionManager;
     }
+
 }

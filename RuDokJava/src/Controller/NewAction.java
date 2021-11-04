@@ -13,6 +13,5 @@ public class NewAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Radim");
     }
 }

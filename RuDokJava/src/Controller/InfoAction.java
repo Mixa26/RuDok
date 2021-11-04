@@ -11,6 +11,7 @@ public class InfoAction extends AbstractRudokAction {
     public InfoAction()
     {
         putValue(NAME, "Info");
+        putValue(SMALL_ICON, loadIcon("images/info.png"));
         putValue(SHORT_DESCRIPTION, "Info");
     }
 

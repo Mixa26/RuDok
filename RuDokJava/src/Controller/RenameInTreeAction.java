@@ -4,7 +4,10 @@ import Model.treeModel.Presentation;
 import Model.treeModel.Project;
 import Model.treeModel.Slide;
 import Model.treeModel.WorkSpace;
+import View.MainView;
+import View.treeSwingGUI.model.MyTreeNode;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class RenameInTreeAction extends AbstractRudokAction{
@@ -16,6 +19,8 @@ public class RenameInTreeAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        ((MyTreeNode)objectInTree).getNode().setName(e.getActionCommand());
+        /*
         if (objectInTree instanceof WorkSpace)
         {
             ((WorkSpace)objectInTree).setName(e.getActionCommand());
@@ -31,6 +36,6 @@ public class RenameInTreeAction extends AbstractRudokAction{
         else
         {
             ((Slide)objectInTree).setName(e.getActionCommand());
-        }
+        }*/
     }
 }
