@@ -84,4 +84,7 @@ public class MainView extends JFrame {
         return actionManager;
     }
 
+    public MyTree getMyTree() {
+        return myTree;
+    }
 }

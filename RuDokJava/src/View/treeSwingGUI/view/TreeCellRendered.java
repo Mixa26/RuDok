@@ -1,4 +1,4 @@
-package View.treeSwingGUI.controller;
+package View.treeSwingGUI.view;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;

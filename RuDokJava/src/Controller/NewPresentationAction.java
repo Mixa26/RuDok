@@ -7,7 +7,7 @@ public class NewPresentationAction extends AbstractRudokAction{
     public NewPresentationAction() {
         putValue(NAME, "Presentation");
         putValue(SMALL_ICON, loadIcon("images/newPresentation.png"));
-        putValue(SHORT_DESCRIPTION, "New Presentation");
+        putValue(SHORT_DESCRIPTION, "Creates a new presentation");
     }
 
     @Override

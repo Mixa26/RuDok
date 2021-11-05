@@ -1,4 +1,4 @@
-package View.treeSwingGUI.controller;
+package View.treeSwingGUI.view;
 
 import Model.treeModel.Presentation;
 import Model.treeModel.Project;

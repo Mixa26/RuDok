@@ -3,9 +3,9 @@ package Controller;
 public class ActionManager {
 
     private InfoAction infoAction;
-    private NewAction newAction;
     private EditPresentationAction editPresentationAction;
     private RenameInTreeAction renameInTreeAction;
+    private DeleteAction deleteAction;
 
     private NewProjectAction newProjectAction;
     private NewPresentationAction newPresentationAction;
@@ -19,8 +19,8 @@ public class ActionManager {
     private void initializeActions()
     {
         infoAction = new InfoAction();
-        newAction = new NewAction();
         editPresentationAction = new EditPresentationAction();
+        deleteAction = new DeleteAction();
 
         newProjectAction = new NewProjectAction();
         newPresentationAction = new NewPresentationAction();
@@ -34,14 +34,6 @@ public class ActionManager {
 
     public void setInfoAction(InfoAction infoAction) {
         this.infoAction = infoAction;
-    }
-
-    public NewAction getNewAction() {
-        return newAction;
-    }
-
-    public void setNewAction(NewAction newAction) {
-        this.newAction = newAction;
     }
 
     public EditPresentationAction getEditPresentationAction() {
@@ -64,7 +56,7 @@ public class ActionManager {
         return newProjectAction;
     }
 
-    public NewPresentationAction getNewPrezentationAction() {
+    public NewPresentationAction getNewPresentationAction() {
         return newPresentationAction;
     }
 
@@ -82,5 +74,13 @@ public class ActionManager {
 
     public void setNewSlideAction(NewSlideAction newSlideAction) {
         this.newSlideAction = newSlideAction;
+    }
+
+    public DeleteAction getDeleteAction() {
+        return deleteAction;
+    }
+
+    public void setDeleteAction(DeleteAction deleteAction) {
+        this.deleteAction = deleteAction;
     }
 }

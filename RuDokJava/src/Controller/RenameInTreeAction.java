@@ -20,22 +20,5 @@ public class RenameInTreeAction extends AbstractRudokAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         ((MyTreeNode)objectInTree).getNode().setName(e.getActionCommand());
-        /*
-        if (objectInTree instanceof WorkSpace)
-        {
-            ((WorkSpace)objectInTree).setName(e.getActionCommand());
-        }
-        else if (objectInTree instanceof Project)
-        {
-            ((Project)objectInTree).setName(e.getActionCommand());
-        }
-        else if (objectInTree instanceof Presentation)
-        {
-            ((Presentation)objectInTree).setName(e.getActionCommand());
-        }
-        else
-        {
-            ((Slide)objectInTree).setName(e.getActionCommand());
-        }*/
     }
 }
