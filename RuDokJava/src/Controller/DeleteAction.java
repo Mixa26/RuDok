@@ -21,6 +21,12 @@ public class DeleteAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (MainView.getIntance().getMyTree().getSelectionPath() == null)
+        {
+            //TODO dodaj erorr handler
+            return;
+        }
+
         RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
         RuNode parent;
 

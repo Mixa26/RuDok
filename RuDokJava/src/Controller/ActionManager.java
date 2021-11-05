@@ -1,9 +1,12 @@
 package Controller;
 
+import java.awt.*;
+
 public class ActionManager {
 
     private InfoAction infoAction;
     private EditPresentationAction editPresentationAction;
+    private SubmitPresentationInitialsAction submitPresentationInitialsAction;
     private RenameInTreeAction renameInTreeAction;
     private DeleteAction deleteAction;
 
@@ -20,7 +23,9 @@ public class ActionManager {
     {
         infoAction = new InfoAction();
         editPresentationAction = new EditPresentationAction();
+        submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
         deleteAction = new DeleteAction();
+        renameInTreeAction = new RenameInTreeAction();
 
         newProjectAction = new NewProjectAction();
         newPresentationAction = new NewPresentationAction();
@@ -44,8 +49,8 @@ public class ActionManager {
         this.editPresentationAction = editPresentationAction;
     }
 
-    public RenameInTreeAction getRenameInTreeAction(Object object) {
-        return renameInTreeAction = new RenameInTreeAction(object);
+    public RenameInTreeAction getRenameInTreeAction() {
+        return renameInTreeAction;
     }
 
     public void setRenameInTreeAction(RenameInTreeAction renameInTreeAction) {
@@ -82,5 +87,9 @@ public class ActionManager {
 
     public void setDeleteAction(DeleteAction deleteAction) {
         this.deleteAction = deleteAction;
+    }
+
+    public SubmitPresentationInitialsAction getSubmitPresentationInitialsAction() {
+        return submitPresentationInitialsAction;
     }
 }

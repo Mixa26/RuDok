@@ -1,9 +1,7 @@
 package View.treeSwingGUI.view;
 
-import Model.treeModel.Presentation;
-import Model.treeModel.Project;
-import Model.treeModel.Slide;
-import Model.treeModel.WorkSpace;
+import Model.Main;
+import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
@@ -13,11 +11,10 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 
-public class TreeCellEditor extends DefaultTreeCellEditor{
+public class TreeCellEditor extends DefaultTreeCellEditor implements ActionListener{
 
     private Object object = null;
     private JTextField text = null;
@@ -33,7 +30,7 @@ public class TreeCellEditor extends DefaultTreeCellEditor{
         object = value;
 
         text = new JTextField(value.toString());
-        text.addActionListener(MainView.getIntance().getActionManager().getRenameInTreeAction(object));
+        text.addActionListener(this);
         return text;
     }
 
@@ -47,5 +44,13 @@ public class TreeCellEditor extends DefaultTreeCellEditor{
             }
         }
         return false;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (object != null)
+        {
+            ((MyTreeNode)object).getNode().setName(e.getActionCommand());
+        }
     }
 }

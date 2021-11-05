@@ -10,6 +10,8 @@ public class MyMenuBar extends JMenuBar {
     private JMenu fileMenu;
     private JMenu New;
     private JMenu editMenu;
+    private JMenuItem editPresentation;
+    private JMenuItem rename;
     private JMenuItem delete;
     private JMenu helpMenu;
 
@@ -19,6 +21,10 @@ public class MyMenuBar extends JMenuBar {
         fileMenu = new JMenu("File");
         New = new JMenu("New");
         editMenu = new JMenu("Edit");
+        editPresentation = new JMenuItem(MainView.getIntance().getActionManager().getEditPresentationAction());
+        editPresentation.setIcon(null);
+        rename = new JMenuItem(MainView.getIntance().getActionManager().getRenameInTreeAction());
+        rename.setIcon(null);
         delete = new JMenuItem(MainView.getIntance().getActionManager().getDeleteAction());
         delete.setIcon(null);
         helpMenu = new JMenu("Help");
@@ -30,7 +36,8 @@ public class MyMenuBar extends JMenuBar {
             New.add(MainView.getIntance().getActionManager().getNewSlideAction());
             fileMenu.add(New);
         add(fileMenu);
-            editMenu.add(MainView.getIntance().getActionManager().getEditPresentationAction());
+            editMenu.add(editPresentation);
+            editMenu.add(rename);
             editMenu.add(delete);
         add(editMenu);
             //sadrzaj padajuceg menija Help

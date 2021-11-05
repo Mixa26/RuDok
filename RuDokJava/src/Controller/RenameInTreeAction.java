@@ -1,24 +1,34 @@
 package Controller;
 
-import Model.treeModel.Presentation;
-import Model.treeModel.Project;
-import Model.treeModel.Slide;
-import Model.treeModel.WorkSpace;
+import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 public class RenameInTreeAction extends AbstractRudokAction{
-    private final Object objectInTree;
+    private final int count = 0;
 
-    public RenameInTreeAction(Object objectInTree)
+    public RenameInTreeAction()
     {
-        this.objectInTree = objectInTree;
+        putValue(NAME, "Rename");
+        putValue(SMALL_ICON, loadIcon("images/rename.png"));
+        putValue(SHORT_DESCRIPTION, "Rename a selected component");
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((MyTreeNode)objectInTree).getNode().setName(e.getActionCommand());
+        if ((MainView.getIntance().getMyTree().getSelectionPath()) == null)
+        {
+            return;
+        }
+
+        MyTreeNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent());
+        if (selection != null)
+        {
+
+        }
     }
+
 }
