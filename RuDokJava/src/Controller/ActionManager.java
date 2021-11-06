@@ -7,6 +7,7 @@ public class ActionManager {
     private InfoAction infoAction;
     private EditPresentationAction editPresentationAction;
     private SubmitPresentationInitialsAction submitPresentationInitialsAction;
+    private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
     private DeleteAction deleteAction;
 
@@ -24,6 +25,7 @@ public class ActionManager {
         infoAction = new InfoAction();
         editPresentationAction = new EditPresentationAction();
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
+        submitRenameIntialsAction = new SubmitRenameIntialsAction();
         deleteAction = new DeleteAction();
         renameInTreeAction = new RenameInTreeAction();
 
@@ -91,5 +93,13 @@ public class ActionManager {
 
     public SubmitPresentationInitialsAction getSubmitPresentationInitialsAction() {
         return submitPresentationInitialsAction;
+    }
+
+    public SubmitRenameIntialsAction getSubmitRenameIntialsAction() {
+        return submitRenameIntialsAction;
+    }
+
+    public void setSubmitPresentationInitialsAction(SubmitPresentationInitialsAction submitPresentationInitialsAction) {
+        this.submitPresentationInitialsAction = submitPresentationInitialsAction;
     }
 }

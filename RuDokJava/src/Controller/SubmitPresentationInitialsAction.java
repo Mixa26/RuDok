@@ -36,6 +36,5 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
 
         MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 
-       // System.out.println(presentation.getAuthor().toString() +  presentation.getBackgroundImage().toString());
     }
 }
