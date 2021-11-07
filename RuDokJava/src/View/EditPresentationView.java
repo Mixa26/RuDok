@@ -1,11 +1,10 @@
 package View;
 
-import Controller.EditPresentationAction;
-import Model.Main;
+import Model.treeModel.Presentation;
+import View.treeSwingGUI.model.MyTreeNode;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class EditPresentationView extends JDialog {
     private JLabel authorLabel;
@@ -39,8 +38,8 @@ public class EditPresentationView extends JDialog {
 
     public void setVisible()
     {
-        author.setText("");
-        imageURL.setText("");
+        author.setText(((Presentation)((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode()).getAuthor());
+        imageURL.setText("RuDokJava/src/View/presentationBackgrounds/background1.jpg");
         if (submit == null)
         {
             submit = new JButton(MainView.getIntance().getActionManager().getSubmitPresentationInitialsAction());

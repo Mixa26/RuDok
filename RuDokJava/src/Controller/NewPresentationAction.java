@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Main;
+import View.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
 import Model.treeModel.Project;
 import Model.treeModel.RuNode;
@@ -9,14 +9,13 @@ import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
 import java.awt.event.ActionEvent;
-import java.util.Objects;
 
 public class NewPresentationAction extends AbstractRudokAction{
 
     public NewPresentationAction() {
         putValue(NAME, "Presentation");
         putValue(SMALL_ICON, loadIcon("images/newPresentation.png"));
-        putValue(SHORT_DESCRIPTION, "Creates a new presentation");
+        putValue(SHORT_DESCRIPTION, "Creates a new presentation in a selected project");
     }
 
     @Override
@@ -25,20 +24,29 @@ public class NewPresentationAction extends AbstractRudokAction{
 
         if (MainView.getIntance().getMyTree().getSelectionPath() != null)
         {
+
             selection = ((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
         }
         else
         {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
             return;
         }
 
         if (selection instanceof Project)
         {
             Presentation presentation = new Presentation("Presentation " + (((Project) selection).getChildren().size() + 1), (Project)selection);
+            presentation.setAuthor("Author");
             Slide slide = new Slide("Slide 1", presentation);
             presentation.addChild(slide);
             ((Project) selection).getChildren().add(presentation);
+
+            MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
             MainView.getIntance().getMyTree().refresh();
+        }
+        else
+        {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
         }
     }
 }

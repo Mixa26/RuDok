@@ -4,6 +4,7 @@ import Model.treeModel.*;
 import View.MainView;
 import View.RenameInTreeView;
 import View.treeSwingGUI.model.MyTreeNode;
+import View.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ public class RenameInTreeAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         if ((MainView.getIntance().getMyTree().getSelectionPath()) == null)
         {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
             return;
         }
 
@@ -30,6 +32,10 @@ public class RenameInTreeAction extends AbstractRudokAction{
         if (selection != null)
         {
             renameInTreeView.setVisible();
+        }
+        else
+        {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
         }
     }
 

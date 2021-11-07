@@ -14,6 +14,7 @@ public class MyMenuBar extends JMenuBar {
     private JMenuItem rename;
     private JMenuItem delete;
     private JMenu helpMenu;
+    private JMenuItem info;
 
     public MyMenuBar()
     {
@@ -28,6 +29,8 @@ public class MyMenuBar extends JMenuBar {
         delete = new JMenuItem(MainView.getIntance().getActionManager().getDeleteAction());
         delete.setIcon(null);
         helpMenu = new JMenu("Help");
+        info = new JMenuItem(MainView.getIntance().getActionManager().getInfoAction());
+        info.setIcon(null);
 
         //dodavanje
             //sadrzaj padajuceg menija File
@@ -41,7 +44,7 @@ public class MyMenuBar extends JMenuBar {
             editMenu.add(delete);
         add(editMenu);
             //sadrzaj padajuceg menija Help
-            helpMenu.add(MainView.getIntance().getActionManager().getInfoAction());
+            helpMenu.add(info);
         add(helpMenu);
     }
 

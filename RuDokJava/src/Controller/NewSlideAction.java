@@ -1,7 +1,7 @@
 package Controller;
 
+import View.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
-import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import Model.treeModel.Slide;
 import View.MainView;
@@ -14,7 +14,7 @@ public class NewSlideAction extends AbstractRudokAction{
     public NewSlideAction() {
         putValue(NAME, "Slide");
         putValue(SMALL_ICON, loadIcon("images/newSlide.png"));
-        putValue(SHORT_DESCRIPTION, "Creates a new slide");
+        putValue(SHORT_DESCRIPTION, "Creates a new slide in a selected presentation");
     }
 
     @Override
@@ -27,6 +27,7 @@ public class NewSlideAction extends AbstractRudokAction{
         }
         else
         {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
             return;
         }
 
@@ -34,7 +35,13 @@ public class NewSlideAction extends AbstractRudokAction{
         {
             Slide slide = new Slide("Slide " + (((Presentation) selection).getChildren().size() + 1), (Presentation) selection);
             ((Presentation) selection).getChildren().add(slide);
+
+            MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
             MainView.getIntance().getMyTree().refresh();
+        }
+        else
+        {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
         }
     }
 }

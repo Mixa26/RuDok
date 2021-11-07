@@ -7,7 +7,9 @@ import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.treeSwingGUI.view.MyTree;
+import View.userErrorHandler.ErrorFactory;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
@@ -23,7 +25,7 @@ public class DeleteAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         if (MainView.getIntance().getMyTree().getSelectionPath() == null)
         {
-            //TODO dodaj erorr handler
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
             return;
         }
 
@@ -35,6 +37,10 @@ public class DeleteAction extends AbstractRudokAction{
             parent = selection.getParent();
             ((RuNodeComposite)parent).removeChild(selection);
             MainView.getIntance().getMyTree().refresh();
+        }
+        else
+        {
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
         }
     }
 }

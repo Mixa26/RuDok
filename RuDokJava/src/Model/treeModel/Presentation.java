@@ -1,12 +1,10 @@
 package Model.treeModel;
 
-import java.awt.*;
-import java.net.URL;
 
 public class Presentation extends RuNodeComposite {
 
     private String author;
-    private URL backgroundImage;
+    private String backgroundImage;
 
     public Presentation(String name, Project parent)
     {
@@ -34,7 +32,7 @@ public class Presentation extends RuNodeComposite {
         this.author = author;
     }
 
-    public void setBackgroundImage(URL backgroundImage) {
+    public void setBackgroundImage(String backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
 
@@ -42,7 +40,7 @@ public class Presentation extends RuNodeComposite {
         return author;
     }
 
-    public URL getBackgroundImage() {
+    public String getBackgroundImage() {
         return backgroundImage;
     }
 }

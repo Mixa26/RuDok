@@ -1,9 +1,8 @@
 package View;
 
 import Controller.ActionManager;
-import Model.treeModel.WorkSpace;
+import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
-import View.treeSwingGUI.model.MyTreeNode;
 import View.treeSwingGUI.view.MyTree;
 
 import javax.swing.*;
@@ -14,15 +13,17 @@ public class MainView extends JFrame {
 
     private ActionManager actionManager;
 
+    private ErrorFactory errorFactory;
+
     //komponente prozora
     private MyMenuBar myMenuBar;
     private MyToolBar myToolBar;
     private MyTree myTree;
+    private RightWorkArea rightWorkArea;
     private MyTreeModel myTreeModel;
 
     private JSplitPane splitPane;
-    private JScrollPane stablo;
-    private JPanel radnaPovrsina;
+    private JScrollPane treeScrollPanel;
 
     private MainView()
     {
@@ -31,6 +32,7 @@ public class MainView extends JFrame {
     private void initialise()
     {
         actionManager = new ActionManager();
+        errorFactory = new ErrorFactory();
     }
 
     private void initialiseTree()
@@ -55,12 +57,11 @@ public class MainView extends JFrame {
         myMenuBar = new MyMenuBar();
         myToolBar = new MyToolBar();
 
-        stablo = new JScrollPane(myTree);
-        stablo.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
-        stablo.setPreferredSize(new Dimension((int)screenSize.getWidth() / 10, 50));
-        radnaPovrsina = new JPanel();
-        radnaPovrsina.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, stablo, radnaPovrsina);
+        treeScrollPanel = new JScrollPane(myTree);
+        treeScrollPanel.setMinimumSize(new Dimension((int)screenSize.getWidth() / 25, 50));
+        treeScrollPanel.setPreferredSize(new Dimension((int)screenSize.getWidth() / 10, 50));
+        rightWorkArea = new RightWorkArea();
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPanel, rightWorkArea);
 
         //dodavanje na prozor
         setJMenuBar(myMenuBar);
@@ -84,7 +85,15 @@ public class MainView extends JFrame {
         return actionManager;
     }
 
+    public ErrorFactory getErrorFactory() {
+        return errorFactory;
+    }
+
     public MyTree getMyTree() {
         return myTree;
+    }
+
+    public RightWorkArea getRightWorkArea() {
+        return rightWorkArea;
     }
 }

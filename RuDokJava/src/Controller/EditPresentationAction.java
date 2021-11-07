@@ -1,11 +1,11 @@
 package Controller;
 
+import View.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
 import View.EditPresentationView;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class EditPresentationAction extends AbstractRudokAction {
@@ -15,7 +15,7 @@ public class EditPresentationAction extends AbstractRudokAction {
     {
         putValue(NAME, "Presentation");
         putValue(SMALL_ICON, loadIcon("images/editPresentation.png"));
-        putValue(SHORT_DESCRIPTION, "Edit the author and background image of a presentation");
+        putValue(SHORT_DESCRIPTION, "Edit the author and background image of a selected presentation");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class EditPresentationAction extends AbstractRudokAction {
         }
         else
         {
-            //TODO dodaj ovde prozor iz tacke 8 koj ce da bude iz simplefactorija da regulise ako korisnik ne selektuje prezentaciju a hoce da edituje pozadinsku sliku i autora
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
         }
     }
 
