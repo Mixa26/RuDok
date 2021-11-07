@@ -11,7 +11,7 @@ public class SlideView extends JPanel{
 
     public SlideView(Slide slide) {
         this.slide = slide;
-        setBackground(Color.GRAY);
+        setBackground(Color.LIGHT_GRAY);
         setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
         setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -20,11 +20,7 @@ public class SlideView extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage() == null)
-        {
-            //TODO regulisi
-        }
-        else
+        if (new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage() != null)
         {
             Image image = new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage();
             g.drawImage((image),0, 0, null);

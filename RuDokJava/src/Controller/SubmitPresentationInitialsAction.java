@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 
 public class SubmitPresentationInitialsAction extends AbstractRudokAction{
+    private String url;
+    private String extension = new String();
+    private boolean imgValid = false;
+
     public SubmitPresentationInitialsAction() {
         putValue(NAME, "Submit");
         putValue(SHORT_DESCRIPTION, "Sets the background image and author for the selected Presentation");
@@ -16,6 +20,8 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        imgValid = false;
+
         if (MainView.getIntance().getMyTree().getSelectionPath() == null)
         {
             MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
@@ -23,7 +29,6 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
         }
 
         String author = MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().getAuthor().getText();
-        String url = MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().getImageURL().getText();
 
         Presentation presentation = (Presentation)((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
 
@@ -32,16 +37,35 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
             presentation.setAuthor(author);
         }
 
-        if (presentation != null)
-        {
-            presentation.setBackgroundImage(url);
+        //TODO sredi ovo
+        if (url != null) {
+//            for (int i = url.length() - 4; i < url.length(); i++) {
+//                extension = extension.concat(url.charAt(i) + "");
+//            }
+//
+//            if (extension.equals(".jpg") || extension.equals(".png")) {
+//                imgValid = true;
+//            }
+//
+//            if (imgValid)
+//            {
+                presentation.setBackgroundImage(url);
+//            }
+//            else
+//            {
+//                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
+//            }
         }
         else
         {
-            System.out.println("pres img = null");
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
         }
 
         MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

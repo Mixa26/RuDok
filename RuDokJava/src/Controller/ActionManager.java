@@ -7,6 +7,7 @@ public class ActionManager {
     private InfoAction infoAction;
     private EditPresentationAction editPresentationAction;
     private SubmitPresentationInitialsAction submitPresentationInitialsAction;
+    private OpenFileChooserAction openFileChooserAction;
     private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
     private DeleteAction deleteAction;
@@ -25,6 +26,7 @@ public class ActionManager {
         infoAction = new InfoAction();
         editPresentationAction = new EditPresentationAction();
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
+        openFileChooserAction = new OpenFileChooserAction();
         submitRenameIntialsAction = new SubmitRenameIntialsAction();
         deleteAction = new DeleteAction();
         renameInTreeAction = new RenameInTreeAction();
@@ -101,5 +103,13 @@ public class ActionManager {
 
     public void setSubmitPresentationInitialsAction(SubmitPresentationInitialsAction submitPresentationInitialsAction) {
         this.submitPresentationInitialsAction = submitPresentationInitialsAction;
+    }
+
+    public OpenFileChooserAction getOpenFileChooserAction() {
+        return openFileChooserAction;
+    }
+
+    public void setOpenFileChooserAction(OpenFileChooserAction openFileChooserAction) {
+        this.openFileChooserAction = openFileChooserAction;
     }
 }

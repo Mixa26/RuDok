@@ -9,7 +9,8 @@ public class ErrorFactory {
         EditPresentationError,
         RenameInTreeError,
         DeleteError,
-        NameEmptyError
+        NameEmptyError,
+        InvalidImageError
     }
 
     public ErrorFactory() {
@@ -40,6 +41,10 @@ public class ErrorFactory {
         else if (errorType == ErrorType.NameEmptyError)
         {
             return new NameEmptyError();
+        }
+        else if (errorType == ErrorType.InvalidImageError)
+        {
+            return new InvalidImageError();
         }
 
         return null;
