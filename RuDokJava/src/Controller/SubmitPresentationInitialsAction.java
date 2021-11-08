@@ -56,10 +56,10 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
 //                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
 //            }
         }
-        else
-        {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
-        }
+//        else
+//        {
+//            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
+//        }
 
         MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 

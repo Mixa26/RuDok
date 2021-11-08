@@ -37,9 +37,11 @@ public class NewPresentationAction extends AbstractRudokAction{
         {
             Presentation presentation = new Presentation("Presentation " + (((Project) selection).getChildren().size() + 1), (Project)selection);
             presentation.setAuthor("Author");
-            Slide slide = new Slide("Slide 1", presentation);
+            Slide slide = new Slide("Slide 1", presentation, 1);
             presentation.addChild(slide);
-            ((Project) selection).getChildren().add(presentation);
+            ((Project) selection).addChild(presentation);
+
+            MainView.getIntance().getRightWorkArea().setProject((Project)selection);
 
             MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
             MainView.getIntance().getMyTree().refresh();

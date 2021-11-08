@@ -1,9 +1,12 @@
 package Controller;
 
+import Model.treeModel.Presentation;
+import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
+import observer.IPublisher;
 
 import java.awt.event.ActionEvent;
 import java.util.Objects;

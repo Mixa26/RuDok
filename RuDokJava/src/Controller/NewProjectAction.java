@@ -25,7 +25,7 @@ public class NewProjectAction extends AbstractRudokAction{
         Project project = new Project("Project " + (root.getChildren().size() + 1), root);
         Presentation presentation = new Presentation("Presentation 1", project);
         presentation.setAuthor("Author");
-        Slide slide = new Slide("Slide 1", presentation);
+        Slide slide = new Slide("Slide 1", presentation, 1);
 
         presentation.addChild(slide);
         project.addChild(presentation);

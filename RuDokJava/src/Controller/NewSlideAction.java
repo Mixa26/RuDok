@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.treeModel.Project;
 import View.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
 import Model.treeModel.RuNode;
@@ -33,8 +34,10 @@ public class NewSlideAction extends AbstractRudokAction{
 
         if (selection instanceof Presentation)
         {
-            Slide slide = new Slide("Slide " + (((Presentation) selection).getChildren().size() + 1), (Presentation) selection);
-            ((Presentation) selection).getChildren().add(slide);
+            Slide slide = new Slide("Slide " + (((Presentation) selection).getChildren().size() + 1), (Presentation) selection, ((Presentation) selection).getChildren().size() + 1);
+            ((Presentation) selection).addChild(slide);
+
+            MainView.getIntance().getRightWorkArea().setProject(((Project)((Presentation)selection).getParent()));
 
             MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
             MainView.getIntance().getMyTree().refresh();

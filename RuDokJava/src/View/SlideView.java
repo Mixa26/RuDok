@@ -25,6 +25,15 @@ public class SlideView extends JPanel{
             Image image = new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage();
             g.drawImage((image),0, 0, null);
         }
-
     }
+
+    public boolean compareTo(SlideView slideView)
+    {
+        return this.slide.equals(slideView.slide);
+    }
+
+    public Slide getSlide() {
+        return slide;
+    }
+
 }

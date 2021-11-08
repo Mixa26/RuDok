@@ -1,15 +1,10 @@
 package Controller;
 
-import Model.treeModel.RuNode;
-import Model.treeModel.RuNodeComposite;
-import Model.treeModel.Slide;
-import Model.treeModel.WorkSpace;
+import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.treeSwingGUI.view.MyTree;
 import View.userErrorHandler.ErrorFactory;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
@@ -36,6 +31,7 @@ public class DeleteAction extends AbstractRudokAction{
         {
             parent = selection.getParent();
             ((RuNodeComposite)parent).removeChild(selection);
+            MainView.getIntance().getMyTree().clearSelection();
             MainView.getIntance().getMyTree().refresh();
         }
         else
