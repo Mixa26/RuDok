@@ -1,8 +1,15 @@
 package View.treeSwingGUI.view;
 
+import Model.treeModel.Presentation;
+import Model.treeModel.Project;
+import Model.treeModel.Slide;
+import Model.treeModel.WorkSpace;
+import View.treeSwingGUI.model.MyTreeNode;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
+import java.net.URL;
 
 public class TreeCellRendered extends DefaultTreeCellRenderer {
     public TreeCellRendered()
@@ -12,20 +19,39 @@ public class TreeCellRendered extends DefaultTreeCellRenderer {
 
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-        return super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+        super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 
-        //TODO dodati ifove koji ce menjati ikonice u stablu
-        /*
-        if (value instanceof NEKAKLASA)
+        if (value instanceof MyTreeNode)
         {
-            URL imageURL = getClass().getResouce(URL SLIKE);
+            value = ((MyTreeNode)value).getNode();
+        }
+
+        if (value instanceof WorkSpace)
+        {
             Icon icon = null;
-            if (imageURL != null)
-            {
-                icon = new ImageIcon(imageURL);
-            }
+            icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/WorkSpace.png");
             setIcon(icon);
         }
-         */
+        else if (value instanceof Project)
+        {
+            Icon icon = null;
+            icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/Project.png");
+            setIcon(icon);
+        }
+        else if (value instanceof Presentation)
+        {
+            Icon icon = null;
+            icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/Presentation.png");
+            setIcon(icon);
+        }
+        else if (value instanceof Slide)
+        {
+            Icon icon = null;
+            icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/Slide.png");
+            setIcon(icon);
+        }
+
+        return this;
     }
+
 }
