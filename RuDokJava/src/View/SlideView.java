@@ -21,7 +21,7 @@ public class SlideView extends JPanel{
 
         ordinalNumber = new JLabel(String.valueOf(slide.getOrdinalNumber()));
         ordinalNumber.setFont(new Font("Aerial", Font.BOLD, 25));
-        add(ordinalNumber, BorderLayout.SOUTH);
+        //add(ordinalNumber, BorderLayout.SOUTH);
     }
 
     @Override

@@ -13,4 +13,8 @@ public class Slide extends RuNode {
     public int getOrdinalNumber() {
         return ordinalNumber;
     }
+
+    public void setOrdinalNumber(int ordinalNumber) {
+        this.ordinalNumber = ordinalNumber;
+    }
 }

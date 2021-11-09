@@ -61,28 +61,41 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification, NotifyType type) {
-        if (notification instanceof Slide)
-        {
-            if (type == NotifyType.RemoveSlide)
-            {
+        if (notification instanceof Slide) {
+            if (type == NotifyType.RemoveSlide) {
                 Iterator<SlideView> iterator = childrenView.iterator();
-                while (iterator.hasNext())
-                {
-                    SlideView curr = (SlideView)iterator.next();
-                    if ((curr).compareTo(new SlideView((Slide)notification)))
-                    {
+                while (iterator.hasNext()) {
+                    SlideView curr = (SlideView) iterator.next();
+                    if ((curr).compareTo(new SlideView((Slide) notification))) {
+                        int index = childrenView.indexOf(curr);
+                        index = index * 2 + 2;
+                        panel.remove(index);
                         panel.remove(curr);
                         iterator.remove();
                         break;
                     }
+
                 }
             }
 
-            for (SlideView slideView : childrenView)
-            {
+            SwingUtilities.updateComponentTreeUI(MainView.getIntance());
+
+            for (SlideView slideView : childrenView) {
                 slideView.repaint();
             }
-
+            /*
+            int i = 1;
+            for (Component component : panel.getComponents())
+            {
+                if (component instanceof SlideView)
+                {
+                    if ((SlideView)component == (childrenView.get(i)))
+                    {
+                        (SlideView)((SlideView) component).getSlide().setOrdinalNumber();
+                    }
+                }
+            }
+            */
             validate();
         }
         else if (notification instanceof Presentation)
@@ -91,8 +104,8 @@ public class PresentationView extends JPanel implements ISubscriber {
             {
                 int index = ((Presentation) notification).getChildren().size() - 1;
                 SlideView slideView = new SlideView((Slide) presentation.getChildren().get(index));
-                panel.add(slideView);
                 childrenView.add(slideView);
+                panel.add(slideView);
                 panel.add(Box.createVerticalStrut(slideSeparationHeight));
             }
             else if (type == NotifyType.EditPresentation)
