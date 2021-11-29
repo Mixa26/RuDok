@@ -7,8 +7,8 @@ public class StateManager {
     private SlideShowState slideShowState;
 
     public StateManager() {
-        currentState = editProjectState;
         initStates();
+        currentState = editProjectState;
     }
 
     public void setEditProjectState() {
@@ -30,4 +30,5 @@ public class StateManager {
     public State getCurrentState() {
         return currentState;
     }
+
 }

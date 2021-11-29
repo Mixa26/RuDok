@@ -47,7 +47,7 @@ public class MainView extends JFrame {
         myTree.setModel(myTreeModel);
     }
 
-    private void initialiseGUI()
+    private void initialiseWindow()
     {
         //podesavanje prozora
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -56,7 +56,12 @@ public class MainView extends JFrame {
         setTitle("RuDok");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+    }
 
+    public void initialiseGUI()
+    {
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
         //inicijalizacija komponenti prozora
         myMenuBar = new MyMenuBar();
         myToolBar = new MyToolBar();
@@ -80,6 +85,7 @@ public class MainView extends JFrame {
             instance = new MainView();
             instance.initialise();
             instance.initialiseTree();
+            instance.initialiseWindow();
             instance.initialiseGUI();
         }
         return instance;

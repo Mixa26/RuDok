@@ -1,11 +1,16 @@
 package View;
 
+import Model.treeModel.Project;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SlideShowView extends JPanel {
+
+    private Project project;
+    private int selectedTab;
 
     private JToolBar myToolBar;
     private JButton endSlideShowView;
@@ -31,7 +36,7 @@ public class SlideShowView extends JPanel {
                 crd.previous(slideShow);
             }
         });
-        
+
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,5 +58,21 @@ public class SlideShowView extends JPanel {
 
         myToolBar.add(endSlideShowView, "North");
         add(myToolBar, BorderLayout.NORTH);
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setSelectedTab(int selectedTab) {
+        this.selectedTab = selectedTab;
+    }
+
+    public int getSelectedTab() {
+        return selectedTab;
     }
 }

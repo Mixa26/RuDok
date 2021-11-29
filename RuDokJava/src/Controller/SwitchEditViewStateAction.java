@@ -2,6 +2,7 @@ package Controller;
 
 import View.MainView;
 import state.EditProjectState;
+import state.StateManager;
 
 import java.awt.event.ActionEvent;
 
@@ -14,13 +15,13 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //if (MainView.getIntance().getSState() instanceof EditProjectState)
-        //{
+        if (MainView.getIntance().getSState() instanceof EditProjectState)
+        {
             MainView.getIntance().startSlideShowState();
-        //}
-        //else
-        //{
-        //    MainView.getIntance().startEditProjectState();
-        //}
+        }
+        else
+        {
+            MainView.getIntance().startEditProjectState();
+        }
     }
 }
