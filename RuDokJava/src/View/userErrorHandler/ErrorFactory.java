@@ -10,7 +10,9 @@ public class ErrorFactory {
         RenameInTreeError,
         DeleteError,
         NameEmptyError,
-        InvalidImageError
+        InvalidImageError,
+        SwitchToSlideShowError,
+        NoPresentationSlideShowError
     }
 
     public ErrorFactory() {
@@ -45,6 +47,14 @@ public class ErrorFactory {
         else if (errorType == ErrorType.InvalidImageError)
         {
             return new InvalidImageError();
+        }
+        else if (errorType == ErrorType.SwitchToSlideShowError)
+        {
+            return new SwitchToSlideShowError();
+        }
+        else if (errorType == ErrorType.NoPresentationSlideShowError)
+        {
+            return new NoPresentationSlideShowError();
         }
 
         return null;

@@ -34,6 +34,7 @@ public abstract class RuNode implements IPublisher {
     }
 
     public void addSubscriber(ISubscriber subscriber) {
+
         if (subscriber != null) {
             if (subscribers == null)
             {
