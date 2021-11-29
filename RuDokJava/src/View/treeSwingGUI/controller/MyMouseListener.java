@@ -1,6 +1,5 @@
 package View.treeSwingGUI.controller;
 
-import Model.Main;
 import Model.treeModel.Project;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;

@@ -6,7 +6,6 @@ import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
 
 import java.awt.event.ActionEvent;
-import java.net.URL;
 
 public class SubmitPresentationInitialsAction extends AbstractRudokAction{
     private String url;

@@ -6,7 +6,6 @@ import View.RenameInTreeView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 

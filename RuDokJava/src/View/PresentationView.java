@@ -1,11 +1,7 @@
 package View;
 
-import Model.Main;
 import Model.treeModel.Presentation;
-import Model.treeModel.Project;
-import Model.treeModel.RuNode;
 import Model.treeModel.Slide;
-import View.treeSwingGUI.model.MyTreeNode;
 import observer.ISubscriber;
 import observer.NotifyType;
 

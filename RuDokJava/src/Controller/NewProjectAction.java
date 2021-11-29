@@ -3,10 +3,6 @@ package Controller;
 import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.treeSwingGUI.view.MyTree;
-import com.sun.source.tree.Tree;
-
-import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
 

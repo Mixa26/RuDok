@@ -9,7 +9,6 @@ import View.treeSwingGUI.model.MyTreeNode;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
-import java.net.URL;
 
 public class TreeCellRendered extends DefaultTreeCellRenderer {
     public TreeCellRendered()

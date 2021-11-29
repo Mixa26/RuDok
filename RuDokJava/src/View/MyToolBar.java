@@ -1,7 +1,5 @@
 package View;
 
-import Model.Main;
-
 import javax.swing.*;
 
 public class MyToolBar extends JToolBar {

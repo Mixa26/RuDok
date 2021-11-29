@@ -2,7 +2,6 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageObserver;
 
 public class InfoView extends JDialog {
 

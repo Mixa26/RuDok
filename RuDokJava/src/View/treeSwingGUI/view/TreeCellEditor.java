@@ -1,8 +1,5 @@
 package View.treeSwingGUI.view;
 
-import Model.Main;
-import Model.treeModel.*;
-import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
 import javax.swing.*;

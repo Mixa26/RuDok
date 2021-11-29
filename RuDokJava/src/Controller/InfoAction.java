@@ -3,7 +3,6 @@ package Controller;
 import View.InfoView;
 import View.MainView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class InfoAction extends AbstractRudokAction {
