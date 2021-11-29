@@ -114,4 +114,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
         this.project = project;
     }
 
+    public JTabbedPane getjTabbedPane() {
+        return jTabbedPane;
+    }
 }

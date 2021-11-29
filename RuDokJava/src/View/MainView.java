@@ -4,6 +4,8 @@ import Controller.ActionManager;
 import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
+import state.State;
+import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class MainView extends JFrame {
     private static MainView instance;
 
     private ActionManager actionManager;
+    private StateManager stateManager;
 
     private ErrorFactory errorFactory;
 
@@ -32,6 +35,7 @@ public class MainView extends JFrame {
     private void initialise()
     {
         actionManager = new ActionManager();
+        stateManager = new StateManager();
         errorFactory = new ErrorFactory();
     }
 
@@ -81,6 +85,21 @@ public class MainView extends JFrame {
         return instance;
     }
 
+    public void startEditProjectState()
+    {
+        stateManager.setEditProjectState();
+    }
+
+    public void startSlideShowState()
+    {
+        stateManager.setSlideShowState();
+    }
+
+    public State getSState()
+    {
+        return stateManager.getCurrentState();
+    }
+
     public ActionManager getActionManager() {
         return actionManager;
     }
@@ -95,5 +114,13 @@ public class MainView extends JFrame {
 
     public RightWorkArea getRightWorkArea() {
         return rightWorkArea;
+    }
+
+    public MyToolBar getMyToolBar() {
+        return myToolBar;
+    }
+
+    public MyMenuBar getMyMenuBar() {
+        return myMenuBar;
     }
 }

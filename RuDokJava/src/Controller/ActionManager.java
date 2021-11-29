@@ -1,7 +1,5 @@
 package Controller;
 
-import java.awt.*;
-
 public class ActionManager {
 
     private InfoAction infoAction;
@@ -10,6 +8,7 @@ public class ActionManager {
     private OpenFileChooserAction openFileChooserAction;
     private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
+    private SwitchEditViewStateAction switchEditViewStateAction;
     private DeleteAction deleteAction;
 
     private NewProjectAction newProjectAction;
@@ -28,6 +27,7 @@ public class ActionManager {
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
         openFileChooserAction = new OpenFileChooserAction();
         submitRenameIntialsAction = new SubmitRenameIntialsAction();
+        switchEditViewStateAction = new SwitchEditViewStateAction();
         deleteAction = new DeleteAction();
         renameInTreeAction = new RenameInTreeAction();
 
@@ -111,5 +111,13 @@ public class ActionManager {
 
     public void setOpenFileChooserAction(OpenFileChooserAction openFileChooserAction) {
         this.openFileChooserAction = openFileChooserAction;
+    }
+
+    public SwitchEditViewStateAction getSwitchEditViewStateAction() {
+        return switchEditViewStateAction;
+    }
+
+    public void setSwitchEditViewStateAction(SwitchEditViewStateAction switchEditViewStateAction) {
+        this.switchEditViewStateAction = switchEditViewStateAction;
     }
 }
