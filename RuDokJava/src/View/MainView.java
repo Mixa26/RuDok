@@ -48,7 +48,7 @@ public class MainView extends JFrame {
         //podesavanje prozora
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        setSize((int)screenSize.getWidth() / 2, (int)screenSize.getHeight() / 2);
+        setSize((int)(screenSize.getWidth() / 2 + screenSize.getWidth() / 10), (int)(screenSize.getHeight() / 2 + screenSize.getWidth() / 10));
         setTitle("RuDok");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

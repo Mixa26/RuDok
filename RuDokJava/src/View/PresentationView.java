@@ -14,10 +14,13 @@ import java.awt.*;
 public class PresentationView extends JPanel implements ISubscriber {
 
     private Presentation presentation;
-    private JPanel panel;
-    private JScrollPane jScrollPane;
+    private JPanel rightSlider;
+    private JPanel leftSlider;
+    private JScrollPane jScrollPaneR;
+    private JScrollPane jScrollPaneL;
     private JLabel author;
     private List<SlideView> childrenView;
+    private List<SlideView> childrenViewL;
 
     int slideSeparationHeight;
 
@@ -28,31 +31,47 @@ public class PresentationView extends JPanel implements ISubscriber {
         presentation.addSubscriber(this);
 
         childrenView = new ArrayList<SlideView>();
+        childrenViewL = new ArrayList<SlideView>();
 
         slideSeparationHeight = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 65;
 
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        rightSlider = new JPanel();
+        rightSlider.setLayout(new BoxLayout(rightSlider, BoxLayout.Y_AXIS));
+        rightSlider.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        leftSlider = new JPanel();
+        leftSlider.setLayout(new BoxLayout(leftSlider, BoxLayout.Y_AXIS));
+        leftSlider.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         author = new JLabel(presentation.getAuthor());
         author.setFont(new Font("Aerial", Font.BOLD, 20));
         author.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
 
-        panel.add(author);
+        rightSlider.add(author);
 
         for (int i = 0; i < presentation.getChildren().size(); i++)
         {
             SlideView slideView = new SlideView((Slide)presentation.getChildren().get(i));
             childrenView.add(slideView);
-            panel.add(slideView);
-            panel.add(Box.createVerticalStrut(slideSeparationHeight));
+            rightSlider.add(slideView);
+            rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+
+            SlideView slideViewL = new SlideView((Slide)presentation.getChildren().get(i));
+            slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+            slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+            childrenViewL.add(slideViewL);
+            leftSlider.add(slideViewL);
+            leftSlider.add(Box.createVerticalStrut(slideSeparationHeight));
         }
 
-        jScrollPane = new JScrollPane(panel);
-        add(jScrollPane);
+        jScrollPaneR = new JScrollPane(rightSlider);
+        jScrollPaneL = new JScrollPane(leftSlider);
+        jScrollPaneL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9), (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9)));
+        add(jScrollPaneR, BorderLayout.CENTER);
+        add(jScrollPaneL, BorderLayout.WEST);
     }
 
     @Override
@@ -65,8 +84,10 @@ public class PresentationView extends JPanel implements ISubscriber {
                     if ((curr).compareTo(new SlideView((Slide) notification))) {
                         int index = childrenView.indexOf(curr);
                         index = index * 2 + 2;
-                        panel.remove(index);
-                        panel.remove(curr);
+                        rightSlider.remove(index);
+                        rightSlider.remove(curr);
+                        leftSlider.remove(index-1);
+                        leftSlider.remove(index-2);
                         iterator.remove();
                         break;
                     }
@@ -79,9 +100,13 @@ public class PresentationView extends JPanel implements ISubscriber {
             for (SlideView slideView : childrenView) {
                 slideView.repaint();
             }
+
+            for (SlideView slideView : childrenViewL) {
+                slideView.repaint();
+            }
             /*
             int i = 1;
-            for (Component component : panel.getComponents())
+            for (Component component : rightSlider.getComponents())
             {
                 if (component instanceof SlideView)
                 {
@@ -101,8 +126,14 @@ public class PresentationView extends JPanel implements ISubscriber {
                 int index = ((Presentation) notification).getChildren().size() - 1;
                 SlideView slideView = new SlideView((Slide) presentation.getChildren().get(index));
                 childrenView.add(slideView);
-                panel.add(slideView);
-                panel.add(Box.createVerticalStrut(slideSeparationHeight));
+                rightSlider.add(slideView);
+                rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+
+                SlideView slideViewL = new SlideView((Slide) presentation.getChildren().get(index));
+                slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+                slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+                leftSlider.add(slideViewL);
+                leftSlider.add(Box.createVerticalStrut(slideSeparationHeight));
             }
             else if (type == NotifyType.EditPresentation)
             {
@@ -112,6 +143,10 @@ public class PresentationView extends JPanel implements ISubscriber {
 
             for (SlideView slideView : childrenView)
             {
+                slideView.repaint();
+            }
+
+            for (SlideView slideView : childrenViewL) {
                 slideView.repaint();
             }
 
