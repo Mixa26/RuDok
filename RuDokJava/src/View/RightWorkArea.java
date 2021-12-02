@@ -1,6 +1,7 @@
 package View;
 
 import Model.treeModel.*;
+import View.treeSwingGUI.model.MyTreeNode;
 import observer.ISubscriber;
 import observer.NotifyType;
 
@@ -33,7 +34,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
         ((WorkSpace)project.getParent()).addSubscriber(this);
         this.project = project;
         this.project.addSubscriber(this);
-        project.addSubscriber(this);
+        //project.addSubscriber(this);
 
         projectName.setText(project.getName());
 
@@ -43,11 +44,12 @@ public class RightWorkArea extends JPanel implements ISubscriber {
 
         for (int i = 0; i < project.getChildren().size(); i++)
         {
-            PresentationView presentationView = new PresentationView((Presentation)project.getChildren().get(i));
+            Presentation curr = (Presentation)project.getChildren().get(i);
+            PresentationView presentationView = new PresentationView(curr);
             childrenView.add(presentationView);
-            ((Presentation) project.getChildren().get(i)).addSubscriber(presentationView);
-            ((Presentation) project.getChildren().get(i)).addSubscriber(this);
-            jTabbedPane.addTab(project.getChildren().get(i).getName(), presentationView);
+            curr.addSubscriber(presentationView);
+            curr.addSubscriber(this);
+            jTabbedPane.addTab(curr.getName(), presentationView);
         }
 
         validate();
@@ -65,7 +67,10 @@ public class RightWorkArea extends JPanel implements ISubscriber {
                 childrenView.add(presentationView);
                 //((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(presentationView);
                 ((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(this);
-                jTabbedPane.addTab(((Project) notification).getChildren().get(index).getName(), presentationView);
+                if (((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() == MainView.getIntance().getRightWorkArea().getProject())
+                {
+                    jTabbedPane.addTab(((Project) notification).getChildren().get(index).getName(), presentationView);
+                }
             }
             else if (type == NotifyType.RenameProject)
             {
@@ -97,7 +102,8 @@ public class RightWorkArea extends JPanel implements ISubscriber {
                         break;
                     }
                 }
-                validate();
+                jTabbedPane.validate();
+                openProject(project);
             }
             else if (type == NotifyType.RenamePresentation)
             {

@@ -27,6 +27,8 @@ public class NewProjectAction extends AbstractRudokAction{
         project.addChild(presentation);
         root.addChild(project);
 
+        //MainView.getIntance().getRightWorkArea().openProject(project);
+
         MainView.getIntance().getMyTree().expandPath(new TreePath(MainView.getIntance().getMyTree().getModel().getRoot()));
         MainView.getIntance().getMyTree().refresh();
     }

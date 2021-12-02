@@ -16,7 +16,7 @@ public class SlideView extends JPanel{
         setBackground(Color.LIGHT_GRAY);
         setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
         setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        //setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
         setLayout(new BorderLayout());
 
         ordinalNumber = new JLabel(String.valueOf(slide.getOrdinalNumber()));
@@ -36,11 +36,16 @@ public class SlideView extends JPanel{
 
     public boolean compareTo(SlideView slideView)
     {
+
         return this.slide.equals(slideView.slide);
+        //return (slide == slideView.getSlide() && ordinalNumber == slideView.getOrdinalNumber());
     }
 
     public Slide getSlide() {
         return slide;
     }
 
+    public JLabel getOrdinalNumber() {
+        return ordinalNumber;
+    }
 }

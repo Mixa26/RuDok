@@ -55,13 +55,15 @@ public class PresentationView extends JPanel implements ISubscriber {
         for (int i = 0; i < presentation.getChildren().size(); i++)
         {
             SlideView slideView = new SlideView((Slide)presentation.getChildren().get(i));
+            slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
             childrenView.add(slideView);
             rightSlider.add(slideView);
-            rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+            //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
             SlideView slideViewL = new SlideView((Slide)presentation.getChildren().get(i));
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+            //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));
             childrenViewL.add(slideViewL);
             leftSlider.add(slideViewL);
             leftSlider.add(Box.createVerticalStrut(slideSeparationHeight));
@@ -84,7 +86,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                     if ((curr).compareTo(new SlideView((Slide) notification))) {
                         int index = childrenView.indexOf(curr);
                         index = index * 2 + 2;
-                        rightSlider.remove(index);
+                        //rightSlider.remove(index);
                         rightSlider.remove(curr);
                         leftSlider.remove(index-1);
                         leftSlider.remove(index-2);
@@ -125,13 +127,15 @@ public class PresentationView extends JPanel implements ISubscriber {
             {
                 int index = ((Presentation) notification).getChildren().size() - 1;
                 SlideView slideView = new SlideView((Slide) presentation.getChildren().get(index));
+                slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
                 childrenView.add(slideView);
                 rightSlider.add(slideView);
-                rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+                //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
                 SlideView slideViewL = new SlideView((Slide) presentation.getChildren().get(index));
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
                 slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
+                //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));
                 leftSlider.add(slideViewL);
                 leftSlider.add(Box.createVerticalStrut(slideSeparationHeight));
             }

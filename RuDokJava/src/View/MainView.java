@@ -1,7 +1,6 @@
 package View;
 
 import Controller.ActionManager;
-import Model.treeModel.Project;
 import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
@@ -28,6 +27,8 @@ public class MainView extends JFrame {
 
     private JSplitPane splitPane;
     private JScrollPane treeScrollPanel;
+
+    private JPanel all;
 
     private MainView()
     {
@@ -57,6 +58,8 @@ public class MainView extends JFrame {
         setTitle("RuDok");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        all = new JPanel();
+        all.setLayout(new  BorderLayout());
     }
 
     public void initialiseGUI()
@@ -75,8 +78,9 @@ public class MainView extends JFrame {
 
         //dodavanje na prozor
         setJMenuBar(myMenuBar);
-        add(myToolBar, "North");
-        add(splitPane);
+        all.add(myToolBar, "North");
+        all.add(splitPane);
+        getContentPane().add(all);
     }
 
     public static MainView getIntance()
@@ -91,6 +95,8 @@ public class MainView extends JFrame {
         }
         return instance;
     }
+
+
 
     public void startEditProjectState()
     {
@@ -129,5 +135,9 @@ public class MainView extends JFrame {
 
     public MyMenuBar getMyMenuBar() {
         return myMenuBar;
+    }
+
+    public JPanel getAll() {
+        return all;
     }
 }

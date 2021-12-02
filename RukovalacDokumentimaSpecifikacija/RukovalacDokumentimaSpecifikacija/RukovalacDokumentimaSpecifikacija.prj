@@ -510,7 +510,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>ModelZahteva_RukovalacDokumentima</a:Code>
 <a:CreationDate>1636470183</a:CreationDate>
 <a:Creator>djmix</a:Creator>
-<a:ModificationDate>1636906772</a:ModificationDate>
+<a:ModificationDate>1636920823</a:ModificationDate>
 <a:Modifier>djmix</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ModelZahteva_RukovalacDokumentima.rqm</a:Location>
 <a:Extension>rqm</a:Extension>
@@ -523,7 +523,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>Model_interakcija</a:Code>
 <a:CreationDate>1636549519</a:CreationDate>
 <a:Creator>djmix</a:Creator>
-<a:ModificationDate>1636550025</a:ModificationDate>
+<a:ModificationDate>1636552446</a:ModificationDate>
 <a:Modifier>djmix</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/Model interakcija.oom</a:Location>
 <a:Extension>oom</a:Extension>
