@@ -494,7 +494,7 @@ Shadow=0</a:DisplayPreferences>
 <a:PaperSource>15</a:PaperSource>
 <c:Symbols>
 <o:DependencyLinkSymbol Id="o4">
-<a:Rect>((-2101,-8447), (2098,1051))</a:Rect>
+<a:Rect>((-2138,-8447), (2136,1051))</a:Rect>
 <a:ListOfPoints>((-1,1051),(-1,-8447))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -513,6 +513,7 @@ Shadow=0</a:DisplayPreferences>
 </o:DependencyLinkSymbol>
 <o:ModelDocumentSymbol Id="o5">
 <a:IconMode>2</a:IconMode>
+<a:EmptyAreaSize>(1200, 1200)</a:EmptyAreaSize>
 <a:Rect>((-1201,-148), (1198,2251))</a:Rect>
 <a:LineColor>12034707</a:LineColor>
 <a:FillColor>16437422</a:FillColor>
@@ -524,7 +525,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>CB81A816-F54C-489E-82FA-D571989DCDB9</a:CustomPictureID>
+<a:CustomPictureID>B2FD5C77-F7E3-4307-B18B-A6F46C616CC7</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -533,6 +534,7 @@ LABL 0 Arial,8,N</a:FontList>
 </o:ModelDocumentSymbol>
 <o:ModelDocumentSymbol Id="o6">
 <a:IconMode>2</a:IconMode>
+<a:EmptyAreaSize>(1200, 1200)</a:EmptyAreaSize>
 <a:Rect>((-1201,-9647), (1198,-7248))</a:Rect>
 <a:LineColor>12034707</a:LineColor>
 <a:FillColor>16437422</a:FillColor>
@@ -544,7 +546,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>6207BAB6-8520-49CF-A288-C830196C3E67</a:CustomPictureID>
+<a:CustomPictureID>F53A129F-575E-4791-93C7-5CD4CA2C6E76</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -570,7 +572,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ModelZahteva_RukovalacDokumentima</a:Code>
 <a:CreationDate>1636470183</a:CreationDate>
 <a:Creator>djmix</a:Creator>
-<a:ModificationDate>1638618105</a:ModificationDate>
+<a:ModificationDate>1638641235</a:ModificationDate>
 <a:Modifier>djmix</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ModelZahteva_RukovalacDokumentima.rqm</a:Location>
 <a:Extension>rqm</a:Extension>
@@ -583,7 +585,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>Model_interakcija</a:Code>
 <a:CreationDate>1636549519</a:CreationDate>
 <a:Creator>djmix</a:Creator>
-<a:ModificationDate>1638618259</a:ModificationDate>
+<a:ModificationDate>1638703113</a:ModificationDate>
 <a:Modifier>djmix</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/Model interakcija.oom</a:Location>
 <a:Extension>oom</a:Extension>
