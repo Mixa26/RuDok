@@ -12,7 +12,6 @@ public class MyToolBar extends JToolBar {
     private JButton editPresentation;
     private JButton delete;
     private JButton info;
-    private JButton switchState;
 
     public MyToolBar()
     {
@@ -24,7 +23,6 @@ public class MyToolBar extends JToolBar {
         editPresentation = new JButton(MainView.getIntance().getActionManager().getEditPresentationAction());
         delete = new JButton(MainView.getIntance().getActionManager().getDeleteAction());
         info = new JButton(MainView.getIntance().getActionManager().getInfoAction());
-        switchState = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
 
         NewProject.setText("");
         NewPrezentation.setText("");
@@ -33,7 +31,6 @@ public class MyToolBar extends JToolBar {
         rename.setText("");
         delete.setText("");
         info.setText("");
-        switchState.setText("");
 
         //dodavanje na toolbar
         add(NewProject);
@@ -43,7 +40,6 @@ public class MyToolBar extends JToolBar {
         add(rename);
         add(delete);
         add(info);
-        add(switchState);
     }
 
 }

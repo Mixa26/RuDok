@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Main;
 import View.MainView;
+import View.PresentationView;
 import View.userErrorHandler.ErrorFactory;
 import state.EditProjectState;
 import state.StateManager;
@@ -17,7 +18,8 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (MainView.getIntance().getSState() instanceof EditProjectState)
+        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        if (presentationView.getSState() instanceof EditProjectState)
         {
             if (MainView.getIntance().getRightWorkArea().getjTabbedPane().getTabCount() == 0)
             {
@@ -26,7 +28,7 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
             }
             if (MainView.getIntance().getRightWorkArea().getProject() != null)
             {
-                MainView.getIntance().startSlideShowState();
+                presentationView.startSlideShowState();
             }
             else
             {
@@ -35,7 +37,7 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
         }
         else
         {
-            MainView.getIntance().startEditProjectState();
+            presentationView.startEditProjectState();
         }
     }
 }

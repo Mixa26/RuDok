@@ -1,16 +1,18 @@
 package state;
 
 import View.MainView;
+import View.PresentationView;
 import View.SlideShowView;
 
 public class EditProjectState implements State{
     @Override
     public void changeState() {
-        MainView.getIntance().getContentPane().removeAll();
-        MainView.getIntance().getContentPane().add(MainView.getIntance().getAll());
-        //MainView.getIntance().initialiseGUI();
-        MainView.getIntance().getRightWorkArea().openProject(((SlideShowView)MainView.getIntance().getContentPane()).getProject());
-        MainView.getIntance().getRightWorkArea().getjTabbedPane().setSelectedIndex(((SlideShowView)MainView.getIntance().getContentPane()).getSelectedTab());
-        MainView.getIntance().validate();
+        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+
+        presentationView.removeAll();
+        presentationView.add(presentationView.getMain());
+
+        presentationView.repaint();
+        presentationView.validate();
     }
 }

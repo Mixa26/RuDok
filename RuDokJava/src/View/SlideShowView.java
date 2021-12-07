@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 
 public class SlideShowView extends JPanel {
 
-    private Project project;
-    private int selectedTab;
-
     private JToolBar myToolBar;
     private JButton endSlideShowView;
 
@@ -44,9 +41,9 @@ public class SlideShowView extends JPanel {
             }
         });
 
-        for (SlideView slideView : ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenView())
+        for (SlideView slideViewSlideView : ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenViewSlideShow())
         {
-            slideShow.add(slideView);
+            slideShow.add(slideViewSlideView);
         }
 
         add(previous, BorderLayout.WEST);
@@ -60,19 +57,4 @@ public class SlideShowView extends JPanel {
         add(myToolBar, BorderLayout.NORTH);
     }
 
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setSelectedTab(int selectedTab) {
-        this.selectedTab = selectedTab;
-    }
-
-    public int getSelectedTab() {
-        return selectedTab;
-    }
 }

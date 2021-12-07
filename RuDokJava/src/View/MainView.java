@@ -14,7 +14,6 @@ public class MainView extends JFrame {
     private static MainView instance;
 
     private ActionManager actionManager;
-    private StateManager stateManager;
 
     private ErrorFactory errorFactory;
 
@@ -37,7 +36,6 @@ public class MainView extends JFrame {
     private void initialise()
     {
         actionManager = new ActionManager();
-        stateManager = new StateManager();
         errorFactory = new ErrorFactory();
     }
 
@@ -96,22 +94,6 @@ public class MainView extends JFrame {
         return instance;
     }
 
-
-
-    public void startEditProjectState()
-    {
-        stateManager.setEditProjectState();
-    }
-
-    public void startSlideShowState()
-    {
-        stateManager.setSlideShowState();
-    }
-
-    public State getSState()
-    {
-        return stateManager.getCurrentState();
-    }
 
     public ActionManager getActionManager() {
         return actionManager;

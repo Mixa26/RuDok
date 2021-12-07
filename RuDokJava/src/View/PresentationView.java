@@ -5,6 +5,8 @@ import Model.treeModel.RuNode;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
+import state.State;
+import state.StateManager;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -23,6 +25,11 @@ public class PresentationView extends JPanel implements ISubscriber {
     private JLabel author;
     private List<SlideView> childrenView;
     private List<SlideView> childrenViewL;
+    private List<SlideView> childrenViewSlideShow;
+
+    private StateManager stateManager;
+    private JButton endSlideShowView;
+    private JToolBar myToolBar;
 
     int slideSeparationHeight;
 
@@ -32,8 +39,12 @@ public class PresentationView extends JPanel implements ISubscriber {
         this.presentation.addSubscriber(this);
         presentation.addSubscriber(this);
 
+        stateManager = new StateManager();
+        myToolBar = new JToolBar();
+
         childrenView = new ArrayList<SlideView>();
         childrenViewL = new ArrayList<SlideView>();
+        childrenViewSlideShow = new ArrayList<SlideView>();
 
         slideSeparationHeight = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 65;
 
@@ -65,6 +76,9 @@ public class PresentationView extends JPanel implements ISubscriber {
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
+            SlideView slideViewSlideShow = new SlideView((Slide)presentation.getChildren().get(i));
+            childrenViewSlideShow.add(slideViewSlideShow);
+
             SlideView slideViewL = new SlideView((Slide)presentation.getChildren().get(i));
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -77,6 +91,13 @@ public class PresentationView extends JPanel implements ISubscriber {
         jScrollPaneR = new JScrollPane(rightSlider);
         jScrollPaneL = new JScrollPane(leftSlider);
         jScrollPaneL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9), (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9)));
+
+        endSlideShowView = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
+        endSlideShowView.setText("");
+
+        myToolBar.add(endSlideShowView, "North");
+        main.add(myToolBar, BorderLayout.NORTH);
+
         main.add(jScrollPaneR, BorderLayout.CENTER);
         main.add(jScrollPaneL, BorderLayout.WEST);
         add(main);
@@ -96,6 +117,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                         rightSlider.remove(curr);
                         leftSlider.remove(index-1);
                         leftSlider.remove(index-2);
+                        childrenViewSlideShow.remove(curr);
                         childrenViewL.remove(curr);
                         iterator.remove();
                         break;
@@ -117,19 +139,12 @@ public class PresentationView extends JPanel implements ISubscriber {
             for (SlideView slideViewL : childrenViewL) {
                 slideViewL.setOrdinalNumber(slideViewL.getSlide().getOrdinalNumber());
             }
-            /*
-            int i = 1;
-            for (Component component : rightSlider.getComponents())
+
+            for(SlideView slideViewSlideShow : childrenViewSlideShow)
             {
-                if (component instanceof SlideView)
-                {
-                    if ((SlideView)component == (childrenView.get(i)))
-                    {
-                        (SlideView)((SlideView) component).getSlide().setOrdinalNumber();
-                    }
-                }
+                slideViewSlideShow.setOrdinalNumber(slideViewSlideShow.getSlide().getOrdinalNumber());
             }
-            */
+
             validate();
         }
         else if (notification instanceof Presentation)
@@ -142,6 +157,9 @@ public class PresentationView extends JPanel implements ISubscriber {
                 childrenView.add(slideView);
                 rightSlider.add(slideView);
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+
+                SlideView slideViewSlideShow = new SlideView((Slide) presentation.getChildren().get(index));
+                childrenViewSlideShow.add(slideViewSlideShow);
 
                 SlideView slideViewL = new SlideView((Slide) presentation.getChildren().get(index));
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -177,6 +195,21 @@ public class PresentationView extends JPanel implements ISubscriber {
         return presentationView.getPresentation().equals(this.presentation);
     }
 
+    public void startEditProjectState()
+    {
+        stateManager.setEditProjectState();
+    }
+
+    public void startSlideShowState()
+    {
+        stateManager.setSlideShowState();
+    }
+
+    public State getSState()
+    {
+        return stateManager.getCurrentState();
+    }
+
     public Presentation getPresentation() {
         return presentation;
     }
@@ -189,7 +222,11 @@ public class PresentationView extends JPanel implements ISubscriber {
         return childrenView;
     }
 
-    public void setMain(JPanel main) {
-        this.main = main;
+    public List<SlideView> getChildrenViewSlideShow() {
+        return childrenViewSlideShow;
+    }
+
+    public JPanel getMain() {
+        return main;
     }
 }

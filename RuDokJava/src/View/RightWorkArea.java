@@ -31,6 +31,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
     }
 
     public void openProject(Project project) {
+        childrenView.clear();
         ((WorkSpace)project.getParent()).addSubscriber(this);
         this.project = project;
         this.project.addSubscriber(this);
@@ -80,6 +81,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
             {
                 if (project.equals((Project)notification))
                 {
+                    project.removeSubscriber(this);
                     removeAll();
                 }
             }
@@ -89,8 +91,10 @@ public class RightWorkArea extends JPanel implements ISubscriber {
         }
         else if (notification instanceof Presentation)
         {
+
             if (type == NotifyType.RemovePresentation)
             {
+                ((Presentation) notification).removeSubscriber(this);
                 Iterator<PresentationView> iterator = childrenView.iterator();
                 while(iterator.hasNext())
                 {
@@ -103,7 +107,6 @@ public class RightWorkArea extends JPanel implements ISubscriber {
                     }
                 }
                 jTabbedPane.validate();
-                openProject(project);
             }
             else if (type == NotifyType.RenamePresentation)
             {
