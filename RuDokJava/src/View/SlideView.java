@@ -2,6 +2,8 @@ package View;
 
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
+import observer.ISubscriber;
+import observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,5 +49,9 @@ public class SlideView extends JPanel{
 
     public JLabel getOrdinalNumber() {
         return ordinalNumber;
+    }
+
+    public void setOrdinalNumber(int ordinalNumber) {
+        this.ordinalNumber.setText(String.valueOf(ordinalNumber));
     }
 }
