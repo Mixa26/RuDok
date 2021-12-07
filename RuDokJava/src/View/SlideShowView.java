@@ -1,6 +1,9 @@
 package View;
 
 import Model.treeModel.Project;
+import Model.treeModel.Slide;
+import observer.ISubscriber;
+import observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +24,10 @@ public class SlideShowView extends JPanel {
         previous = new JButton("<");
         slideShow = new JPanel();
         next = new JButton(">");
+
+        //dodat kod da dugmici budu iste velicine kao end slideshowview dugme
+        previous.setMaximumSize(new Dimension(45, 45));
+        next.setMaximumSize(new Dimension(45, 45));
 
         setLayout(new BorderLayout());
 
@@ -46,15 +53,19 @@ public class SlideShowView extends JPanel {
             slideShow.add(slideViewSlideView);
         }
 
-        add(previous, BorderLayout.WEST);
+        //add(previous, BorderLayout.WEST);
         add(slideShow, BorderLayout.CENTER);
-        add(next, BorderLayout.EAST);
-
+        //add(next, BorderLayout.EAST);
         endSlideShowView = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
         endSlideShowView.setText("");
 
         myToolBar.add(endSlideShowView, "North");
+        myToolBar.add(previous);
+        myToolBar.add(next);
         add(myToolBar, BorderLayout.NORTH);
     }
 
+    public JPanel getSlideShow() {
+        return slideShow;
+    }
 }

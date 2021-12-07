@@ -7,12 +7,17 @@ import View.SlideShowView;
 public class SlideShowState implements State{
     @Override
     public void changeState() {
-        SlideShowView ssv = new SlideShowView();
-
         PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
 
+        if (presentationView.getSsv() == null)
+        {
+            SlideShowView ssv = new SlideShowView();
+            presentationView.setSsv(ssv);
+        }
+
         presentationView.removeAll();
-        presentationView.add(ssv);
+        presentationView.add(presentationView.getSsv());
+        presentationView.repaint();
         presentationView.validate();
     }
 }

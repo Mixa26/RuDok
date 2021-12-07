@@ -18,6 +18,7 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     private Presentation presentation;
     private JPanel main;
+    private SlideShowView ssv;
     private JPanel rightSlider;
     private JPanel leftSlider;
     private JScrollPane jScrollPaneR;
@@ -117,12 +118,15 @@ public class PresentationView extends JPanel implements ISubscriber {
                         rightSlider.remove(curr);
                         leftSlider.remove(index-1);
                         leftSlider.remove(index-2);
+                        if (ssv != null)
+                        {
+                            ssv.getSlideShow().remove((index - 2) / 2);
+                        }
                         childrenViewSlideShow.remove(curr);
                         childrenViewL.remove(curr);
                         iterator.remove();
                         break;
                     }
-
                 }
             }
 
@@ -160,6 +164,10 @@ public class PresentationView extends JPanel implements ISubscriber {
 
                 SlideView slideViewSlideShow = new SlideView((Slide) presentation.getChildren().get(index));
                 childrenViewSlideShow.add(slideViewSlideShow);
+                if (ssv != null)
+                {
+                    ssv.getSlideShow().add(slideViewSlideShow);
+                }
 
                 SlideView slideViewL = new SlideView((Slide) presentation.getChildren().get(index));
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -228,5 +236,13 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public JPanel getMain() {
         return main;
+    }
+
+    public SlideShowView getSsv() {
+        return ssv;
+    }
+
+    public void setSsv(SlideShowView ssv) {
+        this.ssv = ssv;
     }
 }
