@@ -48,9 +48,9 @@ public class SlideShowView extends JPanel {
             }
         });
 
-        for (SlideView slideViewSlideView : ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenViewSlideShow())
+        for (SlideView slideViewSlideShow : ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenViewSlideShow())
         {
-            slideShow.add(slideViewSlideView);
+            slideShow.add(slideViewSlideShow);
         }
 
         //add(previous, BorderLayout.WEST);

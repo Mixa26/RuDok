@@ -27,6 +27,10 @@ public class Presentation extends RuNodeComposite{
         if (child instanceof Slide)
         {
             super.getChildren().remove(child);
+            for (RuNode slide : super.getChildren())
+            {
+                ((Slide)slide).setOrdinalNumber(super.getChildren().indexOf((Slide)slide)+1);
+            }
             notifySubscribers(child, NotifyType.RemoveSlide);
         }
     }
