@@ -122,8 +122,8 @@ public class PresentationView extends JPanel implements ISubscriber {
                         {
                             ssv.getSlideShow().remove((index - 2) / 2);
                         }
-                        childrenViewSlideShow.remove(curr);
-                        childrenViewL.remove(curr);
+                        childrenViewSlideShow.remove((index-2)/2);
+                        childrenViewL.remove((index-2)/2);
                         iterator.remove();
                         break;
                     }
@@ -142,6 +142,7 @@ public class PresentationView extends JPanel implements ISubscriber {
 
             for (SlideView slideViewL : childrenViewL) {
                 slideViewL.setOrdinalNumber(slideViewL.getSlide().getOrdinalNumber());
+
             }
 
             for(SlideView slideViewSlideShow : childrenViewSlideShow)
@@ -149,6 +150,10 @@ public class PresentationView extends JPanel implements ISubscriber {
                 slideViewSlideShow.setOrdinalNumber(slideViewSlideShow.getSlide().getOrdinalNumber());
             }
 
+            if (ssv!=null)
+            {
+                ssv.validate();
+            }
             validate();
         }
         else if (notification instanceof Presentation)
