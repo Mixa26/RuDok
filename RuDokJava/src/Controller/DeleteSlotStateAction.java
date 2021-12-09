@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 public class DeleteSlotStateAction extends AbstractRudokAction {
     public DeleteSlotStateAction() {
         putValue(NAME, "Delete slot");
-        putValue(SMALL_ICON, loadIcon("images/slideShow.png"));
+        putValue(SMALL_ICON, loadIcon("images/eraseSlot.png"));
         putValue(SHORT_DESCRIPTION, "Delete a slot by clicking on it");
     }
 

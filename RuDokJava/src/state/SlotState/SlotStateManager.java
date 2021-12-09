@@ -3,7 +3,7 @@ package state.SlotState;
 import state.State;
 
 public class SlotStateManager {
-    private State currentState;
+    private SlotState currentState;
 
     private AddSlotState addSlotState;
     private DeleteSlotState deleteSlotState;
@@ -16,13 +16,11 @@ public class SlotStateManager {
     public void setAddSlotState()
     {
         currentState = addSlotState;
-        currentState.changeState();
     }
 
     public void setDeleteSlotState()
     {
         currentState = deleteSlotState;
-        currentState.changeState();
     }
 
     private void initStates()
@@ -31,7 +29,7 @@ public class SlotStateManager {
         deleteSlotState = new DeleteSlotState();
     }
 
-    public State getCurrentState() {
+    public SlotState getCurrentState() {
         return currentState;
     }
 }

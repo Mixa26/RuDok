@@ -22,14 +22,20 @@ public class SlotView {
 
     public void paint(Graphics2D g)
     {
+        Shape shape = new Rectangle(x,y,width,height);
         g.setPaint(slot.getColor());
         //g.setStroke(slot.getStroke());
+        g.fill(shape);
         g.drawRect(x, y, width, height);
     }
 
-    public void elementAt()
+    public boolean elementAt(int x, int y)
     {
-
+        if ((x >= this.x && x <= this.x + width) && (y >= this.y && y <= this.y + height))
+        {
+            return true;
+        }
+        return false;
     }
 
     public Slot getSlot() {

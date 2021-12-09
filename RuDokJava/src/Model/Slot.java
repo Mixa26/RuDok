@@ -14,7 +14,7 @@ public class Slot {
         this.y = y;
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;
         height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 21;
-        color = Color.RED;
+        color = new Color(255, 0, 0, 100);
     }
 
     public Color getColor() {

@@ -2,8 +2,10 @@ package Model.treeModel;
 
 import Model.Slot;
 import observer.ISubscriber;
+import observer.NotifyType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Slide extends RuNode {
@@ -17,6 +19,18 @@ public class Slide extends RuNode {
         super(name, parent);
         slots = new ArrayList<>();
         this.ordinalNumber = ordinalNumber;
+    }
+
+    public void addSlot(Slot slot)
+    {
+        slots.add(slot);
+        notifySubscribers(slot, NotifyType.AddSlot);
+    }
+
+    public void removeSlot(Slot slot)
+    {
+        slots.remove(slot);
+        notifySubscribers(slot, NotifyType.RemoveSlot);
     }
 
     public int getOrdinalNumber() {

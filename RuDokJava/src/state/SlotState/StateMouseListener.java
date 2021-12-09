@@ -6,9 +6,11 @@ import View.PresentationView;
 import View.SlideView;
 import View.SlotView;
 import observer.NotifyType;
+import state.State;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Iterator;
 
 public class StateMouseListener implements MouseListener {
     private SlideView slideView;
@@ -19,16 +21,11 @@ public class StateMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotState() instanceof AddSlotState)
-        {
-            int x = e.getPoint().x;
-            int y = e.getPoint().y;
+        int x = e.getPoint().x;
+        int y = e.getPoint().y;
 
-            Slot slot = new Slot(x, y);
-            slideView.getSlide().getSlots().add(slot);
-            slideView.getSlide().notifySubscribers(slot, NotifyType.AddSlot);
-            System.out.println("Klik na " + x + "," + y);
-        }
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMousePressed(x,y,slideView);
+
     }
 
     @Override

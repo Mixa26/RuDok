@@ -5,7 +5,6 @@ import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
-import state.SlotState.StateMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -71,16 +70,31 @@ public class SlideView extends JPanel implements ISubscriber {
     public void update(Object notification, NotifyType type) {
         if (notification instanceof Slot slot)
         {
-            SlotView slotView = new SlotView(slot);
-            if (mini)
+            if (type == NotifyType.AddSlot)
             {
-                slotView.setHeight(slotView.getSlot().getHeight()/3);
-                slotView.setWidth(slotView.getSlot().getWidth()/3);
-                slotView.setX(slotView.getSlot().getX()/3);
-                slotView.setY(slotView.getSlot().getY()/3);
+                SlotView slotView = new SlotView(slot);
+                if (mini)
+                {
+                    slotView.setHeight(slotView.getSlot().getHeight()/3);
+                    slotView.setWidth(slotView.getSlot().getWidth()/3);
+                    slotView.setX(slotView.getSlot().getX()/3-5);
+                    slotView.setY(slotView.getSlot().getY()/3-5);
+                }
+                slotViews.add(slotView);
+                repaint();
             }
-            slotViews.add(slotView);
-            repaint();
+            else if (type == NotifyType.RemoveSlot)
+            {
+                for (SlotView slotView : slotViews)
+                {
+                    if (slotView.getSlot().equals((Slot)notification))
+                    {
+                        slotViews.remove(slotView);
+                        repaint();
+                        break;
+                    }
+                }
+            }
         }
     }
 

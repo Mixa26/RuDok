@@ -9,7 +9,7 @@ public class AddSlotStateAction extends AbstractRudokAction{
 
     public AddSlotStateAction() {
         putValue(NAME, "Add slot");
-        putValue(SMALL_ICON, loadIcon("images/slideShow.png"));
+        putValue(SMALL_ICON, loadIcon("images/newSlot.png"));
         putValue(SHORT_DESCRIPTION, "Add slots by clicking on the slide");
     }
 

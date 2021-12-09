@@ -1,10 +1,10 @@
 package View;
 
 import Model.treeModel.Presentation;
-import Model.treeModel.RuNode;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
+import state.SlotState.SlotState;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.State;
@@ -258,9 +258,9 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager.setDeleteSlotState();
     }
 
-    public State getSlotState()
+    public void SlotStateMousePressed(int x, int y, SlideView slideView)
     {
-        return slotStateManager.getCurrentState();
+        slotStateManager.getCurrentState().mouseClicked(x,y,slideView);
     }
 
     public Presentation getPresentation() {
