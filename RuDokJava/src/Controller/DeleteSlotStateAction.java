@@ -1,0 +1,20 @@
+package Controller;
+
+import View.MainView;
+import View.PresentationView;
+
+import java.awt.event.ActionEvent;
+
+public class DeleteSlotStateAction extends AbstractRudokAction {
+    public DeleteSlotStateAction() {
+        putValue(NAME, "Delete slot");
+        putValue(SMALL_ICON, loadIcon("images/slideShow.png"));
+        putValue(SHORT_DESCRIPTION, "Delete a slot by clicking on it");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        PresentationView presentationView = ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        presentationView.startDeleteSlotState();
+    }
+}

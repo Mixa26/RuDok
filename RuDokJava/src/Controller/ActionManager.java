@@ -8,8 +8,12 @@ public class ActionManager {
     private OpenFileChooserAction openFileChooserAction;
     private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
-    private SwitchEditViewStateAction switchEditViewStateAction;
     private DeleteAction deleteAction;
+
+    private SwitchEditViewStateAction switchEditViewStateAction;
+
+    private AddSlotStateAction addSlotStateAction;
+    private DeleteSlotStateAction deleteSlotStateAction;
 
     private NewProjectAction newProjectAction;
     private NewPresentationAction newPresentationAction;
@@ -27,39 +31,32 @@ public class ActionManager {
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
         openFileChooserAction = new OpenFileChooserAction();
         submitRenameIntialsAction = new SubmitRenameIntialsAction();
-        switchEditViewStateAction = new SwitchEditViewStateAction();
         deleteAction = new DeleteAction();
         renameInTreeAction = new RenameInTreeAction();
+
+        switchEditViewStateAction = new SwitchEditViewStateAction();
+
+        addSlotStateAction = new AddSlotStateAction();
+        deleteSlotStateAction = new DeleteSlotStateAction();
 
         newProjectAction = new NewProjectAction();
         newPresentationAction = new NewPresentationAction();
         newSlideAction = new NewSlideAction();
     }
 
-    //Getters and Setters
+    //Getters
     public InfoAction getInfoAction() {
         return infoAction;
-    }
-
-    public void setInfoAction(InfoAction infoAction) {
-        this.infoAction = infoAction;
     }
 
     public EditPresentationAction getEditPresentationAction() {
         return editPresentationAction;
     }
 
-    public void setEditPresentationAction(EditPresentationAction editPresentationAction) {
-        this.editPresentationAction = editPresentationAction;
-    }
-
     public RenameInTreeAction getRenameInTreeAction() {
         return renameInTreeAction;
     }
 
-    public void setRenameInTreeAction(RenameInTreeAction renameInTreeAction) {
-        this.renameInTreeAction = renameInTreeAction;
-    }
 
     public NewProjectAction getNewProjectAction() {
         return newProjectAction;
@@ -73,24 +70,8 @@ public class ActionManager {
         return newSlideAction;
     }
 
-    public void setNewProjectAction(NewProjectAction newProjectAction) {
-        this.newProjectAction = newProjectAction;
-    }
-
-    public void setNewPrezentationAction(NewPresentationAction newPresentationAction) {
-        this.newPresentationAction = newPresentationAction;
-    }
-
-    public void setNewSlideAction(NewSlideAction newSlideAction) {
-        this.newSlideAction = newSlideAction;
-    }
-
     public DeleteAction getDeleteAction() {
         return deleteAction;
-    }
-
-    public void setDeleteAction(DeleteAction deleteAction) {
-        this.deleteAction = deleteAction;
     }
 
     public SubmitPresentationInitialsAction getSubmitPresentationInitialsAction() {
@@ -101,23 +82,21 @@ public class ActionManager {
         return submitRenameIntialsAction;
     }
 
-    public void setSubmitPresentationInitialsAction(SubmitPresentationInitialsAction submitPresentationInitialsAction) {
-        this.submitPresentationInitialsAction = submitPresentationInitialsAction;
-    }
 
     public OpenFileChooserAction getOpenFileChooserAction() {
         return openFileChooserAction;
     }
 
-    public void setOpenFileChooserAction(OpenFileChooserAction openFileChooserAction) {
-        this.openFileChooserAction = openFileChooserAction;
-    }
 
     public SwitchEditViewStateAction getSwitchEditViewStateAction() {
         return switchEditViewStateAction;
     }
 
-    public void setSwitchEditViewStateAction(SwitchEditViewStateAction switchEditViewStateAction) {
-        this.switchEditViewStateAction = switchEditViewStateAction;
+    public AddSlotStateAction getAddSlotStateAction() {
+        return addSlotStateAction;
+    }
+
+    public DeleteSlotStateAction getDeleteSlotStateAction() {
+        return deleteSlotStateAction;
     }
 }

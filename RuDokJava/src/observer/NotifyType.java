@@ -8,5 +8,6 @@ public enum NotifyType {
     EditPresentation,
     RenamePresentation,
     RenameProject,
-    DeleteProject
+    DeleteProject,
+    AddSlot
 }

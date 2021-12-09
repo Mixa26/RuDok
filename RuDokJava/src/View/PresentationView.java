@@ -5,6 +5,8 @@ import Model.treeModel.RuNode;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
+import state.SlotState.SlotStateManager;
+import state.SlotState.StateMouseListener;
 import state.State;
 import state.StateManager;
 
@@ -29,7 +31,10 @@ public class PresentationView extends JPanel implements ISubscriber {
     private List<SlideView> childrenViewSlideShow;
 
     private StateManager stateManager;
+    private SlotStateManager slotStateManager;
     private JButton endSlideShowView;
+    private JButton addSlot;
+    private JButton deleteSlot;
     private JToolBar myToolBar;
 
     int slideSeparationHeight;
@@ -41,6 +46,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         presentation.addSubscriber(this);
 
         stateManager = new StateManager();
+        slotStateManager = new SlotStateManager();
         myToolBar = new JToolBar();
 
         childrenView = new ArrayList<SlideView>();
@@ -71,16 +77,22 @@ public class PresentationView extends JPanel implements ISubscriber {
 
         for (int i = 0; i < presentation.getChildren().size(); i++)
         {
-            SlideView slideView = new SlideView((Slide)presentation.getChildren().get(i));
+            Slide slide = (Slide)presentation.getChildren().get(i);
+            SlideView slideView = new SlideView(slide);
+            slide.addSubscriber(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
+            slideView.addMouseListener(new StateMouseListener(slideView));
             childrenView.add(slideView);
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-            SlideView slideViewSlideShow = new SlideView((Slide)presentation.getChildren().get(i));
+            SlideView slideViewSlideShow = new SlideView(slide);
+            slide.addSubscriber(slideViewSlideShow);
             childrenViewSlideShow.add(slideViewSlideShow);
 
-            SlideView slideViewL = new SlideView((Slide)presentation.getChildren().get(i));
+            SlideView slideViewL = new SlideView(slide);
+            slideViewL.setMini(true);
+            slide.addSubscriber(slideViewL);
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));
@@ -96,7 +108,14 @@ public class PresentationView extends JPanel implements ISubscriber {
         endSlideShowView = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
         endSlideShowView.setText("");
 
+        addSlot = new JButton(MainView.getIntance().getActionManager().getAddSlotStateAction());
+        addSlot.setText("");
+        deleteSlot = new JButton(MainView.getIntance().getActionManager().getDeleteSlotStateAction());
+        deleteSlot.setText("");
+
         myToolBar.add(endSlideShowView, "North");
+        myToolBar.add(addSlot, "North");
+        myToolBar.add(deleteSlot, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
         main.add(jScrollPaneR, BorderLayout.CENTER);
@@ -161,20 +180,26 @@ public class PresentationView extends JPanel implements ISubscriber {
             if (type == NotifyType.AddSlide)
             {
                 int index = ((Presentation) notification).getChildren().size() - 1;
-                SlideView slideView = new SlideView((Slide) presentation.getChildren().get(index));
+                Slide slide = (Slide) presentation.getChildren().get(index);
+                SlideView slideView = new SlideView(slide);
+                slide.addSubscriber(slideView);
                 slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
+                slideView.addMouseListener(new StateMouseListener(slideView));
                 childrenView.add(slideView);
                 rightSlider.add(slideView);
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-                SlideView slideViewSlideShow = new SlideView((Slide) presentation.getChildren().get(index));
+                SlideView slideViewSlideShow = new SlideView(slide);
+                slide.addSubscriber(slideViewSlideShow);
                 childrenViewSlideShow.add(slideViewSlideShow);
                 if (ssv != null)
                 {
                     ssv.getSlideShow().add(slideViewSlideShow);
                 }
 
-                SlideView slideViewL = new SlideView((Slide) presentation.getChildren().get(index));
+                SlideView slideViewL = new SlideView(slide);
+                slideViewL.setMini(true);
+                slide.addSubscriber(slideViewL);
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
                 slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
                 //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));
@@ -221,6 +246,21 @@ public class PresentationView extends JPanel implements ISubscriber {
     public State getSState()
     {
         return stateManager.getCurrentState();
+    }
+
+    public void startAddSlotState()
+    {
+        slotStateManager.setAddSlotState();
+    }
+
+    public void startDeleteSlotState()
+    {
+        slotStateManager.setDeleteSlotState();
+    }
+
+    public State getSlotState()
+    {
+        return slotStateManager.getCurrentState();
     }
 
     public Presentation getPresentation() {
