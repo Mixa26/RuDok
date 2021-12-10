@@ -7,4 +7,19 @@ public abstract class SlotState {
     {
 
     }
+
+    public void mousePressed(int x, int y, SlideView slideView)
+    {
+
+    }
+
+    public void mouseDraged(int x, int y, SlideView slideView)
+    {
+
+    }
+
+    public void mouseReleased(SlideView slideView)
+    {
+
+    }
 }

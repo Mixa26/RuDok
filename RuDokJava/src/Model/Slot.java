@@ -1,9 +1,18 @@
 package Model;
 
-import javax.tools.Tool;
-import java.awt.*;
+import observer.IPublisher;
+import observer.ISubscriber;
+import observer.NotifyType;
 
-public class Slot {
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Slot implements IPublisher {
+
+    private List<ISubscriber> subscribers;
+
     private int x,y;
     private int width,height;
     Color color;
@@ -15,6 +24,39 @@ public class Slot {
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;
         height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 21;
         color = new Color(255, 0, 0, 100);
+    }
+
+    public void addSubscriber(ISubscriber subscriber) {
+
+        if (subscriber != null) {
+            if (subscribers == null)
+            {
+                subscribers = new ArrayList<ISubscriber>();
+            }
+            if (!subscribers.contains(subscriber))
+            {
+                subscribers.add(subscriber);
+            }
+        }
+    }
+
+    public void removeSubscriber(ISubscriber subscriber) {
+        if (subscriber != null && subscribers != null && subscribers.contains(subscriber))
+        {
+            subscribers.remove(subscriber);
+        }
+    }
+
+    public void notifySubscribers(Object notification, NotifyType type) {
+        if (notification != null && subscribers != null && !subscribers.isEmpty())
+        {
+            Iterator subs = subscribers.iterator();
+
+            while (subs.hasNext())
+            {
+                ((ISubscriber)subs.next()).update(notification, type);
+            }
+        }
     }
 
     public Color getColor() {
@@ -44,4 +86,12 @@ public class Slot {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public void setPosition(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+
+    }
+
 }

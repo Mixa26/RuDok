@@ -1,10 +1,12 @@
 package View;
 
 import Model.Slot;
+import observer.ISubscriber;
+import observer.NotifyType;
 
 import java.awt.*;
 
-public class SlotView {
+public class SlotView implements ISubscriber {
     Slot slot;
 
     int x;
@@ -56,5 +58,17 @@ public class SlotView {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    @Override
+    public void update(Object notification, NotifyType type) {
+        if (notification instanceof Slot slot)
+        {
+            if (type == NotifyType.DragDropSlot)
+            {
+                this.x = ((Slot)notification).getX();
+                this.y = ((Slot)notification).getY();
+            }
+        }
     }
 }

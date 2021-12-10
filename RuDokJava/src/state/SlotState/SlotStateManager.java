@@ -7,6 +7,7 @@ public class SlotStateManager {
 
     private AddSlotState addSlotState;
     private DeleteSlotState deleteSlotState;
+    private DragDropSlotState dragDropSlotState;
 
     public SlotStateManager() {
         initStates();
@@ -23,10 +24,16 @@ public class SlotStateManager {
         currentState = deleteSlotState;
     }
 
+    public void setDragDropSlotState()
+    {
+        currentState = dragDropSlotState;
+    }
+
     private void initStates()
     {
         addSlotState = new AddSlotState();
         deleteSlotState = new DeleteSlotState();
+        dragDropSlotState = new DragDropSlotState();
     }
 
     public SlotState getCurrentState() {

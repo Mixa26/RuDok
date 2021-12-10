@@ -1,16 +1,12 @@
 package state.SlotState;
 
-import Model.Slot;
 import View.MainView;
 import View.PresentationView;
 import View.SlideView;
 import View.SlotView;
-import observer.NotifyType;
-import state.State;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Iterator;
 
 public class StateMouseListener implements MouseListener {
     private SlideView slideView;
@@ -24,18 +20,21 @@ public class StateMouseListener implements MouseListener {
         int x = e.getPoint().x;
         int y = e.getPoint().y;
 
-        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMousePressed(x,y,slideView);
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseClicked(x,y,slideView);
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        int x = e.getPoint().x;
+        int y = e.getPoint().y;
 
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMousePressed(x,y,slideView);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseReleased(slideView);
     }
 
     @Override
@@ -47,4 +46,5 @@ public class StateMouseListener implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 }

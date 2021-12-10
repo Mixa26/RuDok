@@ -14,6 +14,8 @@ import java.util.List;
 public class SlideView extends JPanel implements ISubscriber {
     private Slide slide;
 
+    private Slot slotDraged;
+
     private List<SlotView> slotViews;
 
     private boolean mini;
@@ -80,6 +82,7 @@ public class SlideView extends JPanel implements ISubscriber {
                     slotView.setX(slotView.getSlot().getX()/3-5);
                     slotView.setY(slotView.getSlot().getY()/3-5);
                 }
+                ((Slot) notification).addSubscriber(slotView);
                 slotViews.add(slotView);
                 repaint();
             }
@@ -116,5 +119,13 @@ public class SlideView extends JPanel implements ISubscriber {
 
     public void setMini(boolean mini) {
         this.mini = mini;
+    }
+
+    public void setSlotDraged(Slot slotDraged) {
+        this.slotDraged = slotDraged;
+    }
+
+    public Slot getSlotDraged() {
+        return slotDraged;
     }
 }

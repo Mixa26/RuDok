@@ -1,12 +1,14 @@
 package View;
 
 import Model.Main;
+import Model.Slot;
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
+import state.SlotState.StateMouseMotionListener;
 import state.State;
 import state.StateManager;
 
@@ -35,6 +37,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     private JButton endSlideShowView;
     private JButton addSlot;
     private JButton deleteSlot;
+    private JButton dragDropSlot;
     private JButton colorPick;
     private JToolBar myToolBar;
 
@@ -88,6 +91,7 @@ public class PresentationView extends JPanel implements ISubscriber {
             slide.addSubscriber(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
             slideView.addMouseListener(new StateMouseListener(slideView));
+            slideView.addMouseMotionListener(new StateMouseMotionListener(slideView));
             childrenView.add(slideView);
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
@@ -118,12 +122,15 @@ public class PresentationView extends JPanel implements ISubscriber {
         addSlot.setText("");
         deleteSlot = new JButton(MainView.getIntance().getActionManager().getDeleteSlotStateAction());
         deleteSlot.setText("");
+        dragDropSlot = new JButton(MainView.getIntance().getActionManager().getDragDropSlotStateAction());
+        dragDropSlot.setText("");
         colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
         colorPick.setText("");
 
         myToolBar.add(endSlideShowView, "North");
         myToolBar.add(addSlot, "North");
         myToolBar.add(deleteSlot, "North");
+        myToolBar.add(dragDropSlot, "North");
         myToolBar.add(colorPick, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
@@ -267,9 +274,29 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager.setDeleteSlotState();
     }
 
-    public void SlotStateMousePressed(int x, int y, SlideView slideView)
+    public void startDragDropSlotState()
+    {
+        slotStateManager.setDragDropSlotState();
+    }
+
+    public void SlotStateMouseClicked(int x, int y, SlideView slideView)
     {
         slotStateManager.getCurrentState().mouseClicked(x,y,slideView);
+    }
+
+    public void SlotStateMousePressed(int x, int y,SlideView slideView)
+    {
+        slotStateManager.getCurrentState().mousePressed(x,y, slideView);
+    }
+
+    public void SlotStateMouseDraged(int x, int y, SlideView slideView)
+    {
+        slotStateManager.getCurrentState().mouseDraged(x, y, slideView);
+    }
+
+    public void SlotStateMouseReleased(SlideView slideView)
+    {
+        slotStateManager.getCurrentState().mouseReleased(slideView);
     }
 
     public Presentation getPresentation() {
