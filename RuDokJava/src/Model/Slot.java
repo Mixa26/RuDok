@@ -41,4 +41,7 @@ public class Slot {
         return height;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

@@ -1,10 +1,10 @@
 package View;
 
+import Model.Main;
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
-import state.SlotState.SlotState;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.State;
@@ -35,12 +35,18 @@ public class PresentationView extends JPanel implements ISubscriber {
     private JButton endSlideShowView;
     private JButton addSlot;
     private JButton deleteSlot;
+    private JButton colorPick;
     private JToolBar myToolBar;
+
+    ColorPickerView colorPickerView;
+    private Color pickedColor;
 
     int slideSeparationHeight;
 
     public PresentationView(Presentation presentation)
     {
+        colorPickerView = new ColorPickerView();
+        pickedColor = new Color(255, 0, 0, 100);
         this.presentation = presentation;
         this.presentation.addSubscriber(this);
         presentation.addSubscriber(this);
@@ -112,10 +118,13 @@ public class PresentationView extends JPanel implements ISubscriber {
         addSlot.setText("");
         deleteSlot = new JButton(MainView.getIntance().getActionManager().getDeleteSlotStateAction());
         deleteSlot.setText("");
+        colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
+        colorPick.setText("");
 
         myToolBar.add(endSlideShowView, "North");
         myToolBar.add(addSlot, "North");
         myToolBar.add(deleteSlot, "North");
+        myToolBar.add(colorPick, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
         main.add(jScrollPaneR, BorderLayout.CENTER);
@@ -289,5 +298,17 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public void setSsv(SlideShowView ssv) {
         this.ssv = ssv;
+    }
+
+    public void setPickedColor(Color pickedColor) {
+        this.pickedColor = pickedColor;
+    }
+
+    public ColorPickerView getColorPickerView() {
+        return colorPickerView;
+    }
+
+    public Color getPickedColor() {
+        return pickedColor;
     }
 }

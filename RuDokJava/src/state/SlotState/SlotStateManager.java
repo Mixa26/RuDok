@@ -10,7 +10,7 @@ public class SlotStateManager {
 
     public SlotStateManager() {
         initStates();
-        currentState = null;
+        currentState = addSlotState;
     }
 
     public void setAddSlotState()
