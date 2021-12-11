@@ -1,13 +1,11 @@
 package View;
 
-import Model.Main;
-import Model.Slot;
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
-import state.SlotBorderStrokeState.SplitStrokeState;
 import state.SlotBorderStrokeState.StrokeStateManager;
+import state.SlotBorderWidth.BorderWidthStateManager;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.SlotState.StateMouseMotionListener;
@@ -37,11 +35,13 @@ public class PresentationView extends JPanel implements ISubscriber {
     private StateManager stateManager;
     private SlotStateManager slotStateManager;
     private StrokeStateManager strokeStateManager;
+    private BorderWidthStateManager borderWidthStateManager;
     private JButton endSlideShowView;
     private JButton addSlot;
     private JButton deleteSlot;
     private JButton dragDropSlot;
     private JButton switchStroke;
+    private JButton switchBorder;
     private JButton colorPick;
     private JToolBar myToolBar;
 
@@ -58,7 +58,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         stroke = new BasicStroke(strokeWidth);
 
         colorPickerView = new ColorPickerView();
-        pickedColor = new Color(255, 0, 0, 100);
+        pickedColor = new Color(255, 255, 255, 100);
         strokeWidth = 1.0f;
 
         this.presentation = presentation;
@@ -68,6 +68,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         stateManager = new StateManager();
         slotStateManager = new SlotStateManager();
         strokeStateManager = new StrokeStateManager();
+        borderWidthStateManager = new BorderWidthStateManager();
         myToolBar = new JToolBar();
 
         childrenView = new ArrayList<SlideView>();
@@ -137,6 +138,8 @@ public class PresentationView extends JPanel implements ISubscriber {
         dragDropSlot.setText("");
         switchStroke = new JButton(MainView.getIntance().getActionManager().getSelectBorderStrokeAction());
         switchStroke.setText("");
+        switchBorder = new JButton(MainView.getIntance().getActionManager().getSwitchSlotWidthAction());
+        switchBorder.setText("");
         colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
         colorPick.setText("");
 
@@ -145,6 +148,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         myToolBar.add(deleteSlot, "North");
         myToolBar.add(dragDropSlot, "North");
         myToolBar.add(switchStroke, "North");
+        myToolBar.add(switchBorder, "North");
         myToolBar.add(colorPick, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
@@ -294,6 +298,11 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager.setDragDropSlotState();
     }
 
+    public void refreshSlotStateIcons()
+    {
+        slotStateManager.refreshIcons();
+    }
+
     public void SlotStateMouseClicked(int x, int y, Slide slide)
     {
         slotStateManager.getCurrentState().mouseClicked(x,y,slide);
@@ -307,6 +316,11 @@ public class PresentationView extends JPanel implements ISubscriber {
     public void SlotStateMouseDraged(int x, int y, Slide slide)
     {
         slotStateManager.getCurrentState().mouseDraged(x, y, slide);
+    }
+
+    public void SlotStateMouseReleased(Slide slide)
+    {
+        slotStateManager.getCurrentState().mouseReleased(slide);
     }
 
     public void startFullStrokeState()
@@ -324,9 +338,24 @@ public class PresentationView extends JPanel implements ISubscriber {
         return strokeStateManager.getCurrentState();
     }
 
-    public void SlotStateMouseReleased(Slide slide)
+    public void startSmallBorderState()
     {
-        slotStateManager.getCurrentState().mouseReleased(slide);
+        borderWidthStateManager.setSmallBorderState();
+    }
+
+    public void startMediumBorderState()
+    {
+        borderWidthStateManager.setMediumBorderState();
+    }
+
+    public void startBigBorderState()
+    {
+        borderWidthStateManager.setBigBorderState();
+    }
+
+    public State getBorderState()
+    {
+        return borderWidthStateManager.getCurrentState();
     }
 
     public Presentation getPresentation() {

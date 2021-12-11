@@ -16,5 +16,16 @@ public class DragDropSlotStateAction extends AbstractRudokAction {
     public void actionPerformed(ActionEvent e) {
         PresentationView presentationView = ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         presentationView.startDragDropSlotState();
+        putValue(SMALL_ICON, loadIcon("images/moveSelected.png"));
+    }
+
+    public void resetIcon()
+    {
+        putValue(SMALL_ICON, loadIcon("images/move.png"));
+    }
+
+    public void setSelectedIcon()
+    {
+        putValue(SMALL_ICON, loadIcon("images/moveSelected.png"));
     }
 }

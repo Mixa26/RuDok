@@ -47,6 +47,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
         {
             Presentation curr = (Presentation)project.getChildren().get(i);
             PresentationView presentationView = new PresentationView(curr);
+            presentationView.refreshSlotStateIcons();
             childrenView.add(presentationView);
             curr.addSubscriber(presentationView);
             curr.addSubscriber(this);

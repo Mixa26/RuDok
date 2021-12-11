@@ -9,9 +9,8 @@ import java.awt.event.ActionEvent;
 
 public class SelectBorderStrokeAction extends AbstractRudokAction{
     public SelectBorderStrokeAction() {
-        putValue(NAME, "Submit");
         putValue(SMALL_ICON, loadIcon("images/rectangle.png"));
-        putValue(SHORT_DESCRIPTION, "Change slot color");
+        putValue(SHORT_DESCRIPTION, "Switch slot border type");
     }
 
     @Override

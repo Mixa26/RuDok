@@ -23,7 +23,7 @@ public class Slot implements IPublisher {
         this.y = y;
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;
         height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 21;
-        color = new Color(255, 0, 0, 100);
+        color = new Color(255, 255, 255, 100);
     }
 
     public boolean elementAt(int x, int y)

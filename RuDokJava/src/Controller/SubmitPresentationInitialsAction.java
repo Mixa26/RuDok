@@ -36,29 +36,11 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
             presentation.setAuthor(author);
         }
 
-        //TODO sredi ovo
-        if (url != null) {
-//            for (int i = url.length() - 4; i < url.length(); i++) {
-//                extension = extension.concat(url.charAt(i) + "");
-//            }
-//
-//            if (extension.equals(".jpg") || extension.equals(".png")) {
-//                imgValid = true;
-//            }
-//
-//            if (imgValid)
-//            {
-                presentation.setBackgroundImage(url);
-//            }
-//            else
-//            {
-//                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
-//            }
+        if (url != null)
+        {
+            presentation.setBackgroundImage(url);
         }
-//        else
-//        {
-//            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
-//        }
+
 
         MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 
