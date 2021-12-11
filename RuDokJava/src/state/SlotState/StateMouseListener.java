@@ -1,18 +1,18 @@
 package state.SlotState;
 
+import Model.treeModel.Slide;
 import View.MainView;
 import View.PresentationView;
 import View.SlideView;
-import View.SlotView;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class StateMouseListener implements MouseListener {
-    private SlideView slideView;
+    private Slide slide;
 
-    public StateMouseListener(SlideView slideView) {
-        this.slideView = slideView;
+    public StateMouseListener(Slide slide) {
+        this.slide = slide;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class StateMouseListener implements MouseListener {
         int x = e.getPoint().x;
         int y = e.getPoint().y;
 
-        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseClicked(x,y,slideView);
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseClicked(x,y,slide);
 
     }
 
@@ -29,12 +29,12 @@ public class StateMouseListener implements MouseListener {
         int x = e.getPoint().x;
         int y = e.getPoint().y;
 
-        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMousePressed(x,y,slideView);
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMousePressed(x,y,slide);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseReleased(slideView);
+        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseReleased(slide);
     }
 
     @Override

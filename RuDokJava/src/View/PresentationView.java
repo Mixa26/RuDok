@@ -91,8 +91,8 @@ public class PresentationView extends JPanel implements ISubscriber {
             slide.addSubscriber(slideView);
             slide.getSlideViews().add(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
-            slideView.addMouseListener(new StateMouseListener(slideView));
-            slideView.addMouseMotionListener(new StateMouseMotionListener(slideView));
+            slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
+            slideView.addMouseMotionListener(new StateMouseMotionListener(slideView.getSlide()));
             childrenView.add(slideView);
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
@@ -204,8 +204,8 @@ public class PresentationView extends JPanel implements ISubscriber {
                 slide.addSubscriber(slideView);
                 slide.getSlideViews().add(slideView);
                 slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
-                slideView.addMouseListener(new StateMouseListener(slideView));
-                slideView.addMouseMotionListener(new StateMouseMotionListener(slideView));
+                slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
+                slideView.addMouseMotionListener(new StateMouseMotionListener(slideView.getSlide()));
                 childrenView.add(slideView);
                 rightSlider.add(slideView);
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
@@ -286,24 +286,24 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager.setDragDropSlotState();
     }
 
-    public void SlotStateMouseClicked(int x, int y, SlideView slideView)
+    public void SlotStateMouseClicked(int x, int y, Slide slide)
     {
-        slotStateManager.getCurrentState().mouseClicked(x,y,slideView);
+        slotStateManager.getCurrentState().mouseClicked(x,y,slide);
     }
 
-    public void SlotStateMousePressed(int x, int y,SlideView slideView)
+    public void SlotStateMousePressed(int x, int y,Slide slide)
     {
-        slotStateManager.getCurrentState().mousePressed(x,y, slideView);
+        slotStateManager.getCurrentState().mousePressed(x,y, slide);
     }
 
-    public void SlotStateMouseDraged(int x, int y, SlideView slideView)
+    public void SlotStateMouseDraged(int x, int y, Slide slide)
     {
-        slotStateManager.getCurrentState().mouseDraged(x, y, slideView);
+        slotStateManager.getCurrentState().mouseDraged(x, y, slide);
     }
 
-    public void SlotStateMouseReleased(SlideView slideView)
+    public void SlotStateMouseReleased(Slide slide)
     {
-        slotStateManager.getCurrentState().mouseReleased(slideView);
+        slotStateManager.getCurrentState().mouseReleased(slide);
     }
 
     public Presentation getPresentation() {

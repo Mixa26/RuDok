@@ -1,5 +1,6 @@
 package state.SlotState;
 
+import Model.treeModel.Slide;
 import View.MainView;
 import View.PresentationView;
 import View.SlideView;
@@ -8,15 +9,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class StateMouseMotionListener implements MouseMotionListener {
-    SlideView slideView;
+    Slide slide;
 
-    public StateMouseMotionListener(SlideView slideView) {
-        this.slideView = slideView;
+    public StateMouseMotionListener(Slide slide) {
+        this.slide = slide;
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseDraged(e.getX(), e.getY(), slideView);
+        ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseDraged(e.getX(), e.getY(), slide);
     }
 
     @Override

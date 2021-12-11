@@ -14,10 +14,6 @@ import java.util.List;
 public class SlideView extends JPanel implements ISubscriber {
     private Slide slide;
 
-    private Slot slotDraged;
-    private int relativePosX;
-    private int relativePosY;
-
     private List<SlotView> slotViews;
 
     private boolean mini;
@@ -126,27 +122,4 @@ public class SlideView extends JPanel implements ISubscriber {
         this.mini = mini;
     }
 
-    public void setSlotDraged(Slot slotDraged) {
-        this.slotDraged = slotDraged;
-    }
-
-    public Slot getSlotDraged() {
-        return slotDraged;
-    }
-
-    public int getRelativePosX() {
-        return relativePosX;
-    }
-
-    public int getRelativePosY() {
-        return relativePosY;
-    }
-
-    public void setRelativePosX(int relativePosX) {
-        this.relativePosX = relativePosX;
-    }
-
-    public void setRelativePosY(int relativePosY) {
-        this.relativePosY = relativePosY;
-    }
 }
