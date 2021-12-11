@@ -15,8 +15,8 @@ public class Slot implements IPublisher {
 
     private int x,y;
     private int width,height;
-    Color color;
-    Stroke stroke;
+    private Color color;
+    private Stroke stroke;
 
     public Slot(int x, int y) {
         this.x = x;
@@ -103,4 +103,7 @@ public class Slot implements IPublisher {
 
     }
 
+    public void setStroke(Stroke stroke) {
+        this.stroke = stroke;
+    }
 }

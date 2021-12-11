@@ -15,6 +15,7 @@ public class ActionManager {
     private AddSlotStateAction addSlotStateAction;
     private DeleteSlotStateAction deleteSlotStateAction;
     private DragDropSlotStateAction dragDropSlotStateAction;
+    private SelectBorderStrokeAction selectBorderStrokeAction;
     private OpenColorPickerAction openColorPickerAction;
     private SumbitColorAction submitColorAction;
 
@@ -42,6 +43,7 @@ public class ActionManager {
         addSlotStateAction = new AddSlotStateAction();
         deleteSlotStateAction = new DeleteSlotStateAction();
         dragDropSlotStateAction = new DragDropSlotStateAction();
+        selectBorderStrokeAction = new SelectBorderStrokeAction();
         openColorPickerAction = new OpenColorPickerAction();
         submitColorAction = new SumbitColorAction();
 
@@ -116,5 +118,9 @@ public class ActionManager {
 
     public DragDropSlotStateAction getDragDropSlotStateAction() {
         return dragDropSlotStateAction;
+    }
+
+    public SelectBorderStrokeAction getSelectBorderStrokeAction() {
+        return selectBorderStrokeAction;
     }
 }

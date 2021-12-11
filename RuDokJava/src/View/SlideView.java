@@ -23,8 +23,8 @@ public class SlideView extends JPanel implements ISubscriber {
 
     private JLabel ordinalNumber;
 
-    public SlideView(Slide slide) {
-        mini = false;
+    public SlideView(Slide slide, boolean mini) {
+        this.mini = mini;
         this.slide = slide;
         setBackground(Color.LIGHT_GRAY);
         setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
@@ -35,7 +35,19 @@ public class SlideView extends JPanel implements ISubscriber {
         slotViews = new ArrayList<SlotView>();
         for (Slot slot : slide.getSlots())
         {
-            slotViews.add(new SlotView(slot));
+            SlotView slotView = new SlotView(slot);
+            if (mini)
+            {
+                slotView.setMini(true);
+                slotView.setHeight(slotView.getSlot().getHeight()/3);
+                slotView.setWidth(slotView.getSlot().getWidth()/3);
+                slotView.setX(slotView.getSlot().getX()/3-5);
+                slotView.setY(slotView.getSlot().getY()/3-5);
+            }
+            slot.addSubscriber(slotView);
+            slotViews.add(slotView);
+            repaint();
+            validate();
         }
         //addMouseListener(new StateMouseListener(this));
 

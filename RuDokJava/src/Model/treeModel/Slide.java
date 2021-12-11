@@ -1,7 +1,8 @@
 package Model.treeModel;
 
 import Model.Slot;
-import View.SlideView;
+import View.MainView;
+import View.PresentationView;
 import observer.NotifyType;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class Slide extends RuNode {
     public void addSlot(Slot slot)
     {
         slots.add(slot);
+        slot.setStroke(((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getStroke());
         notifySubscribers(slot, NotifyType.AddSlot);
     }
 

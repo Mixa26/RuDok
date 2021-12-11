@@ -3,6 +3,7 @@ package View;
 import Model.Slot;
 import observer.ISubscriber;
 import observer.NotifyType;
+import state.SlotBorderStrokeState.SplitStrokeState;
 
 import java.awt.*;
 
@@ -14,6 +15,8 @@ public class SlotView implements ISubscriber {
     int width;
     int height;
 
+    Stroke stroke;
+
     boolean mini;
 
     public SlotView(Slot slot) {
@@ -23,14 +26,16 @@ public class SlotView implements ISubscriber {
         y = slot.getY();
         width = slot.getWidth();
         height = slot.getHeight();
+        stroke = slot.getStroke();
     }
 
     public void paint(Graphics2D g)
     {
         Shape shape = new Rectangle(x,y,width,height);
         g.setPaint(slot.getColor());
-        //g.setStroke(slot.getStroke());
         g.fill(shape);
+        g.setPaint(new Color(0,0,0));
+        g.setStroke(stroke);
         g.drawRect(x, y, width, height);
     }
 
@@ -80,4 +85,7 @@ public class SlotView implements ISubscriber {
         this.mini = mini;
     }
 
+    public void setStroke(Stroke stroke) {
+        this.stroke = stroke;
+    }
 }

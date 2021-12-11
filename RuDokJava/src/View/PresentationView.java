@@ -6,6 +6,8 @@ import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
 import observer.NotifyType;
+import state.SlotBorderStrokeState.SplitStrokeState;
+import state.SlotBorderStrokeState.StrokeStateManager;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.SlotState.StateMouseMotionListener;
@@ -34,12 +36,17 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     private StateManager stateManager;
     private SlotStateManager slotStateManager;
+    private StrokeStateManager strokeStateManager;
     private JButton endSlideShowView;
     private JButton addSlot;
     private JButton deleteSlot;
     private JButton dragDropSlot;
+    private JButton switchStroke;
     private JButton colorPick;
     private JToolBar myToolBar;
+
+    private float strokeWidth;
+    private Stroke stroke;
 
     ColorPickerView colorPickerView;
     private Color pickedColor;
@@ -48,14 +55,19 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public PresentationView(Presentation presentation)
     {
+        stroke = new BasicStroke(strokeWidth);
+
         colorPickerView = new ColorPickerView();
         pickedColor = new Color(255, 0, 0, 100);
+        strokeWidth = 1.0f;
+
         this.presentation = presentation;
         this.presentation.addSubscriber(this);
         presentation.addSubscriber(this);
 
         stateManager = new StateManager();
         slotStateManager = new SlotStateManager();
+        strokeStateManager = new StrokeStateManager();
         myToolBar = new JToolBar();
 
         childrenView = new ArrayList<SlideView>();
@@ -87,7 +99,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         for (int i = 0; i < presentation.getChildren().size(); i++)
         {
             Slide slide = (Slide)presentation.getChildren().get(i);
-            SlideView slideView = new SlideView(slide);
+            SlideView slideView = new SlideView(slide, false);
             slide.addSubscriber(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
             slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
@@ -96,12 +108,11 @@ public class PresentationView extends JPanel implements ISubscriber {
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-            SlideView slideViewSlideShow = new SlideView(slide);
+            SlideView slideViewSlideShow = new SlideView(slide, false);
             slide.addSubscriber(slideViewSlideShow);
             childrenViewSlideShow.add(slideViewSlideShow);
 
-            SlideView slideViewL = new SlideView(slide);
-            slideViewL.setMini(true);
+            SlideView slideViewL = new SlideView(slide, true);
             slide.addSubscriber(slideViewL);
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -124,6 +135,8 @@ public class PresentationView extends JPanel implements ISubscriber {
         deleteSlot.setText("");
         dragDropSlot = new JButton(MainView.getIntance().getActionManager().getDragDropSlotStateAction());
         dragDropSlot.setText("");
+        switchStroke = new JButton(MainView.getIntance().getActionManager().getSelectBorderStrokeAction());
+        switchStroke.setText("");
         colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
         colorPick.setText("");
 
@@ -131,6 +144,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         myToolBar.add(addSlot, "North");
         myToolBar.add(deleteSlot, "North");
         myToolBar.add(dragDropSlot, "North");
+        myToolBar.add(switchStroke, "North");
         myToolBar.add(colorPick, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
@@ -146,7 +160,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 Iterator<SlideView> iterator = childrenView.iterator();
                 while (iterator.hasNext()) {
                     SlideView curr = (SlideView) iterator.next();
-                    if ((curr).compareTo(new SlideView((Slide) notification))) {
+                    if ((curr).compareTo(new SlideView((Slide) notification, false))) {
                         int index = childrenView.indexOf(curr);
                         index = index * 2 + 2;
                         //rightSlider.remove(index);
@@ -197,7 +211,7 @@ public class PresentationView extends JPanel implements ISubscriber {
             {
                 int index = ((Presentation) notification).getChildren().size() - 1;
                 Slide slide = (Slide) presentation.getChildren().get(index);
-                SlideView slideView = new SlideView(slide);
+                SlideView slideView = new SlideView(slide, false);
                 slide.addSubscriber(slideView);
                 slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
                 slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
@@ -206,7 +220,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 rightSlider.add(slideView);
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-                SlideView slideViewSlideShow = new SlideView(slide);
+                SlideView slideViewSlideShow = new SlideView(slide, false);
                 slide.addSubscriber(slideViewSlideShow);
                 childrenViewSlideShow.add(slideViewSlideShow);
                 if (ssv != null)
@@ -214,7 +228,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                     ssv.getSlideShow().add(slideViewSlideShow);
                 }
 
-                SlideView slideViewL = new SlideView(slide);
+                SlideView slideViewL = new SlideView(slide, true);
                 slideViewL.setMini(true);
                 slide.addSubscriber(slideViewL);
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -295,6 +309,21 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager.getCurrentState().mouseDraged(x, y, slide);
     }
 
+    public void startFullStrokeState()
+    {
+        strokeStateManager.setFullStrokeState();
+    }
+
+    public void startSplitStrokeState()
+    {
+        strokeStateManager.setSplitStrokeState();
+    }
+
+    public State getStrokeState()
+    {
+        return strokeStateManager.getCurrentState();
+    }
+
     public void SlotStateMouseReleased(Slide slide)
     {
         slotStateManager.getCurrentState().mouseReleased(slide);
@@ -338,5 +367,21 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public Color getPickedColor() {
         return pickedColor;
+    }
+
+    public float getStrokeWidth() {
+        return strokeWidth;
+    }
+
+    public void setStrokeWidth(float strokeWidth) {
+        this.strokeWidth = strokeWidth;
+    }
+
+    public Stroke getStroke() {
+        return stroke;
+    }
+
+    public void setStroke(Stroke stroke) {
+        this.stroke = stroke;
     }
 }
