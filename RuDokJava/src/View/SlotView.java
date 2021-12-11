@@ -49,8 +49,8 @@ public class SlotView implements ISubscriber {
             {
                 if (mini)
                 {
-                    this.x = ((Slot)notification).getX()/3;
-                    this.y = ((Slot)notification).getY()/3;
+                    this.x = ((Slot)notification).getX()/3-5;
+                    this.y = ((Slot)notification).getY()/3-5;
                 }
                 else
                 {
