@@ -15,6 +15,8 @@ public class SlideView extends JPanel implements ISubscriber {
     private Slide slide;
 
     private Slot slotDraged;
+    private int relativePosX;
+    private int relativePosY;
 
     private List<SlotView> slotViews;
 
@@ -130,5 +132,21 @@ public class SlideView extends JPanel implements ISubscriber {
 
     public Slot getSlotDraged() {
         return slotDraged;
+    }
+
+    public int getRelativePosX() {
+        return relativePosX;
+    }
+
+    public int getRelativePosY() {
+        return relativePosY;
+    }
+
+    public void setRelativePosX(int relativePosX) {
+        this.relativePosX = relativePosX;
+    }
+
+    public void setRelativePosY(int relativePosY) {
+        this.relativePosY = relativePosY;
     }
 }

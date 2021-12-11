@@ -14,6 +14,8 @@ public class DragDropSlotState extends SlotState{
             if (slideView.getSlotViews().get(i).elementAt(x,y))
             {
                 slideView.setSlotDraged(slotView.getSlot());
+                slideView.setRelativePosX(x - slideView.getSlotViews().get(i).getSlot().getX());
+                slideView.setRelativePosY(y - slideView.getSlotViews().get(i).getSlot().getY());
                 break;
             }
         }
@@ -25,7 +27,7 @@ public class DragDropSlotState extends SlotState{
         Slot slot = (Slot)slideView.getSlotDraged();
         if (slot != null)
         {
-            slot.setPosition(x, y);
+            slot.setPosition(x-slideView.getRelativePosX(), y-slideView.getRelativePosY());
             slot.notifySubscribers(slot, NotifyType.DragDropSlot);
             for (SlideView slideView1 : slideView.getSlide().getSlideViews())
             {
