@@ -34,14 +34,7 @@ public class SlotView implements ISubscriber {
         g.drawRect(x, y, width, height);
     }
 
-    public boolean elementAt(int x, int y)
-    {
-        if ((x >= this.x && x <= this.x + width) && (y >= this.y && y <= this.y + height))
-        {
-            return true;
-        }
-        return false;
-    }
+
 
     @Override
     public void update(Object notification, NotifyType type) {
@@ -87,7 +80,4 @@ public class SlotView implements ISubscriber {
         this.mini = mini;
     }
 
-    public boolean isMini() {
-        return mini;
-    }
 }

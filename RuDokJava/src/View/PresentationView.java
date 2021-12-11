@@ -89,7 +89,6 @@ public class PresentationView extends JPanel implements ISubscriber {
             Slide slide = (Slide)presentation.getChildren().get(i);
             SlideView slideView = new SlideView(slide);
             slide.addSubscriber(slideView);
-            slide.getSlideViews().add(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
             slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
             slideView.addMouseMotionListener(new StateMouseMotionListener(slideView.getSlide()));
@@ -99,13 +98,11 @@ public class PresentationView extends JPanel implements ISubscriber {
 
             SlideView slideViewSlideShow = new SlideView(slide);
             slide.addSubscriber(slideViewSlideShow);
-            slide.getSlideViews().add(slideViewSlideShow);
             childrenViewSlideShow.add(slideViewSlideShow);
 
             SlideView slideViewL = new SlideView(slide);
             slideViewL.setMini(true);
             slide.addSubscriber(slideViewL);
-            slide.getSlideViews().add(slideViewL);
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));
@@ -202,7 +199,6 @@ public class PresentationView extends JPanel implements ISubscriber {
                 Slide slide = (Slide) presentation.getChildren().get(index);
                 SlideView slideView = new SlideView(slide);
                 slide.addSubscriber(slideView);
-                slide.getSlideViews().add(slideView);
                 slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
                 slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
                 slideView.addMouseMotionListener(new StateMouseMotionListener(slideView.getSlide()));
@@ -212,7 +208,6 @@ public class PresentationView extends JPanel implements ISubscriber {
 
                 SlideView slideViewSlideShow = new SlideView(slide);
                 slide.addSubscriber(slideViewSlideShow);
-                slide.getSlideViews().add(slideViewSlideShow);
                 childrenViewSlideShow.add(slideViewSlideShow);
                 if (ssv != null)
                 {
@@ -222,7 +217,6 @@ public class PresentationView extends JPanel implements ISubscriber {
                 SlideView slideViewL = new SlideView(slide);
                 slideViewL.setMini(true);
                 slide.addSubscriber(slideViewL);
-                slide.getSlideViews().add(slideViewL);
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
                 slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
                 //slideViewL.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 130)));

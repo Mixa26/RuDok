@@ -11,5 +11,6 @@ public enum NotifyType {
     DeleteProject,
     AddSlot,
     RemoveSlot,
-    DragDropSlot
+    DragDropSlot,
+    RefreshSlides
 }

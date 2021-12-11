@@ -100,6 +100,14 @@ public class SlideView extends JPanel implements ISubscriber {
                 }
             }
         }
+        if (notification instanceof Slide)
+        {
+            if (type == NotifyType.RefreshSlides)
+            {
+                repaint();
+                validate();
+            }
+        }
     }
 
     public Slide getSlide() {

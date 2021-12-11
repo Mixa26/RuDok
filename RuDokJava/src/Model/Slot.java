@@ -26,6 +26,15 @@ public class Slot implements IPublisher {
         color = new Color(255, 0, 0, 100);
     }
 
+    public boolean elementAt(int x, int y)
+    {
+        if ((x >= this.x && x <= this.x + width) && (y >= this.y && y <= this.y + height))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void addSubscriber(ISubscriber subscriber) {
 
         if (subscriber != null) {

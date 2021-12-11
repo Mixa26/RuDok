@@ -2,11 +2,9 @@ package Model.treeModel;
 
 import Model.Slot;
 import View.SlideView;
-import observer.ISubscriber;
 import observer.NotifyType;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Slide extends RuNode {
@@ -20,13 +18,10 @@ public class Slide extends RuNode {
 
     private List<Slot> slots;
 
-    private List<SlideView> slideViews;
-
     public Slide(String name, Presentation parent, int ordinalNumber)
     {
         super(name, parent);
         slots = new ArrayList<>();
-        slideViews = new ArrayList<>();
         this.ordinalNumber = ordinalNumber;
     }
 
@@ -52,10 +47,6 @@ public class Slide extends RuNode {
 
     public List<Slot> getSlots() {
         return slots;
-    }
-
-    public List<SlideView> getSlideViews() {
-        return slideViews;
     }
 
     public void setSlotDraged(Slot slotDraged) {
