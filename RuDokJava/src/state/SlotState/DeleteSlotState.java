@@ -2,9 +2,6 @@ package state.SlotState;
 
 import Model.Slot;
 import Model.treeModel.Slide;
-import View.SlideView;
-import View.SlotView;
-import state.State;
 
 public class DeleteSlotState extends SlotState {
     @Override

@@ -3,7 +3,6 @@ package state.SlotState;
 import Model.treeModel.Slide;
 import View.MainView;
 import View.PresentationView;
-import View.SlideView;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;

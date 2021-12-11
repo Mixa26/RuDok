@@ -4,6 +4,8 @@ import Model.Slot;
 import Model.treeModel.Slide;
 import observer.NotifyType;
 
+import java.awt.*;
+
 public class DragDropSlotState extends SlotState{
     @Override
     public void mousePressed(int x, int y, Slide slide) {
@@ -12,6 +14,7 @@ public class DragDropSlotState extends SlotState{
             Slot slot = slide.getSlots().get(i);
             if (slot.elementAt(x,y))
             {
+                slot.setColor(new Color(slot.getColor().getRed(), slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
                 slide.setSlotDraged(slot);
                 slide.setRelativePosX(x - slot.getX());
                 slide.setRelativePosY(y - slot.getY());
@@ -34,6 +37,11 @@ public class DragDropSlotState extends SlotState{
 
     @Override
     public void mouseReleased(Slide slide) {
-        slide.setSlotDraged(null);
+        if (slide.getSlotDraged() != null)
+        {
+            slide.getSlotDraged().setColor(new Color(slide.getSlotDraged().getColor().getRed(), slide.getSlotDraged().getColor().getGreen(), slide.getSlotDraged().getColor().getBlue(), 100));
+            slide.notifySubscribers(slide, NotifyType.RefreshSlides);
+            slide.setSlotDraged(null);
+        }
     }
 }
