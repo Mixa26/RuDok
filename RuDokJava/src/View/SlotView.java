@@ -14,7 +14,10 @@ public class SlotView implements ISubscriber {
     int width;
     int height;
 
+    boolean mini;
+
     public SlotView(Slot slot) {
+        mini = false;
         this.slot = slot;
         x = slot.getX();
         y = slot.getY();
@@ -40,6 +43,26 @@ public class SlotView implements ISubscriber {
         return false;
     }
 
+    @Override
+    public void update(Object notification, NotifyType type) {
+        if (notification instanceof Slot slot)
+        {
+            if (type == NotifyType.DragDropSlot)
+            {
+                if (mini)
+                {
+                    this.x = ((Slot)notification).getX()/3;
+                    this.y = ((Slot)notification).getY()/3;
+                }
+                else
+                {
+                    this.x = ((Slot)notification).getX();
+                    this.y = ((Slot)notification).getY();
+                }
+            }
+        }
+    }
+
     public Slot getSlot() {
         return slot;
     }
@@ -60,15 +83,11 @@ public class SlotView implements ISubscriber {
         this.height = height;
     }
 
-    @Override
-    public void update(Object notification, NotifyType type) {
-        if (notification instanceof Slot slot)
-        {
-            if (type == NotifyType.DragDropSlot)
-            {
-                this.x = ((Slot)notification).getX();
-                this.y = ((Slot)notification).getY();
-            }
-        }
+    public void setMini(boolean mini) {
+        this.mini = mini;
+    }
+
+    public boolean isMini() {
+        return mini;
     }
 }

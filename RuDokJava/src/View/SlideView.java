@@ -52,7 +52,8 @@ public class SlideView extends JPanel implements ISubscriber {
         if (new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage() != null)
         {
             Image image = new ImageIcon(((Presentation)slide.getParent()).getBackgroundImage()).getImage();
-            g.drawImage((image),0, 0, null);
+
+            g.drawImage((image),0, 0, getWidth(), getHeight(), null);
         }
 
         for (SlotView slotView : slotViews)
@@ -77,6 +78,7 @@ public class SlideView extends JPanel implements ISubscriber {
                 SlotView slotView = new SlotView(slot);
                 if (mini)
                 {
+                    slotView.setMini(true);
                     slotView.setHeight(slotView.getSlot().getHeight()/3);
                     slotView.setWidth(slotView.getSlot().getWidth()/3);
                     slotView.setX(slotView.getSlot().getX()/3-5);
@@ -85,6 +87,7 @@ public class SlideView extends JPanel implements ISubscriber {
                 ((Slot) notification).addSubscriber(slotView);
                 slotViews.add(slotView);
                 repaint();
+                validate();
             }
             else if (type == NotifyType.RemoveSlot)
             {

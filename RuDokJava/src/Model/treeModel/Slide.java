@@ -1,6 +1,7 @@
 package Model.treeModel;
 
 import Model.Slot;
+import View.SlideView;
 import observer.ISubscriber;
 import observer.NotifyType;
 
@@ -14,10 +15,13 @@ public class Slide extends RuNode {
 
     private List<Slot> slots;
 
+    private List<SlideView> slideViews;
+
     public Slide(String name, Presentation parent, int ordinalNumber)
     {
         super(name, parent);
         slots = new ArrayList<>();
+        slideViews = new ArrayList<>();
         this.ordinalNumber = ordinalNumber;
     }
 
@@ -45,4 +49,7 @@ public class Slide extends RuNode {
         return slots;
     }
 
+    public List<SlideView> getSlideViews() {
+        return slideViews;
+    }
 }

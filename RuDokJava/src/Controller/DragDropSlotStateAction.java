@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 public class DragDropSlotStateAction extends AbstractRudokAction {
     public DragDropSlotStateAction() {
         putValue(NAME, "Drag a slot");
-        putValue(SMALL_ICON, loadIcon("images/newSlot.png"));
+        putValue(SMALL_ICON, loadIcon("images/move.png"));
         putValue(SHORT_DESCRIPTION, "Drag a slot by pressing on it and moving");
     }
 

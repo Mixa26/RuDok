@@ -27,8 +27,11 @@ public class DragDropSlotState extends SlotState{
         {
             slot.setPosition(x, y);
             slot.notifySubscribers(slot, NotifyType.DragDropSlot);
-            slideView.repaint();
-            slideView.validate();
+            for (SlideView slideView1 : slideView.getSlide().getSlideViews())
+            {
+                slideView1.repaint();
+                slideView1.validate();
+            }
         }
     }
 
