@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ActionManager;
+import Model.factory.RuNodeFactory;
 import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;

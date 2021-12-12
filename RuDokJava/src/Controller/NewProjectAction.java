@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.factory.FactoryGenerator;
+import Model.factory.RuNodeType;
 import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
@@ -18,13 +20,14 @@ public class NewProjectAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         WorkSpace root = (WorkSpace) ((MyTreeNode)MainView.getIntance().getMyTree().getModel().getRoot()).getNode();
 
-        Project project = new Project("Project " + (root.getChildren().size() + 1), root);
-        Presentation presentation = new Presentation("Presentation 1", project);
-        presentation.setAuthor("Author");
-        Slide slide = new Slide("Slide 1", presentation, 1);
-
-        presentation.addChild(slide);
-        project.addChild(presentation);
+        Project project = (Project) FactoryGenerator.returnFactory(root).constructRuNode(RuNodeType.Collection ,root);
+//        Project project = new Project("Project " + (root.getChildren().size() + 1), root);
+//        Presentation presentation = new Presentation("Presentation 1", project);
+//        presentation.setAuthor("Author");
+//        Slide slide = new Slide("Slide 1", presentation, 1);
+//
+//        presentation.addChild(slide);
+//        project.addChild(presentation);
         root.addChild(project);
 
         //MainView.getIntance().getRightWorkArea().openProject(project);
