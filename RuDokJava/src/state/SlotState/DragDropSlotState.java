@@ -16,6 +16,7 @@ public class DragDropSlotState extends SlotState{
             {
                 slot.setColor(new Color(slot.getColor().getRed(), slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
                 slide.setSlotDraged(slot);
+                slide.notifySubscribers(slide, NotifyType.RefreshSlides);
                 slide.setRelativePosX(x - slot.getX());
                 slide.setRelativePosY(y - slot.getY());
                 break;
