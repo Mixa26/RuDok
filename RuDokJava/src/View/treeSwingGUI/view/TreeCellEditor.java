@@ -1,6 +1,9 @@
 package View.treeSwingGUI.view;
 
+import Model.treeModel.WorkSpace;
+import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
+import View.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -50,7 +53,19 @@ public class TreeCellEditor extends DefaultTreeCellEditor implements ActionListe
     public void actionPerformed(ActionEvent e) {
         if (object != null)
         {
-            ((MyTreeNode)object).getNode().setName(e.getActionCommand());
+            if (e.getActionCommand().equals(""))
+            {
+                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NameEmptyError);
+            }
+            else if (((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof WorkSpace)
+            {
+                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
+            }
+            else
+            {
+                ((MyTreeNode)object).getNode().setName(e.getActionCommand());
+            }
+
         }
     }
 }

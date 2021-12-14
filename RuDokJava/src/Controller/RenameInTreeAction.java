@@ -28,13 +28,20 @@ public class RenameInTreeAction extends AbstractRudokAction{
         }
 
         RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
-        if (selection != null)
+        if (selection instanceof WorkSpace)
         {
-            renameInTreeView.setVisible();
+            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
+            if (selection != null)
+            {
+                renameInTreeView.setVisible();
+            }
+            else
+            {
+                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
+            }
         }
     }
 
