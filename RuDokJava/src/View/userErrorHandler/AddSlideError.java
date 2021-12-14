@@ -5,12 +5,14 @@ import View.MainView;
 import javax.swing.*;
 
 public class AddSlideError implements Error{
+    String message = "Please select a presentation to add a slide to.";
+
     public AddSlideError() {
         handleError();
     }
 
     @Override
-    public void handleError() {
-        JOptionPane.showMessageDialog(MainView.getIntance(), "Please select a presentation to add a slide to.");
+    public String handleError() {
+        return message;
     }
 }

@@ -1,6 +1,16 @@
 package View.userErrorHandler;
 
-public class ErrorFactory {
+import observer.IPublisher;
+import observer.ISubscriber;
+import observer.NotifyType;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ErrorFactory implements IPublisher {
+
+    private List<ISubscriber> subscribers;
 
     public enum ErrorType
     {
@@ -18,45 +28,80 @@ public class ErrorFactory {
     public ErrorFactory() {
     }
 
-    public Error createError(ErrorType errorType)
+    public void createError(ErrorType errorType)
     {
+        Error error = null;
         if (errorType == ErrorType.AddPresentationError)
         {
-            return new AddPresentationError();
+            error = new AddPresentationError();
         }
         else if(errorType == ErrorType.AddSlideError)
         {
-            return new AddSlideError();
+            error = new AddSlideError();
         }
         else if(errorType == ErrorType.EditPresentationError)
         {
-            return new EditPresentationError();
+            error = new EditPresentationError();
         }
         else if(errorType == ErrorType.RenameInTreeError)
         {
-            return new RenameInTreeError();
+            error = new RenameInTreeError();
         }
         else if (errorType == ErrorType.DeleteError)
         {
-            return new DeleteError();
+            error = new DeleteError();
         }
         else if (errorType == ErrorType.NameEmptyError)
         {
-            return new NameEmptyError();
+            error = new NameEmptyError();
         }
         else if (errorType == ErrorType.InvalidImageError)
         {
-            return new InvalidImageError();
+            error = new InvalidImageError();
         }
         else if (errorType == ErrorType.SwitchToSlideShowError)
         {
-            return new SwitchToSlideShowError();
+            error = new SwitchToSlideShowError();
         }
         else if (errorType == ErrorType.NoPresentationSlideShowError)
         {
-            return new NoPresentationSlideShowError();
+            error = new NoPresentationSlideShowError();
         }
 
-        return null;
+        notifySubscribers(error, NotifyType.Error);
+    }
+
+
+    public void addSubscriber(ISubscriber subscriber) {
+
+        if (subscriber != null) {
+            if (subscribers == null)
+            {
+                subscribers = new ArrayList<ISubscriber>();
+            }
+            if (!subscribers.contains(subscriber))
+            {
+                subscribers.add(subscriber);
+            }
+        }
+    }
+
+    public void removeSubscriber(ISubscriber subscriber) {
+        if (subscriber != null && subscribers != null && subscribers.contains(subscriber))
+        {
+            subscribers.remove(subscriber);
+        }
+    }
+
+    public void notifySubscribers(Object notification, NotifyType type) {
+        if (notification != null && subscribers != null && !subscribers.isEmpty())
+        {
+            Iterator subs = subscribers.iterator();
+
+            while (subs.hasNext())
+            {
+                ((ISubscriber)subs.next()).update(notification, type);
+            }
+        }
     }
 }

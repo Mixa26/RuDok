@@ -1,5 +1,5 @@
 package View.userErrorHandler;
 
-public interface Error {
-    void handleError();
+public interface Error{
+    String handleError();
 }

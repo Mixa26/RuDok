@@ -12,5 +12,6 @@ public enum NotifyType {
     AddSlot,
     RemoveSlot,
     DragDropSlot,
-    RefreshSlides
+    RefreshSlides,
+    Error
 }

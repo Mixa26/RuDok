@@ -28,6 +28,9 @@ public class TreeCellEditor extends DefaultTreeCellEditor implements ActionListe
 
         text = new JTextField(value.toString());
         text.addActionListener(this);
+
+        //if (text.getText() = "");
+
         return text;
     }
 

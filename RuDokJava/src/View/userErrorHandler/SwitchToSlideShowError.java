@@ -6,12 +6,14 @@ import View.MainView;
 import javax.swing.*;
 
 public class SwitchToSlideShowError implements Error{
+    String message = "Please open a project with the presentation you want to present, and select a presentation.";
+
     public SwitchToSlideShowError()
     {
         handleError();
     }
     @Override
-    public void handleError() {
-        JOptionPane.showMessageDialog(MainView.getIntance(), "Please open a project with the presentation you want to present, and select a presentation.", "No presentation selected", JOptionPane.ERROR_MESSAGE);
+    public String handleError() {
+        return message;
     }
 }

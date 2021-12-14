@@ -2,16 +2,19 @@ package View;
 
 import Controller.ActionManager;
 import Model.factory.RuNodeFactory;
+import View.userErrorHandler.Error;
 import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
+import observer.ISubscriber;
+import observer.NotifyType;
 import state.State;
 import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements ISubscriber {
     private static MainView instance;
 
     private ActionManager actionManager;
@@ -38,6 +41,7 @@ public class MainView extends JFrame {
     {
         actionManager = new ActionManager();
         errorFactory = new ErrorFactory();
+        errorFactory.addSubscriber(this);
     }
 
     private void initialiseTree()
@@ -95,6 +99,17 @@ public class MainView extends JFrame {
         return instance;
     }
 
+    //update za resavanje errora
+    @Override
+    public void update(Object notification, NotifyType type) {
+        if (notification instanceof Error)
+        {
+            if (type == NotifyType.Error)
+            {
+                JOptionPane.showMessageDialog(this,((Error)notification).handleError());
+            }
+        }
+    }
 
     public ActionManager getActionManager() {
         return actionManager;

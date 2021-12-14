@@ -5,12 +5,14 @@ import View.MainView;
 import javax.swing.*;
 
 public class RenameInTreeError implements Error{
+    String message = "Please select a component to rename.";
+
     public RenameInTreeError() {
         handleError();
     }
 
     @Override
-    public void handleError() {
-        JOptionPane.showMessageDialog(MainView.getIntance(), "Please select a component to rename.");
+    public String handleError() {
+        return message;
     }
 }
