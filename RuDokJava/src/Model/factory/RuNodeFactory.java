@@ -4,11 +4,11 @@ import Model.treeModel.RuNode;
 
 public abstract class RuNodeFactory {
 
-    public RuNode constructRuNode(RuNodeType type, RuNode parent) {
+    public RuNode constructRuNode(RuNode parent) {
         RuNode ruNode;
-        ruNode = createRuNode(type, parent);
+        ruNode = createRuNode(parent);
         return ruNode;
     }
 
-    protected abstract RuNode createRuNode(RuNodeType type, RuNode parent);
+    protected abstract RuNode createRuNode(RuNode parent);
 }

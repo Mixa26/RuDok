@@ -6,7 +6,7 @@ import View.treeSwingGUI.model.MyTreeNode;
 
 public class CollectionFactory extends RuNodeFactory{
     @Override
-    protected RuNode createRuNode(RuNodeType type, RuNode parent) {
+    protected RuNode createRuNode(RuNode parent) {
         Project project = new Project("Project " + (((WorkSpace)parent).getChildren().size() + 1), (WorkSpace) parent);
         Presentation presentation = new Presentation("Presentation 1", project);
         presentation.setAuthor("Author");
