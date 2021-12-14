@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.factory.FactoryGenerator;
+import Model.treeModel.Slide;
 import View.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
 import Model.treeModel.Project;
@@ -36,6 +37,8 @@ public class NewPresentationAction extends AbstractRudokAction{
         if (selection instanceof Project)
         {
             Presentation presentation = (Presentation) FactoryGenerator.returnFactory(selection).constructRuNode(selection);
+            Slide slide = (Slide) FactoryGenerator.returnFactory(presentation).constructRuNode(presentation);
+            presentation.addChild(slide);
 //            Presentation presentation = new Presentation("Presentation " + (((Project) selection).getChildren().size() + 1), (Project)selection);
 //            presentation.setAuthor("Author");
 //            Slide slide = new Slide("Slide 1", presentation, 1);
