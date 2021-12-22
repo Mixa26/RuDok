@@ -48,24 +48,24 @@ public class SlotStateManager {
     }
 
     public void refreshIcons()
-    {
-        if (currentState == addSlotState)
         {
-            MainView.getIntance().getActionManager().getAddSlotStateAction().setSelectedIcon();
-            MainView.getIntance().getActionManager().getDeleteSlotStateAction().resetIcon();
-            MainView.getIntance().getActionManager().getDragDropSlotStateAction().resetIcon();
-        }
-        else if(currentState == deleteSlotState)
-        {
-            MainView.getIntance().getActionManager().getAddSlotStateAction().resetIcon();
-            MainView.getIntance().getActionManager().getDeleteSlotStateAction().setSelectedIcon();
-            MainView.getIntance().getActionManager().getDragDropSlotStateAction().resetIcon();
-        }
-        else
-        {
-            MainView.getIntance().getActionManager().getAddSlotStateAction().resetIcon();
-            MainView.getIntance().getActionManager().getDeleteSlotStateAction().resetIcon();
-            MainView.getIntance().getActionManager().getDragDropSlotStateAction().setSelectedIcon();
-        }
+            if (currentState == addSlotState)
+            {
+                MainView.getIntance().getActionManager().getAddSlotStateAction().setSelectedIcon();
+                MainView.getIntance().getActionManager().getDeleteSlotStateAction().resetIcon();
+                MainView.getIntance().getActionManager().getDragDropSlotStateAction().resetIcon();
+            }
+            else if(currentState == deleteSlotState)
+            {
+                MainView.getIntance().getActionManager().getAddSlotStateAction().resetIcon();
+                MainView.getIntance().getActionManager().getDeleteSlotStateAction().setSelectedIcon();
+                MainView.getIntance().getActionManager().getDragDropSlotStateAction().resetIcon();
+            }
+            else
+            {
+                MainView.getIntance().getActionManager().getAddSlotStateAction().resetIcon();
+                MainView.getIntance().getActionManager().getDeleteSlotStateAction().resetIcon();
+                MainView.getIntance().getActionManager().getDragDropSlotStateAction().setSelectedIcon();
+            }
     }
 }

@@ -4,7 +4,6 @@ import Model.Slot;
 import Model.treeModel.Slide;
 import View.MainView;
 import View.PresentationView;
-import View.SlideView;
 
 public class AddSlotState extends SlotState {
     @Override
