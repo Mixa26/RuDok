@@ -1,13 +1,11 @@
 package Controller;
 
 import Model.factory.FactoryGenerator;
-import Model.treeModel.Slide;
+import Model.treeModel.*;
 import View.userErrorHandler.ErrorFactory;
-import Model.treeModel.Presentation;
-import Model.treeModel.Project;
-import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
+import command.AddTreeCommand;
 
 import java.awt.event.ActionEvent;
 
@@ -43,12 +41,13 @@ public class NewPresentationAction extends AbstractRudokAction{
 //            presentation.setAuthor("Author");
 //            Slide slide = new Slide("Slide 1", presentation, 1);
 //            presentation.addChild(slide);
-            ((Project) selection).addChild(presentation);
+            MainView.getIntance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, presentation));
+            //((Project) selection).addChild(presentation);
 
             //MainView.getIntance().getRightWorkArea().setProject((Project)selection);
 
             MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
-            MainView.getIntance().getMyTree().refresh();
+            //MainView.getIntance().getMyTree().refresh();
         }
         else
         {

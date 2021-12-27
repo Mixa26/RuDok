@@ -4,6 +4,8 @@ import Model.factory.FactoryGenerator;
 import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
+import command.AddTreeCommand;
+
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
 
@@ -31,11 +33,12 @@ public class NewProjectAction extends AbstractRudokAction{
 //
 //        presentation.addChild(slide);
 //        project.addChild(presentation);
-        root.addChild(project);
+        MainView.getIntance().getCommandManager().addComand(new AddTreeCommand(root, project));
+        //root.addChild(project);
 
         //MainView.getIntance().getRightWorkArea().openProject(project);
 
         MainView.getIntance().getMyTree().expandPath(new TreePath(MainView.getIntance().getMyTree().getModel().getRoot()));
-        MainView.getIntance().getMyTree().refresh();
+        //MainView.getIntance().getMyTree().refresh();
     }
 }

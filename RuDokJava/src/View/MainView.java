@@ -6,6 +6,7 @@ import View.userErrorHandler.Error;
 import View.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
+import command.CommandManager;
 import observer.ISubscriber;
 import observer.NotifyType;
 import state.State;
@@ -20,6 +21,8 @@ public class MainView extends JFrame implements ISubscriber {
     private ActionManager actionManager;
 
     private ErrorFactory errorFactory;
+
+    private CommandManager commandManager;
 
     //komponente prozora
     private MyMenuBar myMenuBar;
@@ -41,6 +44,7 @@ public class MainView extends JFrame implements ISubscriber {
     {
         actionManager = new ActionManager();
         errorFactory = new ErrorFactory();
+        commandManager = new CommandManager();
         errorFactory.addSubscriber(this);
     }
 
@@ -117,6 +121,10 @@ public class MainView extends JFrame implements ISubscriber {
 
     public ErrorFactory getErrorFactory() {
         return errorFactory;
+    }
+
+    public CommandManager getCommandManager() {
+        return commandManager;
     }
 
     public MyTree getMyTree() {

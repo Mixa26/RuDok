@@ -1,13 +1,11 @@
 package Controller;
 
 import Model.factory.FactoryGenerator;
-import Model.treeModel.Project;
+import Model.treeModel.*;
 import View.userErrorHandler.ErrorFactory;
-import Model.treeModel.Presentation;
-import Model.treeModel.RuNode;
-import Model.treeModel.Slide;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
+import command.AddTreeCommand;
 
 import java.awt.event.ActionEvent;
 
@@ -37,9 +35,10 @@ public class NewSlideAction extends AbstractRudokAction{
         {
             Slide slide = (Slide) FactoryGenerator.returnFactory(selection).constructRuNode(selection);
 //            Slide slide = new Slide("Slide " + (((Presentation) selection).getChildren().size() + 1), (Presentation) selection, ((Presentation) selection).getChildren().size() + 1);
-            ((Presentation) selection).addChild(slide);
+            MainView.getIntance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, slide));
+            //((Presentation) selection).addChild(slide);
 
-            MainView.getIntance().getRightWorkArea().setProject(((Project)((Presentation)selection).getParent()));
+            //MainView.getIntance().getRightWorkArea().setProject(((Project)((Presentation)selection).getParent()));
 
             MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
             MainView.getIntance().getMyTree().refresh();

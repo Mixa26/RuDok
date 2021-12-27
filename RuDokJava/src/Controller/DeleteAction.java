@@ -4,6 +4,7 @@ import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
+import command.DeleteTreeCommand;
 
 import java.awt.event.ActionEvent;
 import java.util.Objects;
@@ -30,7 +31,8 @@ public class DeleteAction extends AbstractRudokAction{
         if (selection != null && !(selection instanceof WorkSpace) )
         {
             parent = selection.getParent();
-            ((RuNodeComposite)parent).removeChild(selection);
+            MainView.getIntance().getCommandManager().addComand(new DeleteTreeCommand((RuNodeComposite) parent, selection));
+            //((RuNodeComposite)parent).removeChild(selection);
             MainView.getIntance().getMyTree().clearSelection();
             MainView.getIntance().getMyTree().refresh();
         }

@@ -9,6 +9,8 @@ public class ActionManager {
     private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
     private DeleteAction deleteAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
 
     private SwitchEditViewStateAction switchEditViewStateAction;
 
@@ -37,6 +39,8 @@ public class ActionManager {
         openFileChooserAction = new OpenFileChooserAction();
         submitRenameIntialsAction = new SubmitRenameIntialsAction();
         deleteAction = new DeleteAction();
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
         renameInTreeAction = new RenameInTreeAction();
 
         switchEditViewStateAction = new SwitchEditViewStateAction();
@@ -128,5 +132,13 @@ public class ActionManager {
 
     public SwitchSlotWidthAction getSwitchSlotWidthAction() {
         return switchSlotWidthAction;
+    }
+
+    public UndoAction getUndoAction() {
+        return undoAction;
+    }
+
+    public RedoAction getRedoAction() {
+        return redoAction;
     }
 }

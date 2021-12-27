@@ -11,6 +11,8 @@ public class MyToolBar extends JToolBar {
     private JButton rename;
     private JButton editPresentation;
     private JButton delete;
+    private JButton undoAction;
+    private JButton redoAction;
     private JButton info;
 
     public MyToolBar()
@@ -22,6 +24,8 @@ public class MyToolBar extends JToolBar {
         rename = new JButton(MainView.getIntance().getActionManager().getRenameInTreeAction());
         editPresentation = new JButton(MainView.getIntance().getActionManager().getEditPresentationAction());
         delete = new JButton(MainView.getIntance().getActionManager().getDeleteAction());
+        undoAction = new JButton(MainView.getIntance().getActionManager().getUndoAction());
+        redoAction = new JButton(MainView.getIntance().getActionManager().getRedoAction());
         info = new JButton(MainView.getIntance().getActionManager().getInfoAction());
 
         NewProject.setText("");
@@ -30,6 +34,8 @@ public class MyToolBar extends JToolBar {
         editPresentation.setText("");
         rename.setText("");
         delete.setText("");
+        undoAction.setText("");
+        redoAction.setText("");
         info.setText("");
 
         //dodavanje na toolbar
@@ -39,6 +45,8 @@ public class MyToolBar extends JToolBar {
         add(editPresentation);
         add(rename);
         add(delete);
+        add(undoAction);
+        add(redoAction);
         add(info);
     }
 
