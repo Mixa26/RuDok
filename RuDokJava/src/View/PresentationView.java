@@ -83,6 +83,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotTypeStateManager = new SlotTypeStateManager();
 
         myToolBar = new JToolBar();
+        myToolBar.setFloatable(false);
 
         childrenView = new ArrayList<SlideView>();
         childrenViewL = new ArrayList<SlideView>();

@@ -17,6 +17,7 @@ public class MyToolBar extends JToolBar {
 
     public MyToolBar()
     {
+        setFloatable(false);
         //init komponenti
         NewProject = new JButton(MainView.getIntance().getActionManager().getNewProjectAction());
         NewPrezentation = new JButton(MainView.getIntance().getActionManager().getNewPresentationAction());

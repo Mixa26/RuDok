@@ -62,6 +62,7 @@ public class SlideShowView extends JPanel {
         myToolBar.add(endSlideShowView, "North");
         myToolBar.add(previous);
         myToolBar.add(next);
+        myToolBar.setFloatable(false);
         add(myToolBar, BorderLayout.NORTH);
     }
 
