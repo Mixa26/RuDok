@@ -21,7 +21,6 @@ public class StateMouseListener implements MouseListener {
         int y = e.getPoint().y;
 
         ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseClicked(x,y,slide);
-
     }
 
     @Override

@@ -48,6 +48,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     private JButton switchBorder;
     private JButton colorPick;
     private JButton changeSlotType;
+    private JButton editSlotContent;
     private JToolBar myToolBar;
 
     private float strokeWidth;
@@ -56,6 +57,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     ColorPickerView colorPickerView;
     private Color pickedColor;
     private Slot.type slotType;
+    private Slot slotSelected;
 
     int slideSeparationHeight;
 
@@ -153,6 +155,8 @@ public class PresentationView extends JPanel implements ISubscriber {
         colorPick.setText("");
         changeSlotType = new JButton(MainView.getIntance().getActionManager().getChangeSlotTypeState());
         changeSlotType.setText("");
+        editSlotContent = new JButton(MainView.getIntance().getActionManager().getEditSlotContent());
+        editSlotContent.setText("");
 
         myToolBar.add(endSlideShowView, "North");
         myToolBar.add(addSlot, "North");
@@ -162,6 +166,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         myToolBar.add(switchBorder, "North");
         myToolBar.add(colorPick, "North");
         myToolBar.add(changeSlotType, "North");
+        myToolBar.add(editSlotContent, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
         main.add(jScrollPaneR, BorderLayout.CENTER);
@@ -447,5 +452,13 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public void setSlotType(Slot.type slotType) {
         this.slotType = slotType;
+    }
+
+    public Slot getSlotSelected() {
+        return slotSelected;
+    }
+
+    public void setSlotSelected(Slot slotSelected) {
+        this.slotSelected = slotSelected;
     }
 }

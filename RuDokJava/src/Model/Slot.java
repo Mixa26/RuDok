@@ -23,6 +23,7 @@ public class Slot implements IPublisher {
     private Color color;
     private Stroke stroke;
     private type type;
+    private String image;
 
     public Slot(int x, int y, type type) {
         this.x = x;
@@ -30,6 +31,7 @@ public class Slot implements IPublisher {
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;
         height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 21;
         color = new Color(255, 255, 255, 100);
+        this.type = type;
     }
 
     public boolean elementAt(int x, int y)
@@ -111,5 +113,13 @@ public class Slot implements IPublisher {
 
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
+    }
+
+    public Slot.type getType() {
+        return type;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

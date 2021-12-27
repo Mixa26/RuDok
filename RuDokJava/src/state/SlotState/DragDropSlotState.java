@@ -2,6 +2,8 @@ package state.SlotState;
 
 import Model.Slot;
 import Model.treeModel.Slide;
+import View.MainView;
+import View.PresentationView;
 import observer.NotifyType;
 
 import java.awt.*;
@@ -14,8 +16,13 @@ public class DragDropSlotState extends SlotState{
             Slot slot = slide.getSlots().get(i);
             if (slot.elementAt(x,y))
             {
-                slot.setColor(new Color(slot.getColor().getRed(), slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
+                slot.setColor(new Color(slot.getColor().getRed()-150, slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
                 slide.setSlotDraged(slot);
+                PresentationView presentationView = (PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent();
+                if (presentationView.getSlotSelected() != null) {
+                    presentationView.getSlotSelected().setColor(new Color(presentationView.getSlotSelected().getColor().getRed() + 150, presentationView.getSlotSelected().getColor().getGreen(), presentationView.getSlotSelected().getColor().getBlue()));
+                }
+                presentationView.setSlotSelected(slot);
                 slide.notifySubscribers(slide, NotifyType.RefreshSlides);
                 slide.setRelativePosX(x - slot.getX());
                 slide.setRelativePosY(y - slot.getY());

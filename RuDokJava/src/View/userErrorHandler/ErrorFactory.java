@@ -23,7 +23,8 @@ public class ErrorFactory implements IPublisher {
         InvalidImageError,
         SwitchToSlideShowError,
         NoPresentationSlideShowError,
-        WorkSpaceRename
+        WorkSpaceRename,
+        EditSlotError
     }
 
     public ErrorFactory() {
@@ -71,6 +72,10 @@ public class ErrorFactory implements IPublisher {
         else if (errorType == ErrorType.WorkSpaceRename)
         {
             error = new WorkSpaceRenameError();
+        }
+        else if (errorType == ErrorType.EditSlotError)
+        {
+            error = new NoSlotSelectedError();
         }
 
         notifySubscribers(error, NotifyType.Error);

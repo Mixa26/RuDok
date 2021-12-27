@@ -16,11 +16,13 @@ public class SlotTypeStateManager {
     public void setMultimediaState()
     {
         currentState = multimediaState;
+        currentState.changeState();
     }
 
     public void setTextState()
     {
         currentState = textState;
+        currentState.changeState();
     }
 
     private void initStates()
