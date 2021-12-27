@@ -16,11 +16,11 @@ public class DragDropSlotState extends SlotState{
             Slot slot = slide.getSlots().get(i);
             if (slot.elementAt(x,y))
             {
-                slot.setColor(new Color(slot.getColor().getRed()-150, slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
+                slot.setColor(new Color(slot.getColor().getRed(), slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
                 slide.setSlotDraged(slot);
                 PresentationView presentationView = (PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent();
-                if (presentationView.getSlotSelected() != null) {
-                    presentationView.getSlotSelected().setColor(new Color(presentationView.getSlotSelected().getColor().getRed() + 150, presentationView.getSlotSelected().getColor().getGreen(), presentationView.getSlotSelected().getColor().getBlue()));
+                if (presentationView.getSlotSelected() != null && presentationView.getSlotSelected() != slot) {
+                    presentationView.getSlotSelected().setColor(new Color(presentationView.getSlotSelected().getColor().getRed(), presentationView.getSlotSelected().getColor().getGreen(), presentationView.getSlotSelected().getColor().getBlue(), 100));
                 }
                 presentationView.setSlotSelected(slot);
                 slide.notifySubscribers(slide, NotifyType.RefreshSlides);
@@ -47,7 +47,7 @@ public class DragDropSlotState extends SlotState{
     public void mouseReleased(Slide slide) {
         if (slide.getSlotDraged() != null)
         {
-            slide.getSlotDraged().setColor(new Color(slide.getSlotDraged().getColor().getRed(), slide.getSlotDraged().getColor().getGreen(), slide.getSlotDraged().getColor().getBlue(), 100));
+            slide.getSlotDraged().setColor(new Color(slide.getSlotDraged().getColor().getRed(), slide.getSlotDraged().getColor().getGreen(), slide.getSlotDraged().getColor().getBlue(), 255));
             slide.notifySubscribers(slide, NotifyType.RefreshSlides);
             slide.setSlotDraged(null);
         }

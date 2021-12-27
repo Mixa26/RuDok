@@ -121,5 +121,10 @@ public class Slot implements IPublisher {
 
     public void setImage(String image) {
         this.image = image;
+        notifySubscribers(this, NotifyType.EditSlot);
+    }
+
+    public String getImage() {
+        return image;
     }
 }

@@ -1,10 +1,12 @@
 package View;
 
 import Model.Slot;
+import Model.treeModel.Presentation;
 import observer.ISubscriber;
 import observer.NotifyType;
 import state.SlotBorderStrokeState.SplitStrokeState;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class SlotView implements ISubscriber {
@@ -37,9 +39,14 @@ public class SlotView implements ISubscriber {
         g.setPaint(new Color(0,0,0));
         g.setStroke(stroke);
         g.drawRect(x, y, width, height);
+
+        if (new ImageIcon(slot.getImage()).getImage() != null)
+        {
+            Image image = new ImageIcon(slot.getImage()).getImage();
+
+            g.drawImage((image),x, y, width, height, null);
+        }
     }
-
-
 
     @Override
     public void update(Object notification, NotifyType type) {

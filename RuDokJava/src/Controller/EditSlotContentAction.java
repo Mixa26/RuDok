@@ -23,7 +23,7 @@ public class EditSlotContentAction extends AbstractRudokAction{
         {
             if (presentationView.getSlotSelected().getType() == Slot.type.Text)
             {
-
+                //TODO edit teksta ovde uz oslonac na JTEXTPANE
             }
             else
             {

@@ -95,6 +95,7 @@ public class SlideView extends JPanel implements ISubscriber {
                     slotView.setY(slotView.getSlot().getY()/3-5);
                 }
                 ((Slot) notification).addSubscriber(slotView);
+                ((Slot) notification).addSubscriber(this);
                 slotViews.add(slotView);
                 repaint();
                 validate();
@@ -110,6 +111,11 @@ public class SlideView extends JPanel implements ISubscriber {
                         break;
                     }
                 }
+            }
+            else if (type == NotifyType.EditSlot)
+            {
+                repaint();
+                validate();
             }
         }
         if (notification instanceof Slide)
