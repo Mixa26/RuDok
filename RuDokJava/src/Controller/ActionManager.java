@@ -23,6 +23,7 @@ public class ActionManager {
     private SumbitColorAction submitColorAction;
     private ChangeSlotTypeState changeSlotTypeState;
     private EditSlotContentAction editSlotContent;
+    private SlotAddTextAction slotAddTextAction;
 
     private NewProjectAction newProjectAction;
     private NewPresentationAction newPresentationAction;
@@ -56,6 +57,7 @@ public class ActionManager {
         submitColorAction = new SumbitColorAction();
         changeSlotTypeState = new ChangeSlotTypeState();
         editSlotContent = new EditSlotContentAction();
+        slotAddTextAction = new SlotAddTextAction();
 
         newProjectAction = new NewProjectAction();
         newPresentationAction = new NewPresentationAction();
@@ -152,5 +154,9 @@ public class ActionManager {
 
     public EditSlotContentAction getEditSlotContent() {
         return editSlotContent;
+    }
+
+    public SlotAddTextAction getSlotAddTextAction() {
+        return slotAddTextAction;
     }
 }

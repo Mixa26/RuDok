@@ -58,6 +58,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     private Color pickedColor;
     private Slot.type slotType;
     private Slot slotSelected;
+    TextEditorView textEditorView;
 
     int slideSeparationHeight;
 
@@ -69,6 +70,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         pickedColor = new Color(255, 255, 255, 100);
         strokeWidth = 1.0f;
         slotType = Slot.type.Text;
+        textEditorView = new TextEditorView();
 
         this.presentation = presentation;
         this.presentation.addSubscriber(this);
@@ -460,5 +462,9 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public void setSlotSelected(Slot slotSelected) {
         this.slotSelected = slotSelected;
+    }
+
+    public TextEditorView getTextEditorView() {
+        return textEditorView;
     }
 }

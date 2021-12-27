@@ -5,6 +5,7 @@ import observer.ISubscriber;
 import observer.NotifyType;
 
 import java.awt.*;
+import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Slot implements IPublisher {
     private Stroke stroke;
     private type type;
     private String image;
+    private String text;
 
     public Slot(int x, int y, type type) {
         this.x = x;
@@ -126,5 +128,14 @@ public class Slot implements IPublisher {
 
     public String getImage() {
         return image;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+        notifySubscribers(this, NotifyType.EditSlot);
     }
 }

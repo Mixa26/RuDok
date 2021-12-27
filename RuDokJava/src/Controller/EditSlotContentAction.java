@@ -3,6 +3,7 @@ package Controller;
 import Model.Slot;
 import View.MainView;
 import View.PresentationView;
+import View.TextEditorView;
 import View.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
@@ -23,6 +24,14 @@ public class EditSlotContentAction extends AbstractRudokAction{
         {
             if (presentationView.getSlotSelected().getType() == Slot.type.Text)
             {
+                if (presentationView.getSlotSelected().getText() !=null) {
+                    presentationView.getTextEditorView().getjTextPane().setText(presentationView.getSlotSelected().getText());
+                }
+                else
+                {
+                    presentationView.getTextEditorView().getjTextPane().setText("");
+                }
+                presentationView.getTextEditorView().setVisible(true);
                 //TODO edit teksta ovde uz oslonac na JTEXTPANE
             }
             else

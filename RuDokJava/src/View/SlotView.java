@@ -46,6 +46,12 @@ public class SlotView implements ISubscriber {
 
             g.drawImage((image),x, y, width, height, null);
         }
+
+        if (slot.getText() != null && !slot.getText().equals(""))
+        {
+            g.drawString(slot.getText(), x+5, y+15);
+
+        }
     }
 
     @Override
