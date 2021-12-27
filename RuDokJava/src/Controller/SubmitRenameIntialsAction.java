@@ -6,6 +6,7 @@ import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
+import command.RenameTreeCommand;
 import observer.IPublisher;
 
 import java.awt.event.ActionEvent;
@@ -31,7 +32,8 @@ public class SubmitRenameIntialsAction extends AbstractRudokAction{
             String nameField = MainView.getIntance().getActionManager().getRenameInTreeAction().getRenameInTreeView().getNameField().getText();
             if (!nameField.equals(""))
             {
-                selection.setName(nameField);
+                MainView.getIntance().getCommandManager().addComand(new RenameTreeCommand(selection, nameField));
+                //selection.setName(nameField);
             }
             else
             {
@@ -41,7 +43,7 @@ public class SubmitRenameIntialsAction extends AbstractRudokAction{
 
             MainView.getIntance().getActionManager().getRenameInTreeAction().getRenameInTreeView().setVisible(false);
 
-            MainView.getIntance().getMyTree().refresh();
+            //MainView.getIntance().getMyTree().refresh();
         }
     }
 }
