@@ -8,9 +8,10 @@ import View.PresentationView;
 public class AddSlotState extends SlotState {
     @Override
     public void mouseClicked(int x, int y, Slide slide) {
-        Slot slot = new Slot(x, y);
+        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        Slot slot = new Slot(x, y, presentationView.getSlotType());
         slot.setPosition(x-slot.getWidth()/2,y-slot.getHeight()/2);
-        slot.setColor(((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getPickedColor());
+        slot.setColor(presentationView.getPickedColor());
         slide.addSlot(slot);
     }
 }

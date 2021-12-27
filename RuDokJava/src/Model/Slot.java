@@ -10,6 +10,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Slot implements IPublisher {
+    public enum type
+    {
+        Multimedia,
+        Text
+    }
 
     private List<ISubscriber> subscribers;
 
@@ -17,8 +22,9 @@ public class Slot implements IPublisher {
     private int width,height;
     private Color color;
     private Stroke stroke;
+    private type type;
 
-    public Slot(int x, int y) {
+    public Slot(int x, int y, type type) {
         this.x = x;
         this.y = y;
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;

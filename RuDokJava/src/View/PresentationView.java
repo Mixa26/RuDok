@@ -1,5 +1,6 @@
 package View;
 
+import Model.Slot;
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
 import observer.ISubscriber;
@@ -9,6 +10,7 @@ import state.SlotBorderWidth.BorderWidthStateManager;
 import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.SlotState.StateMouseMotionListener;
+import state.SlotTypeState.SlotTypeStateManager;
 import state.State;
 import state.StateManager;
 
@@ -36,6 +38,8 @@ public class PresentationView extends JPanel implements ISubscriber {
     private SlotStateManager slotStateManager;
     private StrokeStateManager strokeStateManager;
     private BorderWidthStateManager borderWidthStateManager;
+    private SlotTypeStateManager slotTypeStateManager;
+
     private JButton endSlideShowView;
     private JButton addSlot;
     private JButton deleteSlot;
@@ -43,6 +47,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     private JButton switchStroke;
     private JButton switchBorder;
     private JButton colorPick;
+    private JButton changeSlotType;
     private JToolBar myToolBar;
 
     private float strokeWidth;
@@ -50,6 +55,7 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     ColorPickerView colorPickerView;
     private Color pickedColor;
+    private Slot.type slotType;
 
     int slideSeparationHeight;
 
@@ -60,6 +66,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         colorPickerView = new ColorPickerView();
         pickedColor = new Color(255, 255, 255, 100);
         strokeWidth = 1.0f;
+        slotType = Slot.type.Text;
 
         this.presentation = presentation;
         this.presentation.addSubscriber(this);
@@ -69,6 +76,8 @@ public class PresentationView extends JPanel implements ISubscriber {
         slotStateManager = new SlotStateManager();
         strokeStateManager = new StrokeStateManager();
         borderWidthStateManager = new BorderWidthStateManager();
+        slotTypeStateManager = new SlotTypeStateManager();
+
         myToolBar = new JToolBar();
 
         childrenView = new ArrayList<SlideView>();
@@ -142,6 +151,8 @@ public class PresentationView extends JPanel implements ISubscriber {
         switchBorder.setText("");
         colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
         colorPick.setText("");
+        changeSlotType = new JButton(MainView.getIntance().getActionManager().getChangeSlotTypeState());
+        changeSlotType.setText("");
 
         myToolBar.add(endSlideShowView, "North");
         myToolBar.add(addSlot, "North");
@@ -150,6 +161,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         myToolBar.add(switchStroke, "North");
         myToolBar.add(switchBorder, "North");
         myToolBar.add(colorPick, "North");
+        myToolBar.add(changeSlotType, "North");
         main.add(myToolBar, BorderLayout.NORTH);
 
         main.add(jScrollPaneR, BorderLayout.CENTER);
@@ -358,6 +370,21 @@ public class PresentationView extends JPanel implements ISubscriber {
         return borderWidthStateManager.getCurrentState();
     }
 
+    public void startMultimediaState()
+    {
+        slotTypeStateManager.setMultimediaState();
+    }
+
+    public void startTextState()
+    {
+        slotTypeStateManager.setTextState();
+    }
+
+    public State getSlotTypeState()
+    {
+        return slotTypeStateManager.getCurrentState();
+    }
+
     public Presentation getPresentation() {
         return presentation;
     }
@@ -412,5 +439,13 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
+    }
+
+    public Slot.type getSlotType() {
+        return slotType;
+    }
+
+    public void setSlotType(Slot.type slotType) {
+        this.slotType = slotType;
     }
 }

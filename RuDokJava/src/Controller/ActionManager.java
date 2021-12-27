@@ -21,6 +21,7 @@ public class ActionManager {
     private SwitchSlotWidthAction switchSlotWidthAction;
     private OpenColorPickerAction openColorPickerAction;
     private SumbitColorAction submitColorAction;
+    private ChangeSlotTypeState changeSlotTypeState;
 
     private NewProjectAction newProjectAction;
     private NewPresentationAction newPresentationAction;
@@ -52,6 +53,7 @@ public class ActionManager {
         switchSlotWidthAction = new SwitchSlotWidthAction();
         openColorPickerAction = new OpenColorPickerAction();
         submitColorAction = new SumbitColorAction();
+        changeSlotTypeState = new ChangeSlotTypeState();
 
         newProjectAction = new NewProjectAction();
         newPresentationAction = new NewPresentationAction();
@@ -140,5 +142,9 @@ public class ActionManager {
 
     public RedoAction getRedoAction() {
         return redoAction;
+    }
+
+    public ChangeSlotTypeState getChangeSlotTypeState() {
+        return changeSlotTypeState;
     }
 }
