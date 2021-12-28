@@ -8,6 +8,8 @@ public class ActionManager {
     private OpenFileChooserAction openFileChooserAction;
     private SubmitRenameIntialsAction submitRenameIntialsAction;
     private RenameInTreeAction renameInTreeAction;
+    private SharePresentationAction sharePresentationAction;
+    private SubmitSharePresentation submitSharePresentation;
     private DeleteAction deleteAction;
     private UndoAction undoAction;
     private RedoAction redoAction;
@@ -41,6 +43,8 @@ public class ActionManager {
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
         openFileChooserAction = new OpenFileChooserAction();
         submitRenameIntialsAction = new SubmitRenameIntialsAction();
+        sharePresentationAction = new SharePresentationAction();
+        submitSharePresentation = new SubmitSharePresentation();
         deleteAction = new DeleteAction();
         undoAction = new UndoAction();
         redoAction = new RedoAction();
@@ -158,5 +162,13 @@ public class ActionManager {
 
     public SlotAddTextAction getSlotAddTextAction() {
         return slotAddTextAction;
+    }
+
+    public SharePresentationAction getSharePresentationAction() {
+        return sharePresentationAction;
+    }
+
+    public SubmitSharePresentation getSubmitSharePresentation() {
+        return submitSharePresentation;
     }
 }

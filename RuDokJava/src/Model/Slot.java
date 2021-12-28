@@ -7,6 +7,7 @@ import observer.IPublisher;
 import observer.ISubscriber;
 import observer.NotifyType;
 
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;

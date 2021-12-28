@@ -14,7 +14,7 @@ import java.io.File;
 public class EditSlotContentAction extends AbstractRudokAction{
     public EditSlotContentAction() {
         putValue(NAME, "Edit slot content");
-        putValue(SMALL_ICON, loadIcon("images/editPresentation.png"));
+        putValue(SMALL_ICON, loadIcon("images/editSlot.png"));
         putValue(SHORT_DESCRIPTION, "Edit content of a slot depending on it's type.");
     }
 

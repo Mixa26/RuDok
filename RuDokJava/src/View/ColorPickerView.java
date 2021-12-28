@@ -17,6 +17,7 @@ public class ColorPickerView extends JDialog {
         Toolkit kit = Toolkit.getDefaultToolkit();
         setSize(new Dimension((int)kit.getScreenSize().getWidth() / 3,(int)kit.getScreenSize().getHeight() / 2));
         setLocationRelativeTo(MainView.getIntance());
+        setTitle("Color picker");
 
         add(jColorChooser, BorderLayout.NORTH);
         add(submitColor, BorderLayout.SOUTH);

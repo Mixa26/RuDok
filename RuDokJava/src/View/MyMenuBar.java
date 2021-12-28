@@ -8,6 +8,8 @@ public class MyMenuBar extends JMenuBar {
     private JMenu fileMenu;
     private JMenu New;
     private JMenu editMenu;
+    private JMenuItem redo;
+    private JMenuItem undo;
     private JMenuItem editPresentation;
     private JMenuItem rename;
     private JMenuItem delete;
@@ -20,6 +22,10 @@ public class MyMenuBar extends JMenuBar {
         fileMenu = new JMenu("File");
         New = new JMenu("New");
         editMenu = new JMenu("Edit");
+        redo = new JMenuItem(MainView.getIntance().getActionManager().getRedoAction());
+        redo.setIcon(null);
+        undo = new JMenuItem(MainView.getIntance().getActionManager().getUndoAction());
+        undo.setIcon(null);
         editPresentation = new JMenuItem(MainView.getIntance().getActionManager().getEditPresentationAction());
         editPresentation.setIcon(null);
         rename = new JMenuItem(MainView.getIntance().getActionManager().getRenameInTreeAction());
@@ -37,6 +43,8 @@ public class MyMenuBar extends JMenuBar {
             New.add(MainView.getIntance().getActionManager().getNewSlideAction());
             fileMenu.add(New);
         add(fileMenu);
+            editMenu.add(redo);
+            editMenu.add(undo);
             editMenu.add(editPresentation);
             editMenu.add(rename);
             editMenu.add(delete);

@@ -24,7 +24,8 @@ public class ErrorFactory implements IPublisher {
         SwitchToSlideShowError,
         NoPresentationSlideShowError,
         WorkSpaceRename,
-        EditSlotError
+        EditSlotError,
+        NoPresentationSelected
     }
 
     public ErrorFactory() {
@@ -76,6 +77,10 @@ public class ErrorFactory implements IPublisher {
         else if (errorType == ErrorType.EditSlotError)
         {
             error = new NoSlotSelectedError();
+        }
+        else if (errorType == ErrorType.NoPresentationSelected)
+        {
+            error = new NoPresentationSelectedError();
         }
 
         notifySubscribers(error, NotifyType.Error);

@@ -36,6 +36,8 @@ public class MainView extends JFrame implements ISubscriber {
 
     private JPanel all;
 
+    private SharePresentationView sharePresentationView;
+
     private MainView()
     {
     }
@@ -82,6 +84,8 @@ public class MainView extends JFrame implements ISubscriber {
         treeScrollPanel.setPreferredSize(new Dimension((int)screenSize.getWidth() / 10, 50));
         rightWorkArea = new RightWorkArea();
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPanel, rightWorkArea);
+
+        sharePresentationView = new SharePresentationView();
 
         //dodavanje na prozor
         setJMenuBar(myMenuBar);
@@ -145,5 +149,9 @@ public class MainView extends JFrame implements ISubscriber {
 
     public JPanel getAll() {
         return all;
+    }
+
+    public SharePresentationView getSharePresentationView() {
+        return sharePresentationView;
     }
 }

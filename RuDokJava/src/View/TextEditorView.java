@@ -8,6 +8,8 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.AttributedCharacterIterator;
+import java.util.Iterator;
 
 public class TextEditorView extends JDialog {
 
@@ -30,9 +32,10 @@ public class TextEditorView extends JDialog {
         italicEnabled = false;
         underlineEnabled = false;
 
-        setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/ 8, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()/ 8));
+        setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/ 6, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()/ 6));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(MainView.getIntance());
+        setTitle("Text editor");
 
         jToolBar = new JToolBar();
 

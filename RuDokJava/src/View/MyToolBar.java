@@ -10,6 +10,7 @@ public class MyToolBar extends JToolBar {
     private JButton NewSlide;
     private JButton rename;
     private JButton editPresentation;
+    private JButton sharePresentation;
     private JButton delete;
     private JButton undoAction;
     private JButton redoAction;
@@ -24,6 +25,7 @@ public class MyToolBar extends JToolBar {
         NewSlide = new JButton(MainView.getIntance().getActionManager().getNewSlideAction());
         rename = new JButton(MainView.getIntance().getActionManager().getRenameInTreeAction());
         editPresentation = new JButton(MainView.getIntance().getActionManager().getEditPresentationAction());
+        sharePresentation = new JButton(MainView.getIntance().getActionManager().getSharePresentationAction());
         delete = new JButton(MainView.getIntance().getActionManager().getDeleteAction());
         undoAction = new JButton(MainView.getIntance().getActionManager().getUndoAction());
         redoAction = new JButton(MainView.getIntance().getActionManager().getRedoAction());
@@ -33,6 +35,7 @@ public class MyToolBar extends JToolBar {
         NewPrezentation.setText("");
         NewSlide.setText("");
         editPresentation.setText("");
+        sharePresentation.setText("");
         rename.setText("");
         delete.setText("");
         undoAction.setText("");
@@ -44,6 +47,7 @@ public class MyToolBar extends JToolBar {
         add(NewPrezentation);
         add(NewSlide);
         add(editPresentation);
+        add(sharePresentation);
         add(rename);
         add(delete);
         add(undoAction);

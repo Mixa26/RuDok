@@ -14,25 +14,22 @@ import java.io.File;
 public class MultimediaEditorView extends JDialog {
     private JButton open;
     private JButton submit;
-    private int x;
-    private int y;
     private File file;
-    private JPanel buttons;
+    private JToolBar buttons;
     private JPanel picture;
     private String imagePreview;
     private Slot slot;
 
     public MultimediaEditorView() {
-        setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 7, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 4));
-        x = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 50;
-        y = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 50;
+        setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 5, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 4));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(MainView.getIntance());
+        setTitle("Picture selector");
         setLayout(new BorderLayout());
 
-        buttons = new JPanel();
+        buttons = new JToolBar();
+        buttons.setFloatable(false);
         picture = new JPanel();
-        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
 
         open = new JButton("Open");
 
@@ -70,10 +67,8 @@ public class MultimediaEditorView extends JDialog {
 
         buttons.add(open);
         buttons.add(submit);
-
-        add(picture, BorderLayout.WEST);
-
-        add(buttons, BorderLayout.EAST);
+        add(buttons, BorderLayout.NORTH);
+        add(picture, BorderLayout.CENTER);
     }
 
     @Override
@@ -84,7 +79,7 @@ public class MultimediaEditorView extends JDialog {
         {
             Image image = new ImageIcon(imagePreview).getImage();
 
-            g.drawImage((image), x, y, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 13, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 13, null);
+            g.drawImage((image), 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/17 , getWidth(), getHeight()-(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/17, null);
         }
     }
 
