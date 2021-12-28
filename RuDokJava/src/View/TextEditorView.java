@@ -26,6 +26,10 @@ public class TextEditorView extends JDialog {
     private JButton submitText;
 
     public TextEditorView() {
+        boldEnabled = false;
+        italicEnabled = false;
+        underlineEnabled = false;
+
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/ 8, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()/ 8));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(MainView.getIntance());
@@ -38,21 +42,20 @@ public class TextEditorView extends JDialog {
         bold.setIcon(new ImageIcon("RuDokJava/src/Controller/images/bold.png"));
         bold.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 if (boldEnabled)
                 {
                     boldEnabled = false;
-                    StyleConstants.setBold(attributeSet, true);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     bold.setIcon(new ImageIcon("RuDokJava/src/Controller/images/bold.png"));
                 }
                 else
                 {
                     boldEnabled = true;
-                    StyleConstants.setBold(attributeSet, false);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     bold.setIcon(new ImageIcon("RuDokJava/src/Controller/images/boldEnabled.png"));
                 }
+                StyleConstants.setBold(attributeSet, boldEnabled);
+                jTextPane.setCharacterAttributes(attributeSet,true);
             }
         });
 
@@ -60,21 +63,20 @@ public class TextEditorView extends JDialog {
         italic.setIcon(new ImageIcon("RuDokJava/src/Controller/images/italic.png"));
         italic.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 if (italicEnabled)
                 {
                     italicEnabled = false;
-                    StyleConstants.setItalic(attributeSet, true);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     italic.setIcon(new ImageIcon("RuDokJava/src/Controller/images/italic.png"));
                 }
                 else
                 {
                     italicEnabled = true;
-                    StyleConstants.setItalic(attributeSet, false);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     italic.setIcon(new ImageIcon("RuDokJava/src/Controller/images/italicEnabled.png"));
                 }
+                StyleConstants.setItalic(attributeSet, italicEnabled);
+                jTextPane.setCharacterAttributes(attributeSet,true);
             }
         });
 
@@ -82,27 +84,22 @@ public class TextEditorView extends JDialog {
         underline.setIcon(new ImageIcon("RuDokJava/src/Controller/images/underline.png"));
         underline.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 if (underlineEnabled)
                 {
                     underlineEnabled = false;
-                    StyleConstants.setUnderline(attributeSet, true);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     underline.setIcon(new ImageIcon("RuDokJava/src/Controller/images/underline.png"));
                 }
                 else
                 {
                     underlineEnabled = true;
-                    StyleConstants.setUnderline(attributeSet, false);
-                    jTextPane.setCharacterAttributes(attributeSet,true);
                     underline.setIcon(new ImageIcon("RuDokJava/src/Controller/images/underlineEnabled.png"));
                 }
+                StyleConstants.setUnderline(attributeSet, underlineEnabled);
+                jTextPane.setCharacterAttributes(attributeSet,true);
             }
         });
-
-        boldEnabled = false;
-        italicEnabled = false;
-        underlineEnabled = false;
 
         jToolBar.add(bold);
         jToolBar.add(italic);
