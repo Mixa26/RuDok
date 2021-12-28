@@ -69,7 +69,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
                 childrenView.add(presentationView);
                 //((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(presentationView);
                 ((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(this);
-                if (((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() == MainView.getIntance().getRightWorkArea().getProject())
+                if ((Project)notification == MainView.getIntance().getRightWorkArea().getProject())
                 {
                     jTabbedPane.addTab(((Project) notification).getChildren().get(index).getName(), presentationView);
                 }

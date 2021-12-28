@@ -265,6 +265,30 @@ public class PresentationView extends JPanel implements ISubscriber {
                 childrenViewL.add(slideViewL);
                 leftSlider.add(slideViewL);
                 leftSlider.add(Box.createVerticalStrut(slideSeparationHeight));
+
+                for (SlideView slideViewa : childrenView) {
+                    //update za redne brojeve slajdova na viewu
+                    int indexa = childrenView.indexOf(slideViewa);
+                    slideViewa.getSlide().setOrdinalNumber(indexa+1);
+                    slideViewa.setOrdinalNumber(indexa+1);
+                    slideViewa.repaint();
+                }
+
+                for (SlideView slideViewLa : childrenViewL) {
+                    slideViewLa.setOrdinalNumber(slideViewLa.getSlide().getOrdinalNumber());
+
+                }
+
+                for(SlideView slideViewSlideShowa : childrenViewSlideShow)
+                {
+                    slideViewSlideShowa.setOrdinalNumber(slideViewSlideShowa.getSlide().getOrdinalNumber());
+                }
+
+                if (ssv!=null)
+                {
+                    ssv.validate();
+                }
+                validate();
             }
             else if (type == NotifyType.EditPresentation)
             {
