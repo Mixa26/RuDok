@@ -17,11 +17,13 @@ public class SharePresentationView extends JDialog {
     public Project sharedProject;
 
     public SharePresentationView() {
+        super(MainView.getIntance(),"Share a presentation with",true);
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 8, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 7));
         setLocationRelativeTo(MainView.getIntance());
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setTitle("Share a presentation with");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setAlwaysOnTop(true);
+
 
         scrollProjects = new JPanel();
         scrollProjects.setLayout(new BoxLayout(scrollProjects, BoxLayout.Y_AXIS));
