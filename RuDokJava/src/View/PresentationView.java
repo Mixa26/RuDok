@@ -59,6 +59,7 @@ public class PresentationView extends JPanel implements ISubscriber {
     private Slot.type slotType;
     private Slot slotSelected;
     TextEditorView textEditorView;
+    MultimediaEditorView multimediaEditorView;
 
     int slideSeparationHeight;
 
@@ -71,6 +72,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         strokeWidth = 1.0f;
         slotType = Slot.type.Text;
         textEditorView = new TextEditorView();
+        multimediaEditorView = new MultimediaEditorView();
 
         this.presentation = presentation;
         this.presentation.addSubscriber(this);
@@ -469,5 +471,9 @@ public class PresentationView extends JPanel implements ISubscriber {
 
     public TextEditorView getTextEditorView() {
         return textEditorView;
+    }
+
+    public MultimediaEditorView getMultimediaEditorView() {
+        return multimediaEditorView;
     }
 }

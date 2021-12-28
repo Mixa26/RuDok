@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Slot;
 import View.MainView;
+import View.MultimediaEditorView;
 import View.PresentationView;
 import View.TextEditorView;
 import View.userErrorHandler.ErrorFactory;
@@ -36,15 +37,16 @@ public class EditSlotContentAction extends AbstractRudokAction{
             }
             else
             {
-                JFileChooser jFileChooser = new JFileChooser();
-                int response = jFileChooser.showOpenDialog(MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView());
-
-                if (response == JFileChooser.APPROVE_OPTION)
-                {
-                    File file = new File(jFileChooser.getSelectedFile().getAbsolutePath());
-
-                    presentationView.getSlotSelected().getSlotHandler().setContent(file.toString());
-                }
+                presentationView.getMultimediaEditorView().setVisible(true);
+//                JFileChooser jFileChooser = new JFileChooser();
+//                int response = jFileChooser.showOpenDialog(MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView());
+//
+//                if (response == JFileChooser.APPROVE_OPTION)
+//                {
+//                    File file = new File(jFileChooser.getSelectedFile().getAbsolutePath());
+//
+//                    presentationView.getSlotSelected().getSlotHandler().setContent(file.toString());
+//                }
             }
         }
         else
