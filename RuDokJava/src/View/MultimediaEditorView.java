@@ -1,5 +1,9 @@
 package View;
 
+import Model.Slot;
+import View.userErrorHandler.ErrorFactory;
+import View.userErrorHandler.InvalidImageError;
+
 import javax.swing.*;
 import javax.tools.Tool;
 import java.awt.*;
@@ -13,16 +17,25 @@ public class MultimediaEditorView extends JDialog {
     private int x;
     private int y;
     private File file;
+    private JPanel buttons;
+    private JPanel picture;
+    private String imagePreview;
+    private Slot slot;
 
     public MultimediaEditorView() {
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 7, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 4));
-        x = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 20;
-        y = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10;
+        x = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 50;
+        y = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 50;
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(MainView.getIntance());
         setLayout(new BorderLayout());
 
+        buttons = new JPanel();
+        picture = new JPanel();
+        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
+
         open = new JButton("Open");
+
         open.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,7 +46,8 @@ public class MultimediaEditorView extends JDialog {
                 {
                     file = new File(jFileChooser.getSelectedFile().getAbsolutePath());
 
-
+                    imagePreview = file.toString();
+                    repaint();
                 }
             }
         });
@@ -42,12 +56,43 @@ public class MultimediaEditorView extends JDialog {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected().getSlotHandler().setContent(file.toString());
+                if (file != null)
+                {
+                    ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected().getSlotHandler().setContent(file.toString());
+                    setVisible(false);
+                }
+                else
+                {
+                    MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
+                }
             }
         });
 
-        add(open, BorderLayout.NORTH);
+        buttons.add(open);
+        buttons.add(submit);
 
-        add(submit, BorderLayout.SOUTH);
+        add(picture, BorderLayout.WEST);
+
+        add(buttons, BorderLayout.EAST);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        if (new ImageIcon(imagePreview).getImage() != null)
+        {
+            Image image = new ImageIcon(imagePreview).getImage();
+
+            g.drawImage((image), x, y, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 13, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 13, null);
+        }
+    }
+
+    public void setSlot(Slot slot) {
+        this.slot = slot;
+    }
+
+    public void setImagePreview(String imagePreview) {
+        this.imagePreview = imagePreview;
     }
 }

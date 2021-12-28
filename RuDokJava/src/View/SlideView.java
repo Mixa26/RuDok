@@ -24,9 +24,9 @@ public class SlideView extends JPanel implements ISubscriber {
 
     private JLabel ordinalNumber;
 
-    public SlideView(Slide slide, boolean mini) {
+    public SlideView(Slide slide, boolean mini, boolean slideShow) {
         this.mini = mini;
-        slideShow = false;
+        this.slideShow = slideShow;
         this.slide = slide;
         setBackground(Color.LIGHT_GRAY);
         setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));

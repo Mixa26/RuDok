@@ -33,10 +33,10 @@ public class EditSlotContentAction extends AbstractRudokAction{
                     presentationView.getTextEditorView().getjTextPane().setText("");
                 }
                 presentationView.getTextEditorView().setVisible(true);
-                //TODO edit teksta ovde uz oslonac na JTEXTPANE
             }
             else
             {
+                presentationView.getMultimediaEditorView().setImagePreview(presentationView.getSlotSelected().getContent());
                 presentationView.getMultimediaEditorView().setVisible(true);
 //                JFileChooser jFileChooser = new JFileChooser();
 //                int response = jFileChooser.showOpenDialog(MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView());

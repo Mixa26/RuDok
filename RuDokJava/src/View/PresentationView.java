@@ -116,7 +116,7 @@ public class PresentationView extends JPanel implements ISubscriber {
         for (int i = 0; i < presentation.getChildren().size(); i++)
         {
             Slide slide = (Slide)presentation.getChildren().get(i);
-            SlideView slideView = new SlideView(slide, false);
+            SlideView slideView = new SlideView(slide, false, false);
             slide.addSubscriber(slideView);
             slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
             slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
@@ -125,12 +125,12 @@ public class PresentationView extends JPanel implements ISubscriber {
             rightSlider.add(slideView);
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-            SlideView slideViewSlideShow = new SlideView(slide, false);
+            SlideView slideViewSlideShow = new SlideView(slide, false, true);
             slideViewSlideShow.setSlideShow(true);
             slide.addSubscriber(slideViewSlideShow);
             childrenViewSlideShow.add(slideViewSlideShow);
 
-            SlideView slideViewL = new SlideView(slide, true);
+            SlideView slideViewL = new SlideView(slide, true, false);
             slide.addSubscriber(slideViewL);
             slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
             slideViewL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
@@ -187,7 +187,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 Iterator<SlideView> iterator = childrenView.iterator();
                 while (iterator.hasNext()) {
                     SlideView curr = (SlideView) iterator.next();
-                    if ((curr).compareTo(new SlideView((Slide) notification, false))) {
+                    if ((curr).compareTo(new SlideView((Slide) notification, false, false))) {
                         int index = childrenView.indexOf(curr);
                         index = index * 2 + 2;
                         //rightSlider.remove(index);
@@ -238,7 +238,7 @@ public class PresentationView extends JPanel implements ISubscriber {
             {
                 int index = ((Presentation) notification).getChildren().size() - 1;
                 Slide slide = (Slide) presentation.getChildren().get(index);
-                SlideView slideView = new SlideView(slide, false);
+                SlideView slideView = new SlideView(slide, false, false);
                 slide.addSubscriber(slideView);
                 slideView.setBorder(BorderFactory.createLineBorder(Color.white, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 100)));
                 slideView.addMouseListener(new StateMouseListener(slideView.getSlide()));
@@ -247,7 +247,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 rightSlider.add(slideView);
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
-                SlideView slideViewSlideShow = new SlideView(slide, false);
+                SlideView slideViewSlideShow = new SlideView(slide, false, true);
                 slideViewSlideShow.setSlideShow(true);
                 slide.addSubscriber(slideViewSlideShow);
                 childrenViewSlideShow.add(slideViewSlideShow);
@@ -256,7 +256,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                     ssv.getSlideShow().add(slideViewSlideShow);
                 }
 
-                SlideView slideViewL = new SlideView(slide, true);
+                SlideView slideViewL = new SlideView(slide, true, false);
                 slideViewL.setMini(true);
                 slide.addSubscriber(slideViewL);
                 slideViewL.setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 10), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 10));
