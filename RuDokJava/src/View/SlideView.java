@@ -17,6 +17,7 @@ public class SlideView extends JPanel implements ISubscriber {
     private List<SlotView> slotViews;
 
     private boolean mini;
+    private boolean slideShow;
 
     private final int width = (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3);
     private final int height = (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3);
@@ -25,6 +26,7 @@ public class SlideView extends JPanel implements ISubscriber {
 
     public SlideView(Slide slide, boolean mini) {
         this.mini = mini;
+        slideShow = false;
         this.slide = slide;
         setBackground(Color.LIGHT_GRAY);
         setMaximumSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 3));
@@ -43,6 +45,10 @@ public class SlideView extends JPanel implements ISubscriber {
                 slotView.setWidth(slotView.getSlot().getWidth()/3);
                 slotView.setX(slotView.getSlot().getX()/3-5);
                 slotView.setY(slotView.getSlot().getY()/3-5);
+            }
+            else if (slideShow)
+            {
+                slotView.setSlideShow(true);
             }
             slot.addSubscriber(slotView);
             slotViews.add(slotView);
@@ -93,6 +99,10 @@ public class SlideView extends JPanel implements ISubscriber {
                     slotView.setWidth(slotView.getSlot().getWidth()/3);
                     slotView.setX(slotView.getSlot().getX()/3-5);
                     slotView.setY(slotView.getSlot().getY()/3-5);
+                }
+                else if (slideShow)
+                {
+                    slotView.setSlideShow(true);
                 }
                 ((Slot) notification).addSubscriber(slotView);
                 ((Slot) notification).addSubscriber(this);
@@ -148,4 +158,7 @@ public class SlideView extends JPanel implements ISubscriber {
         this.mini = mini;
     }
 
+    public void setSlideShow(boolean slideShow) {
+        this.slideShow = slideShow;
+    }
 }

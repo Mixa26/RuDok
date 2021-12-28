@@ -1,9 +1,12 @@
 package View.treeSwingGUI.view;
 
+import Model.treeModel.RuNode;
+import Model.treeModel.RuNodeComposite;
 import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
+import command.RenameTreeCommand;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -63,7 +66,8 @@ public class TreeCellEditor extends DefaultTreeCellEditor implements ActionListe
             }
             else
             {
-                ((MyTreeNode)object).getNode().setName(e.getActionCommand());
+                MainView.getIntance().getCommandManager().addComand(new RenameTreeCommand(((MyTreeNode)object).getNode(), e.getActionCommand()));
+                //((MyTreeNode)object).getNode().setName(e.getActionCommand());
             }
 
         }

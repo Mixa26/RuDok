@@ -16,7 +16,7 @@ public class SlotAddTextAction extends AbstractRudokAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
-        presentationView.getSlotSelected().setText(presentationView.getTextEditorView().getjTextPane().getText());
+        presentationView.getSlotSelected().getSlotHandler().setContent(presentationView.getTextEditorView().getjTextPane().getText());
         presentationView.getTextEditorView().setVisible(false);
     }
 }

@@ -24,8 +24,8 @@ public class EditSlotContentAction extends AbstractRudokAction{
         {
             if (presentationView.getSlotSelected().getType() == Slot.type.Text)
             {
-                if (presentationView.getSlotSelected().getText() !=null) {
-                    presentationView.getTextEditorView().getjTextPane().setText(presentationView.getSlotSelected().getText());
+                if (presentationView.getSlotSelected().getSlotHandler().getContent() !=null) {
+                    presentationView.getTextEditorView().getjTextPane().setText(presentationView.getSlotSelected().getSlotHandler().getContent());
                 }
                 else
                 {
@@ -43,7 +43,7 @@ public class EditSlotContentAction extends AbstractRudokAction{
                 {
                     File file = new File(jFileChooser.getSelectedFile().getAbsolutePath());
 
-                    presentationView.getSlotSelected().setImage(file.toString());
+                    presentationView.getSlotSelected().getSlotHandler().setContent(file.toString());
                 }
             }
         }

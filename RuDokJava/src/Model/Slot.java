@@ -1,5 +1,8 @@
 package Model;
 
+import Model.slotHandler.MultimediaSlotHandler;
+import Model.slotHandler.SlotHandler;
+import Model.slotHandler.TextSlotHandler;
 import observer.IPublisher;
 import observer.ISubscriber;
 import observer.NotifyType;
@@ -17,15 +20,16 @@ public class Slot implements IPublisher {
         Text
     }
 
+    private SlotHandler slotHandler;
+
     private List<ISubscriber> subscribers;
 
     private int x,y;
     private int width,height;
     private Color color;
     private Stroke stroke;
-    private type type;
-    private String image;
-    private String text;
+    private type typeC;
+    private String content;
 
     public Slot(int x, int y, type type) {
         this.x = x;
@@ -33,7 +37,15 @@ public class Slot implements IPublisher {
         width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 21;
         height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 21;
         color = new Color(255, 255, 255, 100);
-        this.type = type;
+        this.typeC = type;
+        if (type == Slot.type.Text)
+        {
+            slotHandler = new TextSlotHandler(this);
+        }
+        else
+        {
+            slotHandler = new MultimediaSlotHandler(this);
+        }
     }
 
     public boolean elementAt(int x, int y)
@@ -118,24 +130,18 @@ public class Slot implements IPublisher {
     }
 
     public Slot.type getType() {
-        return type;
+        return typeC;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-        notifySubscribers(this, NotifyType.EditSlot);
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getImage() {
-        return image;
+    public String getContent() {
+        return content;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-        notifySubscribers(this, NotifyType.EditSlot);
+    public SlotHandler getSlotHandler() {
+        return slotHandler;
     }
 }

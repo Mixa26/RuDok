@@ -124,6 +124,7 @@ public class PresentationView extends JPanel implements ISubscriber {
             //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
             SlideView slideViewSlideShow = new SlideView(slide, false);
+            slideViewSlideShow.setSlideShow(true);
             slide.addSubscriber(slideViewSlideShow);
             childrenViewSlideShow.add(slideViewSlideShow);
 
@@ -245,6 +246,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 //rightSlider.add(Box.createVerticalStrut(slideSeparationHeight));
 
                 SlideView slideViewSlideShow = new SlideView(slide, false);
+                slideViewSlideShow.setSlideShow(true);
                 slide.addSubscriber(slideViewSlideShow);
                 childrenViewSlideShow.add(slideViewSlideShow);
                 if (ssv != null)

@@ -20,9 +20,11 @@ public class SlotView implements ISubscriber {
     Stroke stroke;
 
     boolean mini;
+    boolean slideShow;
 
     public SlotView(Slot slot) {
         mini = false;
+        slideShow = false;
         this.slot = slot;
         x = slot.getX();
         y = slot.getY();
@@ -40,17 +42,24 @@ public class SlotView implements ISubscriber {
         g.setStroke(stroke);
         g.drawRect(x, y, width, height);
 
-        if (new ImageIcon(slot.getImage()).getImage() != null)
-        {
-            Image image = new ImageIcon(slot.getImage()).getImage();
+        if (slideShow) {
+            if (slot.getType() == Slot.type.Multimedia)
+            {
+                if (new ImageIcon(slot.getSlotHandler().getContent()).getImage() != null)
+                {
+                    Image image = new ImageIcon(slot.getSlotHandler().getContent()).getImage();
 
-            g.drawImage((image),x, y, width, height, null);
-        }
+                    g.drawImage((image), x, y, width, height, null);
+                }
+            }
+            else
+            {
+                if (slot.getSlotHandler().getContent() != null && !slot.getSlotHandler().getContent().equals(""))
+                {
+                    g.drawString(slot.getSlotHandler().getContent(), x + 5, y + 15);
 
-        if (slot.getText() != null && !slot.getText().equals(""))
-        {
-            g.drawString(slot.getText(), x+5, y+15);
-
+                }
+            }
         }
     }
 
@@ -100,5 +109,9 @@ public class SlotView implements ISubscriber {
 
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
+    }
+
+    public void setSlideShow(boolean slideShow) {
+        this.slideShow = slideShow;
     }
 }
