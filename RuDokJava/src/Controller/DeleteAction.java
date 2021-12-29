@@ -19,26 +19,26 @@ public class DeleteAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (MainView.getIntance().getMyTree().getSelectionPath() == null)
+        if (MainView.getInstance().getMyTree().getSelectionPath() == null)
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
             return;
         }
 
-        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
+        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getInstance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
         RuNode parent;
 
         if (selection != null && !(selection instanceof WorkSpace) )
         {
             parent = selection.getParent();
-            MainView.getIntance().getCommandManager().addComand(new DeleteTreeCommand((RuNodeComposite) parent, selection));
+            MainView.getInstance().getCommandManager().addComand(new DeleteTreeCommand((RuNodeComposite) parent, selection));
             //((RuNodeComposite)parent).removeChild(selection);
-            MainView.getIntance().getMyTree().clearSelection();
-            MainView.getIntance().getMyTree().refresh();
+            MainView.getInstance().getMyTree().clearSelection();
+            MainView.getInstance().getMyTree().refresh();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.DeleteError);
         }
     }
 }

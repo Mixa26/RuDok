@@ -13,6 +13,6 @@ public class UndoAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainView.getIntance().getCommandManager().undoCommand();
+        MainView.getInstance().getCommandManager().undoCommand();
     }
 }

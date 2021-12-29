@@ -11,8 +11,8 @@ public class CommandManager {
     private int currentCommand = 0;
 
     public CommandManager() {
-        MainView.getIntance().getActionManager().getRedoAction().setEnabled(false);
-        MainView.getIntance().getActionManager().getUndoAction().setEnabled(false);
+        MainView.getInstance().getActionManager().getRedoAction().setEnabled(false);
+        MainView.getInstance().getActionManager().getUndoAction().setEnabled(false);
     }
 
     public void addComand(AbstractCommand command)
@@ -30,13 +30,13 @@ public class CommandManager {
         if (currentCommand < commands.size())
         {
             commands.get(currentCommand++).doCommmand();
-            MainView.getIntance().getActionManager().getUndoAction().setEnabled(true);
+            MainView.getInstance().getActionManager().getUndoAction().setEnabled(true);
             // ovde setuj da redo enabled u action manager
         }
 
         if (currentCommand==commands.size())
         {
-            MainView.getIntance().getActionManager().getRedoAction().setEnabled(false);
+            MainView.getInstance().getActionManager().getRedoAction().setEnabled(false);
             // ovde setuj da redo disabled u action manager
         }
     }
@@ -45,13 +45,13 @@ public class CommandManager {
     {
         if (currentCommand > 0)
         {
-            MainView.getIntance().getActionManager().getRedoAction().setEnabled(true);
+            MainView.getInstance().getActionManager().getRedoAction().setEnabled(true);
             //set enable redo u action mangeru
             commands.get(--currentCommand).undoCommand();
         }
         if (currentCommand==0)
         {
-            MainView.getIntance().getActionManager().getUndoAction().setEnabled(false);
+            MainView.getInstance().getActionManager().getUndoAction().setEnabled(false);
             //set disable redo u action manageru
         }
     }

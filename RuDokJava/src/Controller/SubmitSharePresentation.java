@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.treeModel.Presentation;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
@@ -13,7 +14,8 @@ public class SubmitSharePresentation extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainView.getIntance().getSharePresentationView().sharedProject.addChild(((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode());
-        MainView.getIntance().getSharePresentationView().setVisible(false);
+        ((Presentation)((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode()).getSharedProjects().add(MainView.getInstance().getSharePresentationView().sharedProject);
+        MainView.getInstance().getSharePresentationView().sharedProject.addChild(((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode());
+        MainView.getInstance().getSharePresentationView().setVisible(false);
     }
 }

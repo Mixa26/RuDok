@@ -1,10 +1,5 @@
 package View;
 
-import Model.treeModel.Project;
-import Model.treeModel.Slide;
-import observer.ISubscriber;
-import observer.NotifyType;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -48,7 +43,7 @@ public class SlideShowView extends JPanel {
             }
         });
 
-        for (SlideView slideViewSlideShow : ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenViewSlideShow())
+        for (SlideView slideViewSlideShow : ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getChildrenViewSlideShow())
         {
             slideShow.add(slideViewSlideShow);
         }
@@ -56,7 +51,7 @@ public class SlideShowView extends JPanel {
         //add(previous, BorderLayout.WEST);
         add(slideShow, BorderLayout.CENTER);
         //add(next, BorderLayout.EAST);
-        endSlideShowView = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
+        endSlideShowView = new JButton(MainView.getInstance().getActionManager().getSwitchEditViewStateAction());
         endSlideShowView.setText("");
 
         myToolBar.add(endSlideShowView, "North");

@@ -22,25 +22,25 @@ public class MyMenuBar extends JMenuBar {
         fileMenu = new JMenu("File");
         New = new JMenu("New");
         editMenu = new JMenu("Edit");
-        redo = new JMenuItem(MainView.getIntance().getActionManager().getRedoAction());
+        redo = new JMenuItem(MainView.getInstance().getActionManager().getRedoAction());
         redo.setIcon(null);
-        undo = new JMenuItem(MainView.getIntance().getActionManager().getUndoAction());
+        undo = new JMenuItem(MainView.getInstance().getActionManager().getUndoAction());
         undo.setIcon(null);
-        editPresentation = new JMenuItem(MainView.getIntance().getActionManager().getEditPresentationAction());
+        editPresentation = new JMenuItem(MainView.getInstance().getActionManager().getEditPresentationAction());
         editPresentation.setIcon(null);
-        rename = new JMenuItem(MainView.getIntance().getActionManager().getRenameInTreeAction());
+        rename = new JMenuItem(MainView.getInstance().getActionManager().getRenameInTreeAction());
         rename.setIcon(null);
-        delete = new JMenuItem(MainView.getIntance().getActionManager().getDeleteAction());
+        delete = new JMenuItem(MainView.getInstance().getActionManager().getDeleteAction());
         delete.setIcon(null);
         helpMenu = new JMenu("Help");
-        info = new JMenuItem(MainView.getIntance().getActionManager().getInfoAction());
+        info = new JMenuItem(MainView.getInstance().getActionManager().getInfoAction());
         info.setIcon(null);
 
         //dodavanje
             //sadrzaj padajuceg menija File
-            New.add(MainView.getIntance().getActionManager().getNewProjectAction());
-            New.add(MainView.getIntance().getActionManager().getNewPresentationAction());
-            New.add(MainView.getIntance().getActionManager().getNewSlideAction());
+            New.add(MainView.getInstance().getActionManager().getNewProjectAction());
+            New.add(MainView.getInstance().getActionManager().getNewPresentationAction());
+            New.add(MainView.getInstance().getActionManager().getNewSlideAction());
             fileMenu.add(New);
         add(fileMenu);
             editMenu.add(redo);

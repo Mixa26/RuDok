@@ -1,7 +1,5 @@
 package View;
 
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,10 +11,10 @@ public class ColorPickerView extends JDialog {
     public ColorPickerView()
     {
         setLayout(new BorderLayout());
-        submitColor = new JButton(MainView.getIntance().getActionManager().getSubmitColorAction());
+        submitColor = new JButton(MainView.getInstance().getActionManager().getSubmitColorAction());
         Toolkit kit = Toolkit.getDefaultToolkit();
         setSize(new Dimension((int)kit.getScreenSize().getWidth() / 3,(int)kit.getScreenSize().getHeight() / 2));
-        setLocationRelativeTo(MainView.getIntance());
+        setLocationRelativeTo(MainView.getInstance());
         setTitle("Color picker");
 
         add(jColorChooser, BorderLayout.NORTH);

@@ -16,6 +16,6 @@ public class InfoAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new InfoView(MainView.getIntance(),"Info", true);
+        new InfoView(MainView.getInstance(),"Info", true);
     }
 }

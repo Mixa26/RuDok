@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class RenameInTreeAction extends AbstractRudokAction{
 
-    private RenameInTreeView renameInTreeView = new RenameInTreeView(MainView.getIntance(), "Rename", true);
+    private RenameInTreeView renameInTreeView = new RenameInTreeView(MainView.getInstance(), "Rename", true);
 
     public RenameInTreeAction()
     {
@@ -21,16 +21,16 @@ public class RenameInTreeAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((MainView.getIntance().getMyTree().getSelectionPath()) == null)
+        if ((MainView.getInstance().getMyTree().getSelectionPath()) == null)
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
             return;
         }
 
-        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
+        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getInstance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
         if (selection instanceof WorkSpace)
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
         }
         else
         {
@@ -40,7 +40,7 @@ public class RenameInTreeAction extends AbstractRudokAction{
             }
             else
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
             }
         }
     }

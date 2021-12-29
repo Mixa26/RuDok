@@ -17,12 +17,12 @@ public class RenameTreeCommand extends AbstractCommand{
     @Override
     public void doCommmand() {
         selection.setName(name);
-        MainView.getIntance().getMyTree().refresh();
+        MainView.getInstance().getMyTree().refresh();
     }
 
     @Override
     public void undoCommand() {
         selection.setName(oldName);
-        MainView.getIntance().getMyTree().refresh();
+        MainView.getInstance().getMyTree().refresh();
     }
 }

@@ -8,7 +8,7 @@ public class SmallBorderState implements State {
     float width = 1.0f;
     @Override
     public void changeState() {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         presentationView.startMediumBorderState();
         presentationView.setStrokeWidth(((MediumBorderState)presentationView.getBorderState()).getWidth());
         presentationView.getStrokeState().changeState();

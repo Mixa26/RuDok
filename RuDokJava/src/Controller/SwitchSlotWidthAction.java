@@ -10,7 +10,7 @@ public class SwitchSlotWidthAction extends AbstractRudokAction{
 
     public SwitchSlotWidthAction() {
         putValue(SMALL_ICON, loadIcon("images/smallBorder.png"));
-        putValue(SHORT_DESCRIPTION, "Switch width of a slots border");
+        putValue(SHORT_DESCRIPTION, "Switch border width of slot to be created.");
     }
 
     @Override
@@ -20,7 +20,7 @@ public class SwitchSlotWidthAction extends AbstractRudokAction{
         {
             i=0;
         }
-        ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getBorderState().changeState();
+        ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getBorderState().changeState();
         switch (i)
         {
             case 0:

@@ -9,7 +9,7 @@ import View.treeSwingGUI.model.MyTreeNode;
 import java.awt.event.ActionEvent;
 
 public class EditPresentationAction extends AbstractRudokAction {
-    private final EditPresentationView editPresentationView = new EditPresentationView(MainView.getIntance(), "Edit presentation", true);
+    private final EditPresentationView editPresentationView = new EditPresentationView(MainView.getInstance(), "Edit presentation", true);
 
     public EditPresentationAction()
     {
@@ -20,12 +20,12 @@ public class EditPresentationAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (MainView.getIntance().getMyTree().getSelectionPath() != null && ((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Presentation) {
+        if (MainView.getInstance().getMyTree().getSelectionPath() != null && ((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Presentation) {
             editPresentationView.setVisible();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
         }
     }
 

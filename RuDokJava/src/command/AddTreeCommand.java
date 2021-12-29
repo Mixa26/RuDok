@@ -1,11 +1,13 @@
 package command;
 
 import Model.treeModel.Presentation;
+import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import Model.treeModel.RuNodeComposite;
 import View.MainView;
 
-import javax.swing.tree.TreePath;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddTreeCommand extends AbstractCommand{
     RuNodeComposite selection;
@@ -19,12 +21,23 @@ public class AddTreeCommand extends AbstractCommand{
     @Override
     public void doCommmand() {
         selection.addChild(current);
-        MainView.getIntance().getMyTree().refresh();
+//        if (current instanceof Presentation)
+//        {
+//            if (!((Presentation) current).getSharedProjects().isEmpty())
+//            {
+//                for (Project project : ((Presentation) current).getSharedProjects())
+//                {
+//                    project.addChild(current);
+//                }
+//            }
+//        }
+        MainView.getInstance().getMyTree().refresh();
     }
 
     @Override
     public void undoCommand() {
         selection.removeChild(current);
-        MainView.getIntance().getMyTree().refresh();
+        MainView.getInstance().getMyTree().refresh();
     }
+
 }

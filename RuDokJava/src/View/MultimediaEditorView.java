@@ -2,10 +2,8 @@ package View;
 
 import Model.Slot;
 import View.userErrorHandler.ErrorFactory;
-import View.userErrorHandler.InvalidImageError;
 
 import javax.swing.*;
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +21,7 @@ public class MultimediaEditorView extends JDialog {
     public MultimediaEditorView() {
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 5, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 4));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setLocationRelativeTo(MainView.getIntance());
+        setLocationRelativeTo(MainView.getInstance());
         setTitle("Picture selector");
         setLayout(new BorderLayout());
 
@@ -37,7 +35,7 @@ public class MultimediaEditorView extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser jFileChooser = new JFileChooser();
-                int response = jFileChooser.showOpenDialog(MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView());
+                int response = jFileChooser.showOpenDialog(MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView());
 
                 if (response == JFileChooser.APPROVE_OPTION)
                 {
@@ -55,12 +53,12 @@ public class MultimediaEditorView extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 if (file != null)
                 {
-                    ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected().getSlotHandler().setContent(file.toString());
+                    ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected().getSlotHandler().setContent(file.toString());
                     setVisible(false);
                 }
                 else
                 {
-                    MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
+                    MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.InvalidImageError);
                 }
             }
         });

@@ -40,7 +40,14 @@ public class TreeCellRendered extends DefaultTreeCellRenderer {
         else if (value instanceof Presentation)
         {
             Icon icon = null;
-            icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/Presentation.png");
+            if (((Presentation)value).getSharedProjects().isEmpty())
+            {
+                icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/Presentation.png");
+            }
+            else
+            {
+                icon = new ImageIcon("RuDokJava/src/View/treeSwingGUI/icons/PresentationShared.png");
+            }
             setIcon(icon);
         }
         else if (value instanceof Slide)

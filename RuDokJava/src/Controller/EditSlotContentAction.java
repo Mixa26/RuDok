@@ -2,14 +2,10 @@ package Controller;
 
 import Model.Slot;
 import View.MainView;
-import View.MultimediaEditorView;
 import View.PresentationView;
-import View.TextEditorView;
 import View.userErrorHandler.ErrorFactory;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 public class EditSlotContentAction extends AbstractRudokAction{
     public EditSlotContentAction() {
@@ -20,7 +16,7 @@ public class EditSlotContentAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         if (presentationView.getSlotSelected() != null)
         {
             if (presentationView.getSlotSelected().getType() == Slot.type.Text)
@@ -51,7 +47,7 @@ public class EditSlotContentAction extends AbstractRudokAction{
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.EditSlotError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.EditSlotError);
         }
     }
 }

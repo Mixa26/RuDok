@@ -14,7 +14,7 @@ public class SumbitColorAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         Color colorSelected = presentationView.getColorPickerView().getSelectedColor();
         Color color = new Color(colorSelected.getRed(), colorSelected.getGreen(), colorSelected.getBlue(), 100);
         presentationView.setPickedColor(color);

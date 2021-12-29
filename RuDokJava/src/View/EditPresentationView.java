@@ -38,16 +38,16 @@ public class EditPresentationView extends JDialog {
     {
         if (file == null)
         {
-            file = new JButton(MainView.getIntance().getActionManager().getOpenFileChooserAction());
+            file = new JButton(MainView.getInstance().getActionManager().getOpenFileChooserAction());
             file.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(file);
             add(Box.createHorizontalStrut((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 30));
         }
 
-        author.setText(((Presentation)((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode()).getAuthor());
+        author.setText(((Presentation)((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode()).getAuthor());
         if (submit == null)
         {
-            submit = new JButton(MainView.getIntance().getActionManager().getSubmitPresentationInitialsAction());
+            submit = new JButton(MainView.getInstance().getActionManager().getSubmitPresentationInitialsAction());
             submit.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(submit);
         }

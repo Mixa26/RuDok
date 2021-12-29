@@ -9,11 +9,11 @@ public class OpenColorPickerAction extends AbstractRudokAction{
     public OpenColorPickerAction() {
         putValue(NAME, "Choose a color");
         putValue(SMALL_ICON, loadIcon("images/colorPicker.png"));
-        putValue(SHORT_DESCRIPTION, "Opens a new window for choosing a color of the slots.");
+        putValue(SHORT_DESCRIPTION, "Opens a new window for choosing a color of the slot to be created.");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getColorPickerView().setVisible();
+        ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getColorPickerView().setVisible();
     }
 }

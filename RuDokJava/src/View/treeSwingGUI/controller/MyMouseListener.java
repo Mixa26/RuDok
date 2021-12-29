@@ -16,14 +16,14 @@ public class MyMouseListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2)
         {
-            if (MainView.getIntance().getMyTree().getSelectionPath() == null)
+            if (MainView.getInstance().getMyTree().getSelectionPath() == null)
             {
                 return;
             }
 
-            if (((MyTreeNode) MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Project project)
+            if (((MyTreeNode) MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Project project)
             {
-                MainView.getIntance().getRightWorkArea().openProject(project);
+                MainView.getInstance().getRightWorkArea().openProject(project);
             }
         }
     }

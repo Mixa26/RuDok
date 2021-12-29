@@ -15,13 +15,13 @@ public class OpenFileChooserAction extends AbstractRudokAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         JFileChooser jFileChooser = new JFileChooser();
-        int response = jFileChooser.showOpenDialog(MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView());
+        int response = jFileChooser.showOpenDialog(MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView());
 
         if (response == JFileChooser.APPROVE_OPTION)
         {
             File file = new File(jFileChooser.getSelectedFile().getAbsolutePath());
 
-            MainView.getIntance().getActionManager().getSubmitPresentationInitialsAction().setUrl(file.toString());
+            MainView.getInstance().getActionManager().getSubmitPresentationInitialsAction().setUrl(file.toString());
         }
 
     }

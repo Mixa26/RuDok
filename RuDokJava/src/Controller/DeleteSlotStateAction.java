@@ -14,7 +14,7 @@ public class DeleteSlotStateAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         presentationView.startDeleteSlotState();
         putValue(SMALL_ICON, loadIcon("images/eraseSlotSelected.png"));
     }

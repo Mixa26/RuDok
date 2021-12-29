@@ -7,7 +7,7 @@ import View.SlideShowView;
 public class SlideShowState implements State{
     @Override
     public void changeState() {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
 
         if (presentationView.getSsv() == null)
         {

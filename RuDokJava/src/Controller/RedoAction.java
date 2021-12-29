@@ -13,6 +13,6 @@ public class RedoAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainView.getIntance().getCommandManager().doCommand();
+        MainView.getInstance().getCommandManager().doCommand();
     }
 }

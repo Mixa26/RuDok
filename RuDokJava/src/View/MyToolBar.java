@@ -6,7 +6,7 @@ public class MyToolBar extends JToolBar {
 
     //komponente toolbara
     private JButton NewProject;
-    private JButton NewPrezentation;
+    private JButton NewPresentation;
     private JButton NewSlide;
     private JButton rename;
     private JButton editPresentation;
@@ -20,19 +20,19 @@ public class MyToolBar extends JToolBar {
     {
         setFloatable(false);
         //init komponenti
-        NewProject = new JButton(MainView.getIntance().getActionManager().getNewProjectAction());
-        NewPrezentation = new JButton(MainView.getIntance().getActionManager().getNewPresentationAction());
-        NewSlide = new JButton(MainView.getIntance().getActionManager().getNewSlideAction());
-        rename = new JButton(MainView.getIntance().getActionManager().getRenameInTreeAction());
-        editPresentation = new JButton(MainView.getIntance().getActionManager().getEditPresentationAction());
-        sharePresentation = new JButton(MainView.getIntance().getActionManager().getSharePresentationAction());
-        delete = new JButton(MainView.getIntance().getActionManager().getDeleteAction());
-        undoAction = new JButton(MainView.getIntance().getActionManager().getUndoAction());
-        redoAction = new JButton(MainView.getIntance().getActionManager().getRedoAction());
-        info = new JButton(MainView.getIntance().getActionManager().getInfoAction());
+        NewProject = new JButton(MainView.getInstance().getActionManager().getNewProjectAction());
+        NewPresentation = new JButton(MainView.getInstance().getActionManager().getNewPresentationAction());
+        NewSlide = new JButton(MainView.getInstance().getActionManager().getNewSlideAction());
+        rename = new JButton(MainView.getInstance().getActionManager().getRenameInTreeAction());
+        editPresentation = new JButton(MainView.getInstance().getActionManager().getEditPresentationAction());
+        sharePresentation = new JButton(MainView.getInstance().getActionManager().getSharePresentationAction());
+        delete = new JButton(MainView.getInstance().getActionManager().getDeleteAction());
+        undoAction = new JButton(MainView.getInstance().getActionManager().getUndoAction());
+        redoAction = new JButton(MainView.getInstance().getActionManager().getRedoAction());
+        info = new JButton(MainView.getInstance().getActionManager().getInfoAction());
 
         NewProject.setText("");
-        NewPrezentation.setText("");
+        NewPresentation.setText("");
         NewSlide.setText("");
         editPresentation.setText("");
         sharePresentation.setText("");
@@ -44,7 +44,7 @@ public class MyToolBar extends JToolBar {
 
         //dodavanje na toolbar
         add(NewProject);
-        add(NewPrezentation);
+        add(NewPresentation);
         add(NewSlide);
         add(editPresentation);
         add(sharePresentation);

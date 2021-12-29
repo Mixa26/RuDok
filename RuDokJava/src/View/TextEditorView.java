@@ -1,15 +1,11 @@
 package View;
 
 import javax.swing.*;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.AttributedCharacterIterator;
-import java.util.Iterator;
 
 public class TextEditorView extends JDialog {
 
@@ -34,7 +30,7 @@ public class TextEditorView extends JDialog {
 
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/ 6, (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()/ 6));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setLocationRelativeTo(MainView.getIntance());
+        setLocationRelativeTo(MainView.getInstance());
         setTitle("Text editor");
 
         jToolBar = new JToolBar();
@@ -110,7 +106,7 @@ public class TextEditorView extends JDialog {
         jToolBar.setFloatable(false);
 
         jTextPane = new JTextPane();
-        submitText = new JButton(MainView.getIntance().getActionManager().getSlotAddTextAction());
+        submitText = new JButton(MainView.getInstance().getActionManager().getSlotAddTextAction());
 
         setLayout(new BorderLayout());
 

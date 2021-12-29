@@ -1,11 +1,9 @@
 package Controller;
 
-import Model.Main;
 import View.MainView;
 import View.PresentationView;
 import View.userErrorHandler.ErrorFactory;
 import state.EditProjectState;
-import state.StateManager;
 
 import java.awt.event.ActionEvent;
 
@@ -18,21 +16,21 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         if (presentationView.getSState() instanceof EditProjectState)
         {
-            if (MainView.getIntance().getRightWorkArea().getjTabbedPane().getTabCount() == 0)
+            if (MainView.getInstance().getRightWorkArea().getjTabbedPane().getTabCount() == 0)
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSlideShowError);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSlideShowError);
                 return;
             }
-            if (MainView.getIntance().getRightWorkArea().getProject() != null)
+            if (MainView.getInstance().getRightWorkArea().getProject() != null)
             {
                 presentationView.startSlideShowState();
             }
             else
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.SwitchToSlideShowError);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.SwitchToSlideShowError);
             }
         }
         else

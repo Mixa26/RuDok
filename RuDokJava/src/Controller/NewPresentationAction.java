@@ -21,14 +21,14 @@ public class NewPresentationAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         RuNode selection;
 
-        if (MainView.getIntance().getMyTree().getSelectionPath() != null)
+        if (MainView.getInstance().getMyTree().getSelectionPath() != null)
         {
 
-            selection = ((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
+            selection = ((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
             return;
         }
 
@@ -41,17 +41,17 @@ public class NewPresentationAction extends AbstractRudokAction{
 //            presentation.setAuthor("Author");
 //            Slide slide = new Slide("Slide 1", presentation, 1);
 //            presentation.addChild(slide);
-            MainView.getIntance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, presentation));
+            MainView.getInstance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, presentation));
             //((Project) selection).addChild(presentation);
 
             //MainView.getIntance().getRightWorkArea().setProject((Project)selection);
 
-            MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
+            MainView.getInstance().getMyTree().expandPath(MainView.getInstance().getMyTree().getSelectionPath());
             //MainView.getIntance().getMyTree().refresh();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.AddPresentationError);
         }
     }
 }

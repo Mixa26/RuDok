@@ -10,12 +10,12 @@ public class ChangeSlotTypeState extends AbstractRudokAction{
     public ChangeSlotTypeState() {
         putValue(NAME, "Change slot type");
         putValue(SMALL_ICON, loadIcon("images/text.png"));
-        putValue(SHORT_DESCRIPTION, "Changes the type of slot (picture/text).");
+        putValue(SHORT_DESCRIPTION, "Changes the type of slot to be created(picture/text).");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         if (presentationView.getSlotTypeState() instanceof TextState)
         {
             presentationView.startMultimediaState();

@@ -17,9 +17,9 @@ public class SharePresentationView extends JDialog {
     public Project sharedProject;
 
     public SharePresentationView() {
-        super(MainView.getIntance(),"Share a presentation with",true);
+        super(MainView.getInstance(),"Share a presentation with",true);
         setSize(new Dimension((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 8, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 7));
-        setLocationRelativeTo(MainView.getIntance());
+        setLocationRelativeTo(MainView.getInstance());
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setAlwaysOnTop(true);
@@ -29,7 +29,7 @@ public class SharePresentationView extends JDialog {
         scrollProjects.setLayout(new BoxLayout(scrollProjects, BoxLayout.Y_AXIS));
         jScrollPane = new JScrollPane(scrollProjects);
 
-        submit = new JButton(MainView.getIntance().getActionManager().getSubmitSharePresentation());
+        submit = new JButton(MainView.getInstance().getActionManager().getSubmitSharePresentation());
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(jScrollPane);
@@ -38,9 +38,10 @@ public class SharePresentationView extends JDialog {
 
     public void loadProjects()
     {
-        for (RuNode project : ((RuNodeComposite)((MyTreeNode)MainView.getIntance().getMyTree().getModel().getRoot()).getNode()).getChildren())
+        scrollProjects.removeAll();
+        for (RuNode project : ((RuNodeComposite)((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).getChildren())
         {
-            if (!((Project)project == ((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode().getParent()))
+            if (!((Project)project == ((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode().getParent()))
             {
                 ClickableProjectButton proj = new ClickableProjectButton((Project) project);
                 ((JButton)proj).setText(project.getName());

@@ -144,24 +144,24 @@ public class PresentationView extends JPanel implements ISubscriber {
         jScrollPaneL = new JScrollPane(leftSlider);
         jScrollPaneL.setPreferredSize(new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9), (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 9)));
 
-        endSlideShowView = new JButton(MainView.getIntance().getActionManager().getSwitchEditViewStateAction());
+        endSlideShowView = new JButton(MainView.getInstance().getActionManager().getSwitchEditViewStateAction());
         endSlideShowView.setText("");
 
-        addSlot = new JButton(MainView.getIntance().getActionManager().getAddSlotStateAction());
+        addSlot = new JButton(MainView.getInstance().getActionManager().getAddSlotStateAction());
         addSlot.setText("");
-        deleteSlot = new JButton(MainView.getIntance().getActionManager().getDeleteSlotStateAction());
+        deleteSlot = new JButton(MainView.getInstance().getActionManager().getDeleteSlotStateAction());
         deleteSlot.setText("");
-        dragDropSlot = new JButton(MainView.getIntance().getActionManager().getDragDropSlotStateAction());
+        dragDropSlot = new JButton(MainView.getInstance().getActionManager().getDragDropSlotStateAction());
         dragDropSlot.setText("");
-        switchStroke = new JButton(MainView.getIntance().getActionManager().getSelectBorderStrokeAction());
+        switchStroke = new JButton(MainView.getInstance().getActionManager().getSelectBorderStrokeAction());
         switchStroke.setText("");
-        switchBorder = new JButton(MainView.getIntance().getActionManager().getSwitchSlotWidthAction());
+        switchBorder = new JButton(MainView.getInstance().getActionManager().getSwitchSlotWidthAction());
         switchBorder.setText("");
-        colorPick = new JButton(MainView.getIntance().getActionManager().getOpenColorPickerAction());
+        colorPick = new JButton(MainView.getInstance().getActionManager().getOpenColorPickerAction());
         colorPick.setText("");
-        changeSlotType = new JButton(MainView.getIntance().getActionManager().getChangeSlotTypeState());
+        changeSlotType = new JButton(MainView.getInstance().getActionManager().getChangeSlotTypeState());
         changeSlotType.setText("");
-        editSlotContent = new JButton(MainView.getIntance().getActionManager().getEditSlotContent());
+        editSlotContent = new JButton(MainView.getInstance().getActionManager().getEditSlotContent());
         editSlotContent.setText("");
 
         myToolBar.add(endSlideShowView, "North");
@@ -206,7 +206,7 @@ public class PresentationView extends JPanel implements ISubscriber {
                 }
             }
 
-            SwingUtilities.updateComponentTreeUI(MainView.getIntance());
+            SwingUtilities.updateComponentTreeUI(MainView.getInstance());
 
             for (SlideView slideView : childrenView) {
                 //update za redne brojeve slajdova na viewu

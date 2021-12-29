@@ -21,15 +21,15 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         imgValid = false;
 
-        if (MainView.getIntance().getMyTree().getSelectionPath() == null)
+        if (MainView.getInstance().getMyTree().getSelectionPath() == null)
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.EditPresentationError);
             return;
         }
 
-        String author = MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().getAuthor().getText();
+        String author = MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().getAuthor().getText();
 
-        Presentation presentation = (Presentation)((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
+        Presentation presentation = (Presentation)((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
 
         if (author != null && !author.equals(""))
         {
@@ -42,7 +42,7 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
         }
 
 
-        MainView.getIntance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
+        MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 
     }
 

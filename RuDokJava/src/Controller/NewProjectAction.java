@@ -19,7 +19,7 @@ public class NewProjectAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        WorkSpace root = (WorkSpace) ((MyTreeNode)MainView.getIntance().getMyTree().getModel().getRoot()).getNode();
+        WorkSpace root = (WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode();
 
         Project project = (Project) FactoryGenerator.returnFactory(root).constructRuNode(root);
         Presentation presentation = (Presentation) FactoryGenerator.returnFactory(project).constructRuNode(project);
@@ -33,12 +33,12 @@ public class NewProjectAction extends AbstractRudokAction{
 //
 //        presentation.addChild(slide);
 //        project.addChild(presentation);
-        MainView.getIntance().getCommandManager().addComand(new AddTreeCommand(root, project));
+        MainView.getInstance().getCommandManager().addComand(new AddTreeCommand(root, project));
         //root.addChild(project);
 
         //MainView.getIntance().getRightWorkArea().openProject(project);
 
-        MainView.getIntance().getMyTree().expandPath(new TreePath(MainView.getIntance().getMyTree().getModel().getRoot()));
+        MainView.getInstance().getMyTree().expandPath(new TreePath(MainView.getInstance().getMyTree().getModel().getRoot()));
         //MainView.getIntance().getMyTree().refresh();
     }
 }

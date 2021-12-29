@@ -21,13 +21,13 @@ public class NewSlideAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         RuNode selection;
 
-        if (MainView.getIntance().getMyTree().getSelectionPath() != null)
+        if (MainView.getInstance().getMyTree().getSelectionPath() != null)
         {
-            selection = ((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
+            selection = ((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
             return;
         }
 
@@ -35,17 +35,17 @@ public class NewSlideAction extends AbstractRudokAction{
         {
             Slide slide = (Slide) FactoryGenerator.returnFactory(selection).constructRuNode(selection);
 //            Slide slide = new Slide("Slide " + (((Presentation) selection).getChildren().size() + 1), (Presentation) selection, ((Presentation) selection).getChildren().size() + 1);
-            MainView.getIntance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, slide));
+            MainView.getInstance().getCommandManager().addComand(new AddTreeCommand((RuNodeComposite) selection, slide));
             //((Presentation) selection).addChild(slide);
 
             //MainView.getIntance().getRightWorkArea().setProject(((Project)((Presentation)selection).getParent()));
 
-            MainView.getIntance().getMyTree().expandPath(MainView.getIntance().getMyTree().getSelectionPath());
-            MainView.getIntance().getMyTree().refresh();
+            MainView.getInstance().getMyTree().expandPath(MainView.getInstance().getMyTree().getSelectionPath());
+            MainView.getInstance().getMyTree().refresh();
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.AddSlideError);
         }
     }
 }

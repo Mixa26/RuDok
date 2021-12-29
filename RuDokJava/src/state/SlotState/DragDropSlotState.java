@@ -18,7 +18,7 @@ public class DragDropSlotState extends SlotState{
             {
                 slot.setColor(new Color(slot.getColor().getRed(), slot.getColor().getGreen(), slot.getColor().getBlue(), 255));
                 slide.setSlotDraged(slot);
-                PresentationView presentationView = (PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent();
+                PresentationView presentationView = (PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent();
                 if (presentationView.getSlotSelected() != null && presentationView.getSlotSelected() != slot) {
                     presentationView.getSlotSelected().setColor(new Color(presentationView.getSlotSelected().getColor().getRed(), presentationView.getSlotSelected().getColor().getGreen(), presentationView.getSlotSelected().getColor().getBlue(), 100));
                 }

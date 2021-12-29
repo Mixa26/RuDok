@@ -2,12 +2,11 @@ package state;
 
 import View.MainView;
 import View.PresentationView;
-import View.SlideShowView;
 
 public class EditProjectState implements State{
     @Override
     public void changeState() {
-        PresentationView presentationView = ((PresentationView)MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
 
         presentationView.removeAll();
         presentationView.add(presentationView.getMain());

@@ -1,7 +1,5 @@
 package View.treeSwingGUI.view;
 
-import Model.treeModel.RuNode;
-import Model.treeModel.RuNodeComposite;
 import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
@@ -58,15 +56,15 @@ public class TreeCellEditor extends DefaultTreeCellEditor implements ActionListe
         {
             if (e.getActionCommand().equals(""))
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NameEmptyError);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NameEmptyError);
             }
-            else if (((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof WorkSpace)
+            else if (((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof WorkSpace)
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.WorkSpaceRename);
             }
             else
             {
-                MainView.getIntance().getCommandManager().addComand(new RenameTreeCommand(((MyTreeNode)object).getNode(), e.getActionCommand()));
+                MainView.getInstance().getCommandManager().addComand(new RenameTreeCommand(((MyTreeNode)object).getNode(), e.getActionCommand()));
                 //((MyTreeNode)object).getNode().setName(e.getActionCommand());
             }
 

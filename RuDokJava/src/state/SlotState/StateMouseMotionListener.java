@@ -16,7 +16,7 @@ public class StateMouseMotionListener implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseDraged(e.getX(), e.getY(), slide);
+        ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).SlotStateMouseDraged(e.getX(), e.getY(), slide);
     }
 
     @Override

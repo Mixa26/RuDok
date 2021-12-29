@@ -1,7 +1,6 @@
 package View;
 
 import Model.treeModel.*;
-import View.treeSwingGUI.model.MyTreeNode;
 import observer.ISubscriber;
 import observer.NotifyType;
 
@@ -69,7 +68,7 @@ public class RightWorkArea extends JPanel implements ISubscriber {
                 childrenView.add(presentationView);
                 //((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(presentationView);
                 ((Presentation) ((Project) notification).getChildren().get(index)).addSubscriber(this);
-                if ((Project)notification == MainView.getIntance().getRightWorkArea().getProject())
+                if ((Project)notification == MainView.getInstance().getRightWorkArea().getProject())
                 {
                     jTabbedPane.addTab(((Project) notification).getChildren().get(index).getName(), presentationView);
                 }

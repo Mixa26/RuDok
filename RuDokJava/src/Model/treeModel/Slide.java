@@ -29,7 +29,7 @@ public class Slide extends RuNode {
     public void addSlot(Slot slot)
     {
         slots.add(slot);
-        slot.setStroke(((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getStroke());
+        slot.setStroke(((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getStroke());
         notifySubscribers(slot, NotifyType.AddSlot);
     }
 

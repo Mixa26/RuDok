@@ -8,6 +8,6 @@ import state.State;
 public class MultimediaState implements State {
     @Override
     public void changeState() {
-        ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).setSlotType(Slot.type.Multimedia);
+        ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).setSlotType(Slot.type.Multimedia);
     }
 }

@@ -15,7 +15,7 @@ public class AddSlotStateAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PresentationView presentationView = ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
+        PresentationView presentationView = ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         presentationView.startAddSlotState();
         putValue(SMALL_ICON, loadIcon("images/newSlotSelected.png"));
     }

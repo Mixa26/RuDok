@@ -1,5 +1,7 @@
 package command;
 
+import Model.treeModel.Presentation;
+import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import Model.treeModel.RuNodeComposite;
 import View.MainView;
@@ -16,12 +18,22 @@ public class DeleteTreeCommand extends AbstractCommand{
     @Override
     public void doCommmand() {
         parent.removeChild(selection);
-        MainView.getIntance().getMyTree().refresh();
+        MainView.getInstance().getMyTree().refresh();
     }
 
     @Override
     public void undoCommand() {
         parent.addChild(selection);
-        MainView.getIntance().getMyTree().refresh();
+//        if (selection instanceof Presentation)
+//        {
+//            if (!((Presentation) selection).getSharedProjects().isEmpty())
+//            {
+//                for (Project project : ((Presentation) selection).getSharedProjects())
+//                {
+//                    project.addChild(selection);
+//                }
+//            }
+//        }
+        MainView.getInstance().getMyTree().refresh();
     }
 }

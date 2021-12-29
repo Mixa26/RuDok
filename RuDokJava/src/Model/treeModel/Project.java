@@ -2,6 +2,8 @@ package Model.treeModel;
 
 import observer.NotifyType;
 
+import java.util.Iterator;
+
 public class Project extends RuNodeComposite{
 
     public Project(String name, WorkSpace parent)
@@ -22,8 +24,23 @@ public class Project extends RuNodeComposite{
     public void removeChild(RuNode child) {
         if (child instanceof Presentation)
         {
+            removePresentationFromSharedProjects(child);
             super.getChildren().remove(child);
             notifySubscribers(child, NotifyType.RemovePresentation);
+        }
+    }
+
+    private void removePresentationFromSharedProjects(RuNode child)
+    {
+        if (!((Presentation) child).getSharedProjects().isEmpty())
+        {
+            Iterator<Project> iterator = ((Presentation)child).getSharedProjects().iterator();
+            while (iterator.hasNext())
+            {
+                iterator.next().getChildren().remove(child);
+                notifySubscribers(child, NotifyType.RemovePresentation);
+                iterator.remove();
+            }             
         }
     }
 

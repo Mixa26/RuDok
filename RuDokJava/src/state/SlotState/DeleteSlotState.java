@@ -13,9 +13,9 @@ public class DeleteSlotState extends SlotState {
             Slot slot = slide.getSlots().get(i);
             if (slot.elementAt(x,y))
             {
-                if (slot.equals(((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected()))
+                if (slot.equals(((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getSlotSelected()))
                 {
-                    ((PresentationView) MainView.getIntance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).setSlotSelected(null);
+                    ((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).setSlotSelected(null);
                 }
                 slide.removeSlot(slot);
                 break;

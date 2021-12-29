@@ -2,14 +2,20 @@ package Model.treeModel;
 
 import observer.NotifyType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Presentation extends RuNodeComposite{
 
     private String author;
     private String backgroundImage;
 
+    private List<Project> sharedProjects;
+
     public Presentation(String name, Project parent)
     {
         super(name, parent);
+        sharedProjects = new ArrayList<Project>();
     }
 
     @Override
@@ -58,4 +64,7 @@ public class Presentation extends RuNodeComposite{
         notifySubscribers(this, NotifyType.RenamePresentation);
     }
 
+    public List<Project> getSharedProjects() {
+        return sharedProjects;
+    }
 }

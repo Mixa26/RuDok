@@ -1,13 +1,10 @@
 package Controller;
 
-import Model.treeModel.Presentation;
-import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
 import command.RenameTreeCommand;
-import observer.IPublisher;
 
 import java.awt.event.ActionEvent;
 import java.util.Objects;
@@ -21,27 +18,27 @@ public class SubmitRenameIntialsAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((MainView.getIntance().getMyTree().getSelectionPath()) == null)
+        if ((MainView.getInstance().getMyTree().getSelectionPath()) == null)
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
             return;
         }
 
-        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getIntance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
+        RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getInstance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
         if (selection != null) {
-            String nameField = MainView.getIntance().getActionManager().getRenameInTreeAction().getRenameInTreeView().getNameField().getText();
+            String nameField = MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().getNameField().getText();
             if (!nameField.equals(""))
             {
-                MainView.getIntance().getCommandManager().addComand(new RenameTreeCommand(selection, nameField));
+                MainView.getInstance().getCommandManager().addComand(new RenameTreeCommand(selection, nameField));
                 //selection.setName(nameField);
             }
             else
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NameEmptyError);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NameEmptyError);
 
             }
 
-            MainView.getIntance().getActionManager().getRenameInTreeAction().getRenameInTreeView().setVisible(false);
+            MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().setVisible(false);
 
             //MainView.getIntance().getMyTree().refresh();
         }

@@ -16,21 +16,22 @@ public class SharePresentationAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (MainView.getIntance().getMyTree().getSelectionPath() != null)
+        if (MainView.getInstance().getMyTree().getSelectionPath() != null)
         {
-            if (((MyTreeNode)MainView.getIntance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Presentation)
+            if (((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Presentation)
             {
-                MainView.getIntance().getSharePresentationView().loadProjects();
-                MainView.getIntance().getSharePresentationView().setVisible(true);
+                MainView.getInstance().getSharePresentationView().loadProjects();
+                MainView.getInstance().getSharePresentationView().setVisible(true);
+                MainView.getInstance().getMyTree().refresh();
             }
             else
             {
-                MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSelected);
+                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSelected);
             }
         }
         else
         {
-            MainView.getIntance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSelected);
+            MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSelected);
         }
     }
 }

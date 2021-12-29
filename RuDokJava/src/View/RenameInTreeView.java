@@ -31,7 +31,7 @@ public class RenameInTreeView extends JDialog {
         nameField.setText("");
         if (ok == null)
         {
-            ok = new JButton(MainView.getIntance().getActionManager().getSubmitRenameIntialsAction());
+            ok = new JButton(MainView.getInstance().getActionManager().getSubmitRenameIntialsAction());
             ok.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(ok);
         }

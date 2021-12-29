@@ -94,7 +94,7 @@ public class MainView extends JFrame implements ISubscriber {
         getContentPane().add(all);
     }
 
-    public static MainView getIntance()
+    public static MainView getInstance()
     {
         if (instance == null)
         {
