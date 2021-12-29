@@ -7,6 +7,8 @@ public class MyMenuBar extends JMenuBar {
 
     private JMenu fileMenu;
     private JMenu New;
+    private JMenu Open;
+    private JMenu Save;
     private JMenu editMenu;
     private JMenuItem redo;
     private JMenuItem undo;
@@ -21,6 +23,8 @@ public class MyMenuBar extends JMenuBar {
         //init menija
         fileMenu = new JMenu("File");
         New = new JMenu("New");
+        Open = new JMenu("Open");
+        Save = new JMenu("Save");
         editMenu = new JMenu("Edit");
         redo = new JMenuItem(MainView.getInstance().getActionManager().getRedoAction());
         redo.setIcon(null);
@@ -42,6 +46,12 @@ public class MyMenuBar extends JMenuBar {
             New.add(MainView.getInstance().getActionManager().getNewPresentationAction());
             New.add(MainView.getInstance().getActionManager().getNewSlideAction());
             fileMenu.add(New);
+            Open.add(MainView.getInstance().getActionManager().getLoadProjectAction());
+            Open.add(MainView.getInstance().getActionManager().getOpenPresentationAction());
+            fileMenu.add(Open);
+            Save.add(MainView.getInstance().getActionManager().getSaveProjectAction());
+            Save.add(MainView.getInstance().getActionManager().getSavePresentationAction());
+            fileMenu.add(Save);
         add(fileMenu);
             editMenu.add(redo);
             editMenu.add(undo);

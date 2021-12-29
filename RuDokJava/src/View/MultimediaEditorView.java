@@ -88,4 +88,9 @@ public class MultimediaEditorView extends JDialog {
     public void setImagePreview(String imagePreview) {
         this.imagePreview = imagePreview;
     }
+
+    public void resetFile()
+    {
+        file = null;
+    }
 }

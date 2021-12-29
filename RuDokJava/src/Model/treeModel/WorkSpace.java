@@ -2,7 +2,11 @@ package Model.treeModel;
 
 import observer.NotifyType;
 
+import java.io.File;
+
 public class WorkSpace extends RuNodeComposite {
+
+    private File workSpaceFile;
 
     public WorkSpace(String name)
     {
@@ -31,4 +35,11 @@ public class WorkSpace extends RuNodeComposite {
         }
     }
 
+    public File getWorkSpaceFile() {
+        return workSpaceFile;
+    }
+
+    public void setWorkSpaceFile(File workSpaceFile) {
+        this.workSpaceFile = workSpaceFile;
+    }
 }

@@ -4,19 +4,23 @@ import observer.IPublisher;
 import observer.ISubscriber;
 import observer.NotifyType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class RuNode implements IPublisher {
+public abstract class RuNode implements IPublisher, Serializable {
 
-    private List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
     private String name;
     private RuNode parent;
 
+    private boolean changed;
+
     public RuNode(String name, RuNode parent)
     {
+        changed = true;
         this.name = name;
         this.parent = parent;
     }
@@ -64,5 +68,13 @@ public abstract class RuNode implements IPublisher {
                 ((ISubscriber)subs.next()).update(notification, type);
             }
         }
+    }
+
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
     }
 }

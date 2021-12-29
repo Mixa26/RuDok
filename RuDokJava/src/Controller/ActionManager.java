@@ -2,6 +2,11 @@ package Controller;
 
 public class ActionManager {
 
+    private SaveProjectAction saveProjectAction;
+    private SavePresentationAction savePresentationAction;
+    private OpenProjectAction openProjectAction;
+    private OpenPresentationAction openPresentationAction;
+
     private InfoAction infoAction;
     private EditPresentationAction editPresentationAction;
     private SubmitPresentationInitialsAction submitPresentationInitialsAction;
@@ -38,6 +43,11 @@ public class ActionManager {
 
     private void initializeActions()
     {
+        saveProjectAction = new SaveProjectAction();
+        savePresentationAction = new SavePresentationAction();
+        openProjectAction = new OpenProjectAction();
+        openPresentationAction = new OpenPresentationAction();
+
         infoAction = new InfoAction();
         editPresentationAction = new EditPresentationAction();
         submitPresentationInitialsAction = new SubmitPresentationInitialsAction();
@@ -69,6 +79,24 @@ public class ActionManager {
     }
 
     //Getters
+
+
+    public SaveProjectAction getSaveProjectAction() {
+        return saveProjectAction;
+    }
+
+    public OpenProjectAction getLoadProjectAction() {
+        return openProjectAction;
+    }
+
+    public SavePresentationAction getSavePresentationAction() {
+        return savePresentationAction;
+    }
+
+    public OpenPresentationAction getOpenPresentationAction() {
+        return openPresentationAction;
+    }
+
     public InfoAction getInfoAction() {
         return infoAction;
     }

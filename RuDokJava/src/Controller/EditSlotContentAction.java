@@ -32,6 +32,7 @@ public class EditSlotContentAction extends AbstractRudokAction{
             }
             else
             {
+                presentationView.getMultimediaEditorView().resetFile();
                 presentationView.getMultimediaEditorView().setImagePreview(presentationView.getSlotSelected().getContent());
                 presentationView.getMultimediaEditorView().setVisible(true);
 //                JFileChooser jFileChooser = new JFileChooser();

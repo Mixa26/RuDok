@@ -2,10 +2,13 @@ package Model.treeModel;
 
 import observer.NotifyType;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Presentation extends RuNodeComposite{
+
+    private File presentationFile;
 
     private String author;
     private String backgroundImage;
@@ -66,5 +69,13 @@ public class Presentation extends RuNodeComposite{
 
     public List<Project> getSharedProjects() {
         return sharedProjects;
+    }
+
+    public File getPresentationFile() {
+        return presentationFile;
+    }
+
+    public void setPresentationFile(File presentationFile) {
+        this.presentationFile = presentationFile;
     }
 }

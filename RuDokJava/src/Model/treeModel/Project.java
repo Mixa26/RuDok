@@ -2,9 +2,12 @@ package Model.treeModel;
 
 import observer.NotifyType;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class Project extends RuNodeComposite{
+
+    private File projectFile;
 
     public Project(String name, WorkSpace parent)
     {
@@ -40,7 +43,7 @@ public class Project extends RuNodeComposite{
                 iterator.next().getChildren().remove(child);
                 notifySubscribers(child, NotifyType.RemovePresentation);
                 iterator.remove();
-            }             
+            }
         }
     }
 
@@ -50,4 +53,11 @@ public class Project extends RuNodeComposite{
         notifySubscribers(this, NotifyType.RenameProject);
     }
 
+    public File getProjectFile() {
+        return projectFile;
+    }
+
+    public void setProjectFile(File projectFile) {
+        this.projectFile = projectFile;
+    }
 }
