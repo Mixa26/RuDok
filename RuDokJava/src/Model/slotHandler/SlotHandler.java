@@ -2,7 +2,9 @@ package Model.slotHandler;
 
 import Model.Slot;
 
-public abstract class SlotHandler {
+import java.io.Serializable;
+
+public abstract class SlotHandler implements Serializable {
     protected Slot slot;
 
     public abstract void setContent(String content);

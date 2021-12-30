@@ -1,5 +1,6 @@
 package Model;
 
+import Model.serialize.SerializableStroke;
 import Model.slotHandler.MultimediaSlotHandler;
 import Model.slotHandler.SlotHandler;
 import Model.slotHandler.TextSlotHandler;
@@ -9,12 +10,13 @@ import observer.NotifyType;
 
 import javax.swing.text.StyledDocument;
 import java.awt.*;
+import java.io.Serializable;
 import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Slot implements IPublisher {
+public class Slot implements IPublisher, Serializable {
     public enum type
     {
         Multimedia,
@@ -23,12 +25,12 @@ public class Slot implements IPublisher {
 
     private SlotHandler slotHandler;
 
-    private List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
     private int x,y;
     private int width,height;
     private Color color;
-    private Stroke stroke;
+    private SerializableStroke stroke;
     private type typeC;
     private String content;
 
@@ -96,7 +98,7 @@ public class Slot implements IPublisher {
     }
 
     public Stroke getStroke() {
-        return stroke;
+        return stroke.getStroke();
     }
 
     public int getX() {
@@ -127,7 +129,14 @@ public class Slot implements IPublisher {
     }
 
     public void setStroke(Stroke stroke) {
-        this.stroke = stroke;
+        if (this.stroke == null)
+        {
+            this.stroke = new SerializableStroke(stroke);
+        }
+        else
+        {
+            this.stroke.setStroke(stroke);
+        }
     }
 
     public Slot.type getType() {

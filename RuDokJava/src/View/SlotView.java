@@ -17,8 +17,6 @@ public class SlotView implements ISubscriber {
     int width;
     int height;
 
-    Stroke stroke;
-
     boolean mini;
     boolean slideShow;
 
@@ -30,7 +28,6 @@ public class SlotView implements ISubscriber {
         y = slot.getY();
         width = slot.getWidth();
         height = slot.getHeight();
-        stroke = slot.getStroke();
     }
 
     public void paint(Graphics2D g)
@@ -39,7 +36,7 @@ public class SlotView implements ISubscriber {
         g.setPaint(slot.getColor());
         g.fill(shape);
         g.setPaint(new Color(0,0,0));
-        g.setStroke(stroke);
+        g.setStroke(slot.getStroke());
         g.drawRect(x, y, width, height);
 
         if (slideShow) {
@@ -108,7 +105,7 @@ public class SlotView implements ISubscriber {
     }
 
     public void setStroke(Stroke stroke) {
-        this.stroke = stroke;
+        slot.setStroke(stroke);
     }
 
     public void setSlideShow(boolean slideShow) {
