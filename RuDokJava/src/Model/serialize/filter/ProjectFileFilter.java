@@ -1,4 +1,4 @@
-package Model.serialize;
+package Model.serialize.filter;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;

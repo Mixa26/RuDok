@@ -48,10 +48,12 @@ public class MyMenuBar extends JMenuBar {
             fileMenu.add(New);
             Open.add(MainView.getInstance().getActionManager().getLoadProjectAction());
             Open.add(MainView.getInstance().getActionManager().getOpenPresentationAction());
+            Open.add(MainView.getInstance().getActionManager().getOpenWorkSpaceAction());
             fileMenu.add(Open);
             Save.add(MainView.getInstance().getActionManager().getSaveProjectAction());
             Save.add(MainView.getInstance().getActionManager().getSavePresentationAction());
             fileMenu.add(Save);
+            fileMenu.add(MainView.getInstance().getActionManager().getSaveWorkSpaceAction());
         add(fileMenu);
             editMenu.add(redo);
             editMenu.add(undo);

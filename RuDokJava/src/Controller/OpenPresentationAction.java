@@ -1,19 +1,14 @@
 package Controller;
 
-import Model.Main;
-import Model.serialize.PresentationFileFilter;
+import Model.serialize.filter.PresentationFileFilter;
 import Model.treeModel.Presentation;
 import Model.treeModel.Project;
-import Model.treeModel.WorkSpace;
 import View.MainView;
-import View.PresentationView;
 import View.treeSwingGUI.model.MyTreeNode;
 import View.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

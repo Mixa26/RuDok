@@ -5,6 +5,10 @@ import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import Model.treeModel.RuNodeComposite;
 import View.MainView;
+import View.treeSwingGUI.model.MyTreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeleteTreeCommand extends AbstractCommand{
     RuNodeComposite parent;
@@ -24,16 +28,16 @@ public class DeleteTreeCommand extends AbstractCommand{
     @Override
     public void undoCommand() {
         parent.addChild(selection);
-//        if (selection instanceof Presentation)
-//        {
-//            if (!((Presentation) selection).getSharedProjects().isEmpty())
-//            {
-//                for (Project project : ((Presentation) selection).getSharedProjects())
-//                {
-//                    project.addChild(selection);
-//                }
-//            }
-//        }
+        if (selection instanceof Presentation)
+        {
+            if (!((Presentation) selection).getSharedProjects().isEmpty())
+            {
+                for (Project project : ((Presentation) selection).getSharedProjects())
+                {
+                    project.addChild(selection);
+                }
+            }
+        }
         MainView.getInstance().getMyTree().refresh();
     }
 }

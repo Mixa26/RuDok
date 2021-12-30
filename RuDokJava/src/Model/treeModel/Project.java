@@ -42,7 +42,7 @@ public class Project extends RuNodeComposite{
             {
                 iterator.next().getChildren().remove(child);
                 notifySubscribers(child, NotifyType.RemovePresentation);
-                iterator.remove();
+                //iterator.remove();
             }
         }
     }

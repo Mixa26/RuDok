@@ -21,16 +21,16 @@ public class AddTreeCommand extends AbstractCommand{
     @Override
     public void doCommmand() {
         selection.addChild(current);
-//        if (current instanceof Presentation)
-//        {
-//            if (!((Presentation) current).getSharedProjects().isEmpty())
-//            {
-//                for (Project project : ((Presentation) current).getSharedProjects())
-//                {
-//                    project.addChild(current);
-//                }
-//            }
-//        }
+        if (current instanceof Presentation)
+        {
+            if (!((Presentation) current).getSharedProjects().isEmpty())
+            {
+                for (Project project : ((Presentation) current).getSharedProjects())
+                {
+                    project.addChild(current);
+                }
+            }
+        }
         MainView.getInstance().getMyTree().refresh();
     }
 

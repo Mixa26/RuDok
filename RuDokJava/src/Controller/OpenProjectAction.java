@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.serialize.ProjectFileFilter;
+import Model.serialize.filter.ProjectFileFilter;
 import Model.treeModel.Project;
 import Model.treeModel.WorkSpace;
 import View.MainView;
@@ -8,8 +8,6 @@ import View.treeSwingGUI.model.MyTreeNode;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

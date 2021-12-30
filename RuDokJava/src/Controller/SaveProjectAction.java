@@ -1,6 +1,7 @@
 package Controller;
 
-import Model.serialize.ProjectFileFilter;
+import Model.serialize.SaveProject;
+import Model.serialize.filter.ProjectFileFilter;
 import Model.treeModel.Project;
 import Model.treeModel.RuNode;
 import View.MainView;
@@ -9,7 +10,6 @@ import View.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.io.*;
 
 public class SaveProjectAction extends AbstractRudokAction{
@@ -24,36 +24,40 @@ public class SaveProjectAction extends AbstractRudokAction{
         {
             if (((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode() instanceof Project)
             {
-                JFileChooser jfc = new JFileChooser();
-                jfc.setFileFilter(new ProjectFileFilter());
-
-//                Project project = MainView.getInstance().getRightWorkArea().getProject();
                 Project project = (Project) ((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
-                File projectFile = project.getProjectFile();
 
-                if (!project.isChanged()) {
-                    return;
-                }
-
-                if (project.getProjectFile() == null) {
-                    if (jfc.showSaveDialog(MainView.getInstance()) == JFileChooser.APPROVE_OPTION) {
-                        projectFile = jfc.getSelectedFile();
-                    } else {
-                        return;
-                    }
-                }
-
-                ObjectOutputStream oos;
-                try {
-                    oos = new ObjectOutputStream(new FileOutputStream(projectFile));
-                    oos.writeObject(project);
-                    project.setProjectFile(projectFile);
-                    ((RuNode) project).setChanged(false);
-                } catch (FileNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                SaveProject saveProject = new SaveProject(project);
+                saveProject.save();
+//                JFileChooser jfc = new JFileChooser();
+//                jfc.setFileFilter(new ProjectFileFilter());
+//
+////                Project project = MainView.getInstance().getRightWorkArea().getProject();
+//
+//                File projectFile = project.getProjectFile();
+//
+//                if (!project.isChanged()) {
+//                    return;
+//                }
+//
+//                if (project.getProjectFile() == null) {
+//                    if (jfc.showSaveDialog(MainView.getInstance()) == JFileChooser.APPROVE_OPTION) {
+//                        projectFile = jfc.getSelectedFile();
+//                    } else {
+//                        return;
+//                    }
+//                }
+//
+//                ObjectOutputStream oos;
+//                try {
+//                    oos = new ObjectOutputStream(new FileOutputStream(projectFile));
+//                    oos.writeObject(project);
+//                    project.setProjectFile(projectFile);
+//                    ((RuNode) project).setChanged(false);
+//                } catch (FileNotFoundException e1) {
+//                    e1.printStackTrace();
+//                } catch (IOException e1) {
+//                    e1.printStackTrace();
+//                }
             }
             else
             {

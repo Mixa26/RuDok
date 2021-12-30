@@ -4,8 +4,10 @@ public class ActionManager {
 
     private SaveProjectAction saveProjectAction;
     private SavePresentationAction savePresentationAction;
+    private SaveWorkSpaceAction saveWorkSpaceAction;
     private OpenProjectAction openProjectAction;
     private OpenPresentationAction openPresentationAction;
+    private OpenWorkSpaceAction openWorkSpaceAction;
 
     private InfoAction infoAction;
     private EditPresentationAction editPresentationAction;
@@ -45,8 +47,10 @@ public class ActionManager {
     {
         saveProjectAction = new SaveProjectAction();
         savePresentationAction = new SavePresentationAction();
+        saveWorkSpaceAction = new SaveWorkSpaceAction();
         openProjectAction = new OpenProjectAction();
         openPresentationAction = new OpenPresentationAction();
+        openWorkSpaceAction = new OpenWorkSpaceAction();
 
         infoAction = new InfoAction();
         editPresentationAction = new EditPresentationAction();
@@ -198,5 +202,13 @@ public class ActionManager {
 
     public SubmitSharePresentation getSubmitSharePresentation() {
         return submitSharePresentation;
+    }
+
+    public SaveWorkSpaceAction getSaveWorkSpaceAction() {
+        return saveWorkSpaceAction;
+    }
+
+    public OpenWorkSpaceAction getOpenWorkSpaceAction() {
+        return openWorkSpaceAction;
     }
 }
