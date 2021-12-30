@@ -33,11 +33,15 @@ public class OpenProjectAction extends AbstractRudokAction{
                 try
                 {
                     project = (Project) ois.readObject();
+                    project.setProjectFile(jfc.getSelectedFile());
+                    project.setParent(((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()));
+                    project.setChanged(false);
                 }
                 catch (ClassNotFoundException e1)
                 {
                     e1.printStackTrace();
                 }
+
 
                 ((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).addChild(project);
 

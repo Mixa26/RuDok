@@ -42,6 +42,7 @@ public class SaveProject implements Save{
             oos.writeObject(project);
             project.setProjectFile(projectFile);
             ((RuNode) project).setChanged(false);
+            project.setChanged(false);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {

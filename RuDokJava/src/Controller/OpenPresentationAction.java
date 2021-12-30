@@ -34,6 +34,9 @@ public class OpenPresentationAction extends AbstractRudokAction{
                         Presentation presentation = null;
                         try {
                             presentation = (Presentation) ois.readObject();
+                            presentation.setParent(((Project)((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode()));
+                            presentation.setPresentationFile(jfc.getSelectedFile());
+                            presentation.setChanged(false);
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         }

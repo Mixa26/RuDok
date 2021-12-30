@@ -3,6 +3,7 @@ package Controller;
 import Model.serialize.filter.ProjectFileFilter;
 import Model.serialize.filter.WorkSpaceFileFilter;
 import Model.treeModel.Project;
+import Model.treeModel.RuNode;
 import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeModel;
@@ -14,6 +15,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Scanner;
+import java.util.jar.Manifest;
 
 public class OpenWorkSpaceAction extends AbstractRudokAction{
     public OpenWorkSpaceAction() {
@@ -33,6 +35,8 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
 
             try{
                 Scanner scanner = new Scanner(jfc.getSelectedFile());
+                MainView.getInstance().getRightWorkArea().setProject(null);
+                MainView.getInstance().getRightWorkArea().removeAll();
                 MainView.getInstance().getMyTree().setModel(new MyTreeModel());
                 MainView.getInstance().getMyTree().refresh();
                 while (scanner.hasNextLine())
@@ -45,8 +49,9 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
                     try
                     {
                         project = (Project) ois.readObject();
-                        project.setProjectFile(jfc.getSelectedFile());
+                        project.setProjectFile(new File(directories));
                         project.setParent(((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode());
+                        project.setChanged(false);
                         ((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).addChild(project);
                     }
                     catch (ClassNotFoundException e2)
@@ -54,6 +59,9 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
                         e2.printStackTrace();
                     }
                 }
+                ((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).setChanged(false);
+                ((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).setWorkSpaceFile(jfc.getSelectedFile());
+
                 scanner.close();
                 MainView.getInstance().getMyTree().refresh();
                 MainView.getInstance().getLoadContextView().setVisible(false);

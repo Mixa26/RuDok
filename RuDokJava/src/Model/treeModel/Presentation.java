@@ -25,6 +25,7 @@ public class Presentation extends RuNodeComposite{
     public void addChild(RuNode child) {
         if (child instanceof Slide)
         {
+            super.setChanged(true);
             super.getChildren().add(child);
             notifySubscribers(this, NotifyType.AddSlide);
         }
@@ -35,6 +36,7 @@ public class Presentation extends RuNodeComposite{
     {
         if (child instanceof Slide)
         {
+            super.setChanged(true);
             super.getChildren().remove(child);
             for (RuNode slide : super.getChildren())
             {
@@ -45,11 +47,13 @@ public class Presentation extends RuNodeComposite{
     }
 
     public void setAuthor(String author) {
+        super.setChanged(true);
         this.author = author;
         notifySubscribers(this, NotifyType.EditPresentation);
     }
 
     public void setBackgroundImage(String backgroundImage) {
+        super.setChanged(true);
         this.backgroundImage = backgroundImage;
     }
 
@@ -63,6 +67,7 @@ public class Presentation extends RuNodeComposite{
 
     @Override
     public void setName(String name) {
+        super.setChanged(true);
         super.setName(name);
         notifySubscribers(this, NotifyType.RenamePresentation);
     }

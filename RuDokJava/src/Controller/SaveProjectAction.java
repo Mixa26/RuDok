@@ -31,7 +31,7 @@ public class SaveProjectAction extends AbstractRudokAction{
 //                JFileChooser jfc = new JFileChooser();
 //                jfc.setFileFilter(new ProjectFileFilter());
 //
-////                Project project = MainView.getInstance().getRightWorkArea().getProject();
+//                Project project = MainView.getInstance().getRightWorkArea().getProject();
 //
 //                File projectFile = project.getProjectFile();
 //

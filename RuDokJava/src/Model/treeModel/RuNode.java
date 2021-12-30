@@ -30,6 +30,7 @@ public abstract class RuNode implements IPublisher, Serializable {
     }
 
     public void setName(String name) {
+        changed = true;
         this.name = name;
     }
 
@@ -38,6 +39,7 @@ public abstract class RuNode implements IPublisher, Serializable {
     }
 
     public void setParent(RuNode parent) {
+        changed = true;
         this.parent = parent;
     }
 
@@ -79,6 +81,10 @@ public abstract class RuNode implements IPublisher, Serializable {
     }
 
     public void setChanged(boolean changed) {
+        if (changed && getParent() != null)
+        {
+            getParent().setChanged(true);
+        }
         this.changed = changed;
     }
 }

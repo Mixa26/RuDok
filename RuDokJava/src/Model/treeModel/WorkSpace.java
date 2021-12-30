@@ -22,6 +22,7 @@ public class WorkSpace extends RuNodeComposite {
     public void addChild(RuNode child) {
         if (child instanceof Project)
         {
+            setChanged(true);
             super.getChildren().add(child);
         }
     }
@@ -30,6 +31,7 @@ public class WorkSpace extends RuNodeComposite {
     public void removeChild(RuNode child) {
         if (child instanceof Project)
         {
+            setChanged(true);
             super.getChildren().remove(child);
             notifySubscribers(child, NotifyType.DeleteProject);
         }

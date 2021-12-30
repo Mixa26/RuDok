@@ -4,6 +4,8 @@ import Model.serialize.SerializableStroke;
 import Model.slotHandler.MultimediaSlotHandler;
 import Model.slotHandler.SlotHandler;
 import Model.slotHandler.TextSlotHandler;
+import View.MainView;
+import View.PresentationView;
 import observer.IPublisher;
 import observer.ISubscriber;
 import observer.NotifyType;
@@ -118,17 +120,20 @@ public class Slot implements IPublisher, Serializable {
     }
 
     public void setColor(Color color) {
+        signalizeChange();
         this.color = color;
     }
 
     public void setPosition(int x, int y)
     {
+        signalizeChange();
         this.x = x;
         this.y = y;
 
     }
 
     public void setStroke(Stroke stroke) {
+        signalizeChange();
         if (this.stroke == null)
         {
             this.stroke = new SerializableStroke(stroke);
@@ -144,6 +149,7 @@ public class Slot implements IPublisher, Serializable {
     }
 
     public void setContent(String content) {
+        signalizeChange();
         this.content = content;
     }
 
@@ -153,5 +159,10 @@ public class Slot implements IPublisher, Serializable {
 
     public SlotHandler getSlotHandler() {
         return slotHandler;
+    }
+
+    public void signalizeChange()
+    {
+        ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getPresentation().setChanged(true);
     }
 }

@@ -40,6 +40,7 @@ public class SavePresentation implements Save{
             oos.writeObject(presentation);
             presentation.setPresentationFile(presentationFile);
             ((RuNode) presentation).setChanged(false);
+            presentation.setChanged(false);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {

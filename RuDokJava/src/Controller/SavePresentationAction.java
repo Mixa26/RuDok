@@ -27,6 +27,7 @@ public class SavePresentationAction extends AbstractRudokAction{
 
                 SavePresentation savePresentation = new SavePresentation(presentation);
                 savePresentation.save();
+
 //                JFileChooser jfc = new JFileChooser();
 //                jfc.setFileFilter(new PresentationFileFilter());
 //

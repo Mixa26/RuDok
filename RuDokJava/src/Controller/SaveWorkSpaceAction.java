@@ -59,6 +59,7 @@ public class SaveWorkSpaceAction extends AbstractRudokAction{
             }
             fw.close();
             workSpace.setWorkSpaceFile(workSpaceFile);
+            workSpace.setChanged(false);
         }
         catch(FileNotFoundException e1)
         {

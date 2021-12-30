@@ -28,6 +28,7 @@ public class Slide extends RuNode {
 
     public void addSlot(Slot slot)
     {
+        signalizeChange();
         slots.add(slot);
         slot.setStroke(((PresentationView) MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent()).getStroke());
         notifySubscribers(slot, NotifyType.AddSlot);
@@ -35,6 +36,7 @@ public class Slide extends RuNode {
 
     public void removeSlot(Slot slot)
     {
+        signalizeChange();
         slots.remove(slot);
         notifySubscribers(slot, NotifyType.RemoveSlot);
     }
@@ -44,6 +46,7 @@ public class Slide extends RuNode {
     }
 
     public void setOrdinalNumber(int ordinalNumber) {
+        signalizeChange();
         this.ordinalNumber = ordinalNumber;
     }
 
@@ -52,6 +55,7 @@ public class Slide extends RuNode {
     }
 
     public void setSlotDraged(Slot slotDraged) {
+        signalizeChange();
         this.slotDraged = slotDraged;
     }
 
@@ -73,5 +77,10 @@ public class Slide extends RuNode {
 
     public void setRelativePosY(int relativePosY) {
         this.relativePosY = relativePosY;
+    }
+
+    public void signalizeChange()
+    {
+        getParent().setChanged(true);
     }
 }

@@ -18,6 +18,7 @@ public class Project extends RuNodeComposite{
     public void addChild(RuNode child) {
         if (child instanceof Presentation)
         {
+            super.setChanged(true);
             super.getChildren().add(child);
             notifySubscribers(this, NotifyType.AddPresentation);
         }
@@ -27,6 +28,7 @@ public class Project extends RuNodeComposite{
     public void removeChild(RuNode child) {
         if (child instanceof Presentation)
         {
+            super.setChanged(true);
             removePresentationFromSharedProjects(child);
             super.getChildren().remove(child);
             notifySubscribers(child, NotifyType.RemovePresentation);
@@ -49,6 +51,7 @@ public class Project extends RuNodeComposite{
 
     @Override
     public void setName(String name) {
+        super.setChanged(true);
         super.setName(name);
         notifySubscribers(this, NotifyType.RenameProject);
     }
