@@ -56,6 +56,7 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
                 }
                 scanner.close();
                 MainView.getInstance().getMyTree().refresh();
+                MainView.getInstance().getLoadContextView().setVisible(false);
             }
             catch (FileNotFoundException e1)
             {

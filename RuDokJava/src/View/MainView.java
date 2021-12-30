@@ -36,6 +36,8 @@ public class MainView extends JFrame implements ISubscriber {
 
     private JPanel all;
 
+    private LoadContextView loadContextView;
+
     private SharePresentationView sharePresentationView;
 
     private MainView()
@@ -119,6 +121,12 @@ public class MainView extends JFrame implements ISubscriber {
         }
     }
 
+    public void openInitialPopUp()
+    {
+        loadContextView = new LoadContextView();
+        loadContextView.setVisible(true);
+    }
+
     public ActionManager getActionManager() {
         return actionManager;
     }
@@ -153,5 +161,9 @@ public class MainView extends JFrame implements ISubscriber {
 
     public SharePresentationView getSharePresentationView() {
         return sharePresentationView;
+    }
+
+    public LoadContextView getLoadContextView() {
+        return loadContextView;
     }
 }
