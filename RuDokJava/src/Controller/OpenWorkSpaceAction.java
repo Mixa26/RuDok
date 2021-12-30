@@ -5,6 +5,7 @@ import Model.serialize.filter.WorkSpaceFileFilter;
 import Model.treeModel.Project;
 import Model.treeModel.WorkSpace;
 import View.MainView;
+import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.model.MyTreeNode;
 
 import javax.swing.*;
@@ -32,6 +33,8 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
 
             try{
                 Scanner scanner = new Scanner(jfc.getSelectedFile());
+                MainView.getInstance().getMyTree().setModel(new MyTreeModel());
+                MainView.getInstance().getMyTree().refresh();
                 while (scanner.hasNextLine())
                 {
                     String directories = scanner.nextLine();
@@ -43,6 +46,7 @@ public class OpenWorkSpaceAction extends AbstractRudokAction{
                     {
                         project = (Project) ois.readObject();
                         project.setProjectFile(jfc.getSelectedFile());
+                        project.setParent(((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode());
                         ((WorkSpace) ((MyTreeNode)MainView.getInstance().getMyTree().getModel().getRoot()).getNode()).addChild(project);
                     }
                     catch (ClassNotFoundException e2)

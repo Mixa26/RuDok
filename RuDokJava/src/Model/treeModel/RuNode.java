@@ -37,6 +37,10 @@ public abstract class RuNode implements IPublisher, Serializable {
         return parent;
     }
 
+    public void setParent(RuNode parent) {
+        this.parent = parent;
+    }
+
     public void addSubscriber(ISubscriber subscriber) {
 
         if (subscriber != null) {
