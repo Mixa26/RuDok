@@ -1,12 +1,15 @@
 package View;
 
 import Model.Slot;
+import Model.slotHandler.TextSlotHandler;
+import Model.slotHandler.charStyle;
 import Model.treeModel.Presentation;
 import observer.ISubscriber;
 import observer.NotifyType;
 import state.SlotBorderStrokeState.SplitStrokeState;
 
 import javax.swing.*;
+import java.util.List;
 import java.awt.*;
 
 public class SlotView implements ISubscriber {
@@ -53,8 +56,19 @@ public class SlotView implements ISubscriber {
             {
                 if (slot.getSlotHandler().getContent() != null && !slot.getSlotHandler().getContent().equals(""))
                 {
-                    g.drawString(slot.getSlotHandler().getContent(), x + 5, y + 15);
+                    if (((TextSlotHandler)slot.getSlotHandler()).getCharStyle().isEmpty())
+                    {
+                        g.drawString(slot.getSlotHandler().getContent(), x + 5, y + 15);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < slot.getContent().length(); i++)
+                        {
+                            charStyle CharStyle = ((TextSlotHandler) slot.getSlotHandler()).getCharStyle().get(i);
 
+
+                        }
+                    }
                 }
             }
         }

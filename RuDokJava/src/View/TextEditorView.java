@@ -34,7 +34,6 @@ public class TextEditorView extends JDialog {
         setTitle("Text editor");
 
         jToolBar = new JToolBar();
-
         attributeSet = new SimpleAttributeSet();
 
         bold = new JButton();
