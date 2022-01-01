@@ -15,7 +15,6 @@ public class SlotAddTextAction extends AbstractRudokAction{
     public void actionPerformed(ActionEvent e) {
         PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         presentationView.getSlotSelected().getSlotHandler().setContent(presentationView.getTextEditorView().getjTextPane().getText());
-        //TODO odradi text sa bold italic...
         presentationView.getTextEditorView().setVisible(false);
     }
 }

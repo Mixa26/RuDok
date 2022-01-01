@@ -9,8 +9,11 @@ import observer.NotifyType;
 import state.SlotBorderStrokeState.SplitStrokeState;
 
 import javax.swing.*;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
 import java.util.List;
 import java.awt.*;
+import java.util.Map;
 
 public class SlotView implements ISubscriber {
     Slot slot;
@@ -65,8 +68,47 @@ public class SlotView implements ISubscriber {
                         for (int i = 0; i < slot.getContent().length(); i++)
                         {
                             charStyle CharStyle = ((TextSlotHandler) slot.getSlotHandler()).getCharStyle().get(i);
-
-
+                            if (CharStyle.isBold() && CharStyle.isItalic() && CharStyle.isUnderline())
+                            {
+                                Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+                                fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                                g.setFont(new Font("Aerial", Font.BOLD | Font.ITALIC ,12).deriveFont(fontAttributes));
+                            }
+                            else if (!CharStyle.isBold() && CharStyle.isItalic() && CharStyle.isUnderline())
+                            {
+                                Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+                                fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                                g.setFont(new Font("Aerial", Font.ITALIC ,12).deriveFont(fontAttributes));
+                            }
+                            else if (CharStyle.isBold() && !CharStyle.isItalic() && CharStyle.isUnderline())
+                            {
+                                Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+                                fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                                g.setFont(new Font("Aerial", Font.BOLD ,12).deriveFont(fontAttributes));
+                            }
+                            else if (CharStyle.isBold() && CharStyle.isItalic() && !CharStyle.isUnderline())
+                            {
+                                g.setFont(new Font("Aerial", Font.BOLD | Font.ITALIC ,12));
+                            }
+                            else if (!CharStyle.isBold() && !CharStyle.isItalic() && CharStyle.isUnderline())
+                            {
+                                Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+                                fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                                g.setFont(new Font("Aerial", Font.PLAIN,12).deriveFont(fontAttributes));
+                            }
+                            else if (!CharStyle.isBold() && CharStyle.isItalic() && !CharStyle.isUnderline())
+                            {
+                                g.setFont(new Font("Aerial", Font.ITALIC ,12));
+                            }
+                            else if (CharStyle.isBold() && !CharStyle.isItalic() && !CharStyle.isUnderline())
+                            {
+                                g.setFont(new Font("Aerial", Font.BOLD ,12));
+                            }
+                            else if (!CharStyle.isBold() && !CharStyle.isItalic() && !CharStyle.isUnderline())
+                            {
+                                g.setFont(new Font("Aerial", Font.PLAIN ,12));
+                            }
+                            g.drawString(""+slot.getContent().charAt(i), x + i*10, y+15);
                         }
                     }
                 }

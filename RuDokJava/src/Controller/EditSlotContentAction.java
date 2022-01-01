@@ -1,10 +1,14 @@
 package Controller;
 
 import Model.Slot;
+import Model.slotHandler.TextSlotHandler;
+import Model.slotHandler.charStyle;
 import View.MainView;
 import View.PresentationView;
 import View.userErrorHandler.ErrorFactory;
 
+import javax.swing.*;
+import javax.swing.text.*;
 import java.awt.event.ActionEvent;
 
 public class EditSlotContentAction extends AbstractRudokAction{
@@ -22,7 +26,39 @@ public class EditSlotContentAction extends AbstractRudokAction{
             if (presentationView.getSlotSelected().getType() == Slot.type.Text)
             {
                 if (presentationView.getSlotSelected().getSlotHandler().getContent() !=null) {
-                    presentationView.getTextEditorView().getjTextPane().setText(presentationView.getSlotSelected().getSlotHandler().getContent());
+
+                    String text = presentationView.getSlotSelected().getContent();
+                    Slot slot = presentationView.getSlotSelected();
+                    JTextPane jTextPane = ((PresentationView)(MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent())).getTextEditorView().getjTextPane();
+                    jTextPane.setText("");
+                    Document doc = jTextPane.getStyledDocument();
+                    for (int i = 0; i < text.length(); i++)
+                    {
+                        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+                        if (((TextSlotHandler)slot.getSlotHandler()).getCharStyle().get(i).isBold())
+                        {
+                            StyleConstants.setBold(attributeSet, true);
+                        }
+                        if (((TextSlotHandler)slot.getSlotHandler()).getCharStyle().get(i).isItalic())
+                        {
+                            StyleConstants.setItalic(attributeSet, true);
+                        }
+                        if (((TextSlotHandler)slot.getSlotHandler()).getCharStyle().get(i).isUnderline())
+                        {
+                            StyleConstants.setUnderline(attributeSet, true);
+                        }
+
+                        jTextPane.setCharacterAttributes(attributeSet,true);
+                        try {
+                            doc.insertString(doc.getLength(), text.charAt(i) + "", attributeSet);
+                        }
+                        catch (BadLocationException e1)
+                        {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                    //presentationView.getTextEditorView().getjTextPane().setText(presentationView.getSlotSelected().getSlotHandler().getContent());
                 }
                 else
                 {

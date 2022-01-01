@@ -27,20 +27,23 @@ public class TextSlotHandler extends SlotHandler{
     public String getContent() {
         JTextPane jTextPane = ((PresentationView)(MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent())).getTextEditorView().getjTextPane();
 
-//        boolean bold;
-//        boolean italic;
-//        boolean underline;
-//
-//        String text =slot.getContent();
-//        for (int i = 0; i < text.length(); i++)
-//        {
-//            AttributeSet set = jTextPane.getStyledDocument().getCharacterElement(i).getAttributes();
-//            bold = StyleConstants.isBold(set);
-//            italic = StyleConstants.isItalic(set);
-//            underline = StyleConstants.isUnderline(set);
-//            charStyle.add(new charStyle(bold,italic,underline));
-//        }
+        boolean bold;
+        boolean italic;
+        boolean underline;
 
+        String text =slot.getContent();
+        if (text != null)
+        {
+            charStyle.clear();
+            for (int i = 0; i < text.length(); i++)
+            {
+                AttributeSet set = jTextPane.getStyledDocument().getCharacterElement(i).getAttributes();
+                bold = StyleConstants.isBold(set);
+                italic = StyleConstants.isItalic(set);
+                underline = StyleConstants.isUnderline(set);
+                charStyle.add(new charStyle(bold, italic, underline));
+            }
+        }
         return slot.getContent();
     }
 
