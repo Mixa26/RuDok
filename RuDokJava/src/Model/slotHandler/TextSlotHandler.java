@@ -8,10 +8,11 @@ import View.TextEditorView;
 import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.StyleConstants;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextSlotHandler extends SlotHandler{
+public class TextSlotHandler extends SlotHandler implements Serializable {
     List<charStyle> charStyle = new ArrayList<>();
 
     public TextSlotHandler(Slot slot) {
@@ -20,6 +21,8 @@ public class TextSlotHandler extends SlotHandler{
 
     @Override
     public void setContent(String content) {
+        charStyle.clear();
+        slot.signalizeChange();
         slot.setContent(content);
     }
 
@@ -34,7 +37,6 @@ public class TextSlotHandler extends SlotHandler{
         String text =slot.getContent();
         if (text != null)
         {
-            charStyle.clear();
             for (int i = 0; i < text.length(); i++)
             {
                 AttributeSet set = jTextPane.getStyledDocument().getCharacterElement(i).getAttributes();

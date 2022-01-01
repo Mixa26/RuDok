@@ -1,5 +1,6 @@
 package Model.treeModel;
 
+import View.MainView;
 import observer.IPublisher;
 import observer.ISubscriber;
 import observer.NotifyType;
@@ -26,11 +27,15 @@ public abstract class RuNode implements IPublisher, Serializable {
     }
 
     public String getName() {
+        if (name.endsWith("."))
+        {
+            return name.substring(0,name.length()-1);
+        }
         return name;
     }
 
     public void setName(String name) {
-        changed = true;
+        setChanged(true);
         this.name = name;
     }
 
@@ -85,6 +90,25 @@ public abstract class RuNode implements IPublisher, Serializable {
         {
             getParent().setChanged(true);
         }
+        if (!name.endsWith("*"))
+        {
+            name = name + "*";
+        }
+        if (changed == false)
+        {
+            if (name.endsWith("*"))
+            {
+                name = name.substring(0,name.length()-1);
+                if (this instanceof RuNodeComposite)
+                {
+                    for (RuNode ruNode : ((RuNodeComposite)this).getChildren())
+                    {
+                        ruNode.setChanged(false);
+                    }
+                }
+            }
+        }
+        MainView.getInstance().getMyTree().refresh();
         this.changed = changed;
     }
 }

@@ -2,7 +2,9 @@ package Model.slotHandler;
 
 import Model.Slot;
 
-public class MultimediaSlotHandler extends SlotHandler{
+import java.io.Serializable;
+
+public class MultimediaSlotHandler extends SlotHandler implements Serializable {
 
     public MultimediaSlotHandler(Slot slot) {
         super.slot = slot;
@@ -10,6 +12,7 @@ public class MultimediaSlotHandler extends SlotHandler{
 
     @Override
     public void setContent(String content) {
+        slot.signalizeChange();
         slot.setContent(content);
     }
 
