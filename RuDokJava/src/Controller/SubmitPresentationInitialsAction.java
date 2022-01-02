@@ -27,7 +27,8 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
             return;
         }
 
-        String author = MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().getAuthor().getText();
+        String author = MainView.getInstance().getMyToolBar().getEditPresentationView().getAuthor().getText();
+        //String author = MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().getAuthor().getText();
 
         Presentation presentation = (Presentation)((MyTreeNode)MainView.getInstance().getMyTree().getSelectionPath().getLastPathComponent()).getNode();
 
@@ -42,7 +43,8 @@ public class SubmitPresentationInitialsAction extends AbstractRudokAction{
         }
 
 
-        MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
+        MainView.getInstance().getMyToolBar().getEditPresentationView().setVisible(false);
+        //MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView().setVisible(false);
 
     }
 

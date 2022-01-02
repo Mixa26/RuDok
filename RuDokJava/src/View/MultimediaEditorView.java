@@ -35,7 +35,8 @@ public class MultimediaEditorView extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser jFileChooser = new JFileChooser();
-                int response = jFileChooser.showOpenDialog(MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView());
+                int response = jFileChooser.showOpenDialog(MainView.getInstance());
+                //int response = jFileChooser.showOpenDialog(MainView.getInstance().getActionManager().getEditPresentationAction().getEditPresentationView());
 
                 if (response == JFileChooser.APPROVE_OPTION)
                 {

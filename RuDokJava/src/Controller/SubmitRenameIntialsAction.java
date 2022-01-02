@@ -26,7 +26,8 @@ public class SubmitRenameIntialsAction extends AbstractRudokAction{
 
         RuNode selection = ((MyTreeNode) Objects.requireNonNull(MainView.getInstance().getMyTree().getSelectionPath()).getLastPathComponent()).getNode();
         if (selection != null) {
-            String nameField = MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().getNameField().getText();
+            String nameField = MainView.getInstance().getMyToolBar().getRenameInTreeView().getNameField().getText();
+            //String nameField = MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().getNameField().getText();
             if (!nameField.equals(""))
             {
                 MainView.getInstance().getCommandManager().addComand(new RenameTreeCommand(selection, nameField));
@@ -38,7 +39,8 @@ public class SubmitRenameIntialsAction extends AbstractRudokAction{
 
             }
 
-            MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().setVisible(false);
+            MainView.getInstance().getMyToolBar().getRenameInTreeView().setVisible(false);
+            //MainView.getInstance().getActionManager().getRenameInTreeAction().getRenameInTreeView().setVisible(false);
 
             //MainView.getIntance().getMyTree().refresh();
         }

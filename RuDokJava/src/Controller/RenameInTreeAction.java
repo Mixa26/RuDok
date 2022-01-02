@@ -11,8 +11,6 @@ import java.util.Objects;
 
 public class RenameInTreeAction extends AbstractRudokAction{
 
-    private RenameInTreeView renameInTreeView = new RenameInTreeView(MainView.getInstance(), "Rename", true);
-
     public RenameInTreeAction()
     {
         putValue(NAME, "Rename");
@@ -36,16 +34,12 @@ public class RenameInTreeAction extends AbstractRudokAction{
         {
             if (selection != null)
             {
-                renameInTreeView.setVisible();
+                MainView.getInstance().getMyToolBar().getRenameInTreeView().setVisible();
             }
             else
             {
                 MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.RenameInTreeError);
             }
         }
-    }
-
-    public RenameInTreeView getRenameInTreeView() {
-        return renameInTreeView;
     }
 }

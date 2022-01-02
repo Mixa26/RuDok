@@ -19,8 +19,6 @@ public class InfoView extends JDialog {
         student = new JLabel("Mihajlo Madzarevic RN 55/20 ", studentPicture, JLabel.CENTER);
 
         add(student);
-
-        setVisible(true);
     }
 
 }

@@ -16,6 +16,6 @@ public class InfoAction extends AbstractRudokAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new InfoView(MainView.getInstance(),"Info", true);
+        MainView.getInstance().getMyToolBar().getInfoView().setVisible(true);
     }
 }

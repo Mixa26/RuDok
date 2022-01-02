@@ -16,6 +16,10 @@ public class MyToolBar extends JToolBar {
     private JButton redoAction;
     private JButton info;
 
+    private InfoView infoView;
+    private RenameInTreeView renameInTreeView;
+    private EditPresentationView editPresentationView;
+
     public MyToolBar()
     {
         setFloatable(false);
@@ -30,6 +34,10 @@ public class MyToolBar extends JToolBar {
         undoAction = new JButton(MainView.getInstance().getActionManager().getUndoAction());
         redoAction = new JButton(MainView.getInstance().getActionManager().getRedoAction());
         info = new JButton(MainView.getInstance().getActionManager().getInfoAction());
+
+        infoView = new InfoView(MainView.getInstance(),"Info", true);
+        renameInTreeView = new RenameInTreeView(MainView.getInstance(), "Rename", true);
+        editPresentationView = new EditPresentationView(MainView.getInstance(), "Edit presentation", true);;
 
         NewProject.setText("");
         NewPresentation.setText("");
@@ -55,4 +63,15 @@ public class MyToolBar extends JToolBar {
         add(info);
     }
 
+    public InfoView getInfoView() {
+        return infoView;
+    }
+
+    public RenameInTreeView getRenameInTreeView() {
+        return renameInTreeView;
+    }
+
+    public EditPresentationView getEditPresentationView() {
+        return editPresentationView;
+    }
 }

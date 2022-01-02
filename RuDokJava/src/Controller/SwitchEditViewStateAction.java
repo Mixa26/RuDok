@@ -19,19 +19,7 @@ public class SwitchEditViewStateAction extends AbstractRudokAction {
         PresentationView presentationView = ((PresentationView)MainView.getInstance().getRightWorkArea().getjTabbedPane().getSelectedComponent());
         if (presentationView.getSState() instanceof EditProjectState)
         {
-            if (MainView.getInstance().getRightWorkArea().getjTabbedPane().getTabCount() == 0)
-            {
-                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.NoPresentationSlideShowError);
-                return;
-            }
-            if (MainView.getInstance().getRightWorkArea().getProject() != null)
-            {
-                presentationView.startSlideShowState();
-            }
-            else
-            {
-                MainView.getInstance().getErrorFactory().createError(ErrorFactory.ErrorType.SwitchToSlideShowError);
-            }
+            presentationView.startSlideShowState();
         }
         else
         {
