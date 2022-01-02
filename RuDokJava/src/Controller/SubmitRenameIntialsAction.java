@@ -3,7 +3,7 @@ package Controller;
 import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 import command.RenameTreeCommand;
 
 import java.awt.event.ActionEvent;

@@ -3,7 +3,7 @@ package Controller;
 import Model.treeModel.Presentation;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
 import java.awt.event.ActionEvent;
 

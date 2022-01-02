@@ -1,6 +1,6 @@
 package state.SlotBorderStrokeState;
 
-import state.State;
+import state.WorkModeState.State;
 
 public class StrokeStateManager {
     private State currentState;

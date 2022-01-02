@@ -3,7 +3,7 @@ package View.treeSwingGUI.view;
 import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 import command.RenameTreeCommand;
 
 import javax.swing.*;

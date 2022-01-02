@@ -1,16 +1,13 @@
 package View;
 
 import Controller.ActionManager;
-import Model.factory.RuNodeFactory;
-import View.userErrorHandler.Error;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.Error;
+import Model.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
 import command.CommandManager;
 import observer.ISubscriber;
 import observer.NotifyType;
-import state.State;
-import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;

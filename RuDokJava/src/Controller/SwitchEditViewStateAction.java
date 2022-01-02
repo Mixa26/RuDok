@@ -2,8 +2,7 @@ package Controller;
 
 import View.MainView;
 import View.PresentationView;
-import View.userErrorHandler.ErrorFactory;
-import state.EditProjectState;
+import state.WorkModeState.EditProjectState;
 
 import java.awt.event.ActionEvent;
 

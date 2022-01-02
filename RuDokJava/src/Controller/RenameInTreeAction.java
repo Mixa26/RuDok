@@ -2,9 +2,8 @@ package Controller;
 
 import Model.treeModel.*;
 import View.MainView;
-import View.RenameInTreeView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
 import java.awt.event.ActionEvent;
 import java.util.Objects;

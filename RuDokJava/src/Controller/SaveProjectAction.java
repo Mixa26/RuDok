@@ -1,16 +1,12 @@
 package Controller;
 
 import Model.serialize.SaveProject;
-import Model.serialize.filter.ProjectFileFilter;
 import Model.treeModel.Project;
-import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.*;
 
 public class SaveProjectAction extends AbstractRudokAction{
     public SaveProjectAction() {

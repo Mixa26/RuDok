@@ -5,7 +5,7 @@ import Model.treeModel.Presentation;
 import Model.treeModel.Project;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

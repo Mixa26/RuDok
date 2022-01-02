@@ -2,7 +2,7 @@ package Controller;
 
 import Model.factory.FactoryGenerator;
 import Model.treeModel.*;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import command.AddTreeCommand;

@@ -1,6 +1,6 @@
 package state.SlotTypeState;
 
-import state.State;
+import state.WorkModeState.State;
 
 public class SlotTypeStateManager {
     private State currentState;

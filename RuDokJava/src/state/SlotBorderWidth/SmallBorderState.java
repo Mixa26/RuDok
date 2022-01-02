@@ -2,7 +2,7 @@ package state.SlotBorderWidth;
 
 import View.MainView;
 import View.PresentationView;
-import state.State;
+import state.WorkModeState.State;
 
 public class SmallBorderState implements State {
     float width = 1.0f;

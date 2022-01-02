@@ -2,10 +2,9 @@ package Controller;
 
 import Model.Slot;
 import Model.slotHandler.TextSlotHandler;
-import Model.slotHandler.charStyle;
 import View.MainView;
 import View.PresentationView;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import javax.swing.text.*;

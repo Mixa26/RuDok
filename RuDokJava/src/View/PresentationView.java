@@ -11,8 +11,8 @@ import state.SlotState.SlotStateManager;
 import state.SlotState.StateMouseListener;
 import state.SlotState.StateMouseMotionListener;
 import state.SlotTypeState.SlotTypeStateManager;
-import state.State;
-import state.StateManager;
+import state.WorkModeState.State;
+import state.WorkModeState.StateManager;
 
 import javax.swing.*;
 import java.util.ArrayList;

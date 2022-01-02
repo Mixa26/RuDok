@@ -1,16 +1,12 @@
 package Controller;
 
 import Model.serialize.SavePresentation;
-import Model.serialize.filter.PresentationFileFilter;
 import Model.treeModel.Presentation;
-import Model.treeModel.RuNode;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.*;
 
 public class SavePresentationAction extends AbstractRudokAction{
     public SavePresentationAction () {

@@ -1,7 +1,7 @@
 package View;
 
 import Model.Slot;
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 
 import javax.swing.*;
 import java.awt.*;

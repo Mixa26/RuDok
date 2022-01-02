@@ -2,7 +2,7 @@ package state.SlotBorderStrokeState;
 
 import View.MainView;
 import View.PresentationView;
-import state.State;
+import state.WorkModeState.State;
 
 import java.awt.*;
 

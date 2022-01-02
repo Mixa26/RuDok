@@ -1,6 +1,6 @@
 package state.SlotBorderWidth;
 
-import state.State;
+import state.WorkModeState.State;
 
 public class BorderWidthStateManager {
     private State currentState;

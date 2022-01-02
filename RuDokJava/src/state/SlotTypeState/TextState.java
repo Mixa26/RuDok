@@ -3,7 +3,7 @@ package state.SlotTypeState;
 import Model.Slot;
 import View.MainView;
 import View.PresentationView;
-import state.State;
+import state.WorkModeState.State;
 
 public class TextState implements State {
     @Override

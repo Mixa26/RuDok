@@ -1,8 +1,7 @@
 package Controller;
 
-import View.userErrorHandler.ErrorFactory;
+import Model.userErrorHandler.ErrorFactory;
 import Model.treeModel.Presentation;
-import View.EditPresentationView;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 
