@@ -3,8 +3,8 @@ package View;
 import Model.Slot;
 import Model.treeModel.Presentation;
 import Model.treeModel.Slide;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.*;

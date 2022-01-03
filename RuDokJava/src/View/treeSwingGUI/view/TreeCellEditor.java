@@ -4,7 +4,7 @@ import Model.treeModel.WorkSpace;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import Model.userErrorHandler.ErrorFactory;
-import command.RenameTreeCommand;
+import Controller.command.RenameTreeCommand;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;

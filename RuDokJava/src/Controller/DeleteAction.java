@@ -4,7 +4,7 @@ import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
 import Model.userErrorHandler.ErrorFactory;
-import command.DeleteTreeCommand;
+import Controller.command.DeleteTreeCommand;
 
 import java.awt.event.ActionEvent;
 import java.util.Objects;

@@ -6,14 +6,12 @@ import Model.slotHandler.SlotHandler;
 import Model.slotHandler.TextSlotHandler;
 import View.MainView;
 import View.PresentationView;
-import observer.IPublisher;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Model.observer.IPublisher;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
-import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.io.Serializable;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

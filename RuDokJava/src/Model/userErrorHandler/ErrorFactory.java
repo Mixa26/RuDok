@@ -1,8 +1,8 @@
 package Model.userErrorHandler;
 
-import observer.IPublisher;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Model.observer.IPublisher;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import java.util.ArrayList;
 import java.util.Iterator;

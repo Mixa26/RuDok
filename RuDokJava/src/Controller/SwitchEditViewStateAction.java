@@ -2,7 +2,7 @@ package Controller;
 
 import View.MainView;
 import View.PresentationView;
-import state.WorkModeState.EditProjectState;
+import Model.state.WorkModeState.EditProjectState;
 
 import java.awt.event.ActionEvent;
 

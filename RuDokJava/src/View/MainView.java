@@ -5,9 +5,9 @@ import Model.userErrorHandler.Error;
 import Model.userErrorHandler.ErrorFactory;
 import View.treeSwingGUI.model.MyTreeModel;
 import View.treeSwingGUI.view.MyTree;
-import command.CommandManager;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Controller.command.CommandManager;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.*;

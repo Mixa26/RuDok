@@ -4,7 +4,7 @@ import Model.factory.FactoryGenerator;
 import Model.treeModel.*;
 import View.MainView;
 import View.treeSwingGUI.model.MyTreeNode;
-import command.AddTreeCommand;
+import Controller.command.AddTreeCommand;
 
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;

@@ -2,8 +2,8 @@ package Controller;
 
 import View.MainView;
 import View.PresentationView;
-import state.SlotBorderStrokeState.FullStrokeState;
-import state.SlotBorderStrokeState.SplitStrokeState;
+import Model.state.SlotBorderStrokeState.FullStrokeState;
+import Model.state.SlotBorderStrokeState.SplitStrokeState;
 
 import java.awt.event.ActionEvent;
 

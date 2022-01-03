@@ -1,8 +1,8 @@
 package View;
 
 import Model.treeModel.*;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.*;

@@ -3,7 +3,7 @@ package Model.treeModel;
 import Model.Slot;
 import View.MainView;
 import View.PresentationView;
-import observer.NotifyType;
+import Model.observer.NotifyType;
 
 import java.util.ArrayList;
 import java.util.List;

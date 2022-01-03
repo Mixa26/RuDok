@@ -1,6 +1,6 @@
 package Model.treeModel;
 
-import observer.NotifyType;
+import Model.observer.NotifyType;
 
 import java.io.File;
 import java.util.Iterator;

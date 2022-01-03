@@ -2,7 +2,7 @@ package Controller;
 
 import View.MainView;
 import View.PresentationView;
-import state.SlotTypeState.TextState;
+import Model.state.SlotTypeState.TextState;
 
 import java.awt.event.ActionEvent;
 

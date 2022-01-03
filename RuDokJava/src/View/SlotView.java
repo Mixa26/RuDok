@@ -3,15 +3,12 @@ package View;
 import Model.Slot;
 import Model.slotHandler.TextSlotHandler;
 import Model.slotHandler.charStyle;
-import Model.treeModel.Presentation;
-import observer.ISubscriber;
-import observer.NotifyType;
-import state.SlotBorderStrokeState.SplitStrokeState;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import javax.swing.*;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
-import java.util.List;
 import java.awt.*;
 import java.util.Map;
 

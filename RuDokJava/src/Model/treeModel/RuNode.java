@@ -1,9 +1,9 @@
 package Model.treeModel;
 
 import View.MainView;
-import observer.IPublisher;
-import observer.ISubscriber;
-import observer.NotifyType;
+import Model.observer.IPublisher;
+import Model.observer.ISubscriber;
+import Model.observer.NotifyType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
