@@ -493,7 +493,7 @@ Shadow=0</a:DisplayPreferences>
 <a:PaperSource>15</a:PaperSource>
 <c:Symbols>
 <o:DependencyLinkSymbol Id="o4">
-<a:Rect>((-2138,-7959), (2136,564))</a:Rect>
+<a:Rect>((-2101,-7959), (2098,564))</a:Rect>
 <a:ListOfPoints>((-1,564),(-1,-7959))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -511,7 +511,7 @@ Shadow=0</a:DisplayPreferences>
 </c:Object>
 </o:DependencyLinkSymbol>
 <o:DependencyLinkSymbol Id="o8">
-<a:Rect>((-1988,-7809), (2286,714))</a:Rect>
+<a:Rect>((-1950,-7809), (2249,714))</a:Rect>
 <a:ListOfPoints>((149,-7809),(149,714))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -543,7 +543,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>CD1F231B-79C1-4986-8D65-DCAE0F688BD2</a:CustomPictureID>
+<a:CustomPictureID>A7BB9769-2C0B-4790-9D4C-0F7DD0E25B9A</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -565,7 +565,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>A817E1D3-FCEC-4509-9DF9-1E75A2B0C763</a:CustomPictureID>
+<a:CustomPictureID>C6046EEC-675A-4918-B523-1357E2C747C8</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
