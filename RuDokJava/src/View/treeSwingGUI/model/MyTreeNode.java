@@ -53,7 +53,15 @@ public class MyTreeNode extends DefaultMutableTreeNode {
 
     @Override
     public String toString() {
-        return node.getName();
+        if (node.isChanged())
+        {
+            return (node.getName()+"*");
+        }
+        else
+        {
+            return node.getName();
+        }
+
     }
 
     public RuNode getNode() {

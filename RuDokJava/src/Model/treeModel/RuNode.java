@@ -21,22 +21,32 @@ public abstract class RuNode implements IPublisher, Serializable {
 
     public RuNode(String name, RuNode parent)
     {
-        changed = true;
+        if (!(this instanceof WorkSpace))
+        {
+            changed = true;
+        }
         this.name = name;
         this.parent = parent;
     }
 
     public String getName() {
-        if (name.endsWith("."))
-        {
-            return name.substring(0,name.length()-1);
-        }
+//        if (name.endsWith("*"))
+//        {
+//            return name.substring(0,name.length()-1);
+//        }
         return name;
     }
 
     public void setName(String name) {
         setChanged(true);
-        this.name = name;
+//        if (changed)
+//        {
+//            this.name = name+"*";
+//        }
+//        else
+//        {
+            this.name = name;
+//        }
     }
 
     public RuNode getParent() {
@@ -90,21 +100,21 @@ public abstract class RuNode implements IPublisher, Serializable {
         {
             getParent().setChanged(true);
         }
-        if (!name.endsWith("*"))
-        {
-            name = name + "*";
-        }
+//        if (!name.endsWith("*"))
+//        {
+//            name = name + "*";
+//        }
         if (changed == false)
         {
-            if (name.endsWith("*"))
+//            if (name.endsWith("*")) {
+//                name = name.substring(0, name.length() - 1);
+//
+//            }
+            if (this instanceof RuNodeComposite)
             {
-                name = name.substring(0,name.length()-1);
-                if (this instanceof RuNodeComposite)
+                for (RuNode ruNode : ((RuNodeComposite)this).getChildren())
                 {
-                    for (RuNode ruNode : ((RuNodeComposite)this).getChildren())
-                    {
-                        ruNode.setChanged(false);
-                    }
+                    ruNode.setChanged(false);
                 }
             }
         }
