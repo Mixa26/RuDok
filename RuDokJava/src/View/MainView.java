@@ -64,6 +64,7 @@ public class MainView extends JFrame implements ISubscriber {
         Dimension screenSize = kit.getScreenSize();
         setSize((int)(screenSize.getWidth() / 2 + screenSize.getWidth() / 10), (int)(screenSize.getHeight() / 2 + screenSize.getWidth() / 10));
         setTitle("RuDok");
+        setIconImage(new ImageIcon("RuDokJava/src/Controller/images/RuDokIcon.jpg").getImage());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         all = new JPanel();

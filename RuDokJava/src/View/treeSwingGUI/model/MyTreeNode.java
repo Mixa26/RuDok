@@ -55,7 +55,7 @@ public class MyTreeNode extends DefaultMutableTreeNode {
     public String toString() {
         if (node.isChanged())
         {
-            return (node.getName()+"*");
+            return (node.getName()+" *");
         }
         else
         {
